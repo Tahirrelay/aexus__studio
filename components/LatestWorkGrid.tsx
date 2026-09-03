@@ -29,28 +29,27 @@ const archSubCategories = [
 const allProjects: Record<string, Array<{ id: string; title: string; category: string; subCategory?: string; image: string; link: string }>> = {
   Configurators: [
     { id: 'conf-1', title: 'Winter Garden Configurator', category: 'Configurators', image: '/configurator/conf-1.jpg', link: 'https://aexusstudios.com/Winter-Garden-Configurator/' },
-    { id: 'conf-2', title: 'Office Pod 3D Builder', category: 'Configurators', image: '/configurator/conf-2.jpg', link: 'https://aexusstudios.com/office-pod-configurator' },
-    { id: 'conf-3', title: 'L-Profil Metal Configurator', category: 'Configurators', image: '/configurator/conf-3.jpg', link: 'https://aexusstudios.com/l-profil-configurator' },
+    { id: 'conf-2', title: 'Office Pod 3D Builder', category: 'Configurators', image: '/configurator/conf-2.jpg', link: 'https://aexusstudios.com/3dPodsConfigurator/' },
+    { id: 'conf-3', title: 'L-Profil Metal Configurator', category: 'Configurators', image: '/configurator/conf-3.jpg', link: 'https://aexusstudios.com/LShape-Configurator' },
     { id: 'conf-4', title: 'Wedding Ring 3D Studio', category: 'Configurators', image: '/configurator/conf-4.jpg', link: 'https://aexusstudios.com/ring-configurator' },
     { id: 'conf-5', title: 'Pallet & Logistics Configurator', category: 'Configurators', image: '/configurator/conf-5.jpg', link: 'https://aexusstudios.com/pallet-configurator' },
     { id: 'conf-6', title: 'Luxury Watch Customizer', category: 'Configurators', image: '/configurator/conf-6.jpg', link: 'https://aexusstudios.com/watch-configurator' },
-    { id: 'conf-7', title: 'Advanced 3D Configurator VII', category: 'Configurators', image: '/configurator/conf-7.jpg', link: 'https://aexusstudios.com/configurator-7' },
-    { id: 'conf-8', title: 'Custom Product Builder VIII', category: 'Configurators', image: '/configurator/conf-8.jpg', link: 'https://aexusstudios.com/configurator-8' },
+    { id: 'conf-7', title: 'Advanced 3D Configurator VII', category: 'Configurators', image: '/configurator/conf-7.jpg', link: 'https://aexusstudios.com/Sofaconfigurator' },
+    { id: 'conf-8', title: 'Custom Product Builder VIII', category: 'Configurators', image: '/configurator/conf-8.jpg', link: 'https://aexusstudios.com/2d-cornhole-configurator' },
   ],
   Animation: [
-    { id: 'ani-1', title: 'Ahmed Foods Jam & Spread 3D', category: 'Animation', image: '/Animations/ani-1.jpg', link: 'https://www.youtube.com/watch?v=a9-ztuh_vrM' },
-    { id: 'ani-2', title: 'Character Rigging & Motion', category: 'Animation', image: '/Animations/ani-2.jpg', link: '#' },
-    { id: 'ani-3', title: 'Abstract Fluid Simulation', category: 'Animation', image: '/Animations/ani-3.jpg', link: '#' },
-    { id: 'ani-4', title: 'VFX Product Commercial', category: 'Animation', image: '/Animations/ani-4.jpg', link: '#' },
-    { id: 'ani-5', title: 'Dynamic Logo Intro 3D', category: 'Animation', image: '/Animations/ani-5.jpg', link: '#' },
-    { id: 'ani-6', title: 'Cinematic Sci-Fi Loop', category: 'Animation', image: '/Animations/ani-6.jpg', link: '#' },
-    { id: 'ani-7', title: 'Product Animation VII', category: 'Animation', image: '/Animations/ani-7.jpg', link: '#' },
-    { id: 'ani-8', title: 'Commercial Motion Graphics', category: 'Animation', image: '/Animations/ani-8.jpg', link: '#' },
-    { id: 'ani-9', title: 'VFX Composition IX', category: 'Animation', image: '/Animations/ani-9.jpg', link: '#' },
-    { id: 'ani-10', title: '3D Character Animation X', category: 'Animation', image: '/Animations/ani-10.jpg', link: '#' },
-    { id: 'ani-11', title: 'Stylized Environment Walkthrough', category: 'Animation', image: '/Animations/ani-11.jpg', link: '#' },
-    { id: 'ani-12', title: 'Mechanical Assembly Animation', category: 'Animation', image: '/Animations/ani-12.jpg', link: '#' },
-    { id: 'ani-13', title: 'Cinematic Teaser Trailer', category: 'Animation', image: '/Animations/ani-13.jpg', link: '#' },
+    { id: 'ani-1', title: ' AI Animation', category: 'Animation', image: '/Animations/ani-1.jpg', link: 'https://www.youtube.com/watch?v=a9-ztuh_vrM' },
+    { id: 'ani-2', title: 'Mumtaz Residency', category: 'Animation', image: '/Animations/ani-2.jpg', link: 'https://www.youtube.com/watch?v=nUgOrC9sigA' },
+    { id: 'ani-3', title: 'NexGen Heights', category: 'Animation', image: '/Animations/ani-3.jpg', link: 'https://www.youtube.com/watch?v=pYTISHC6grA' },
+    { id: 'ani-4', title: 'NS Arcade', category: 'Animation', image: '/Animations/ani-4.jpg', link: 'https://www.youtube.com/watch?v=JCPFBU6IPA4' },
+    { id: 'ani-5', title: 'Modren House Animation', category: 'Animation', image: '/Animations/ani-5.jpg', link: 'https://www.youtube.com/watch?v=zlkeG2q8QNM' },
+    { id: 'ani-6', title: 'GYM RAT Protein', category: 'Animation', image: '/Animations/ani-6.jpg', link: 'https://www.youtube.com/watch?v=DBVGCxhmFYc' },
+    { id: 'ani-8', title: 'CommTel Office', category: 'Animation', image: '/Animations/ani-8.jpg', link: 'https://www.youtube.com/watch?v=IkiRDKjfTEg' },
+    { id: 'ani-9', title: 'Kitechen Design', category: 'Animation', image: '/Animations/ani-9.jpg', link: 'https://www.youtube.com/watch?v=6lHMNghhWnE' },
+    { id: 'ani-10', title: 'Modern Rustic Dining', category: 'Animation', image: '/Animations/ani-10.jpg', link: 'https://www.youtube.com/watch?v=FE9W_Rr6p-4' },
+    { id: 'ani-11', title: 'Elegant Bedroom Design', category: 'Animation', image: '/Animations/ani-11.jpg', link: 'https://www.youtube.com/watch?v=nzFj8E1mLhM' },
+    { id: 'ani-12', title: 'Luxury Interior Design', category: 'Animation', image: '/Animations/ani-12.jpg', link: 'https://www.youtube.com/watch?v=kb7NjYL70h4' },
+    { id: 'ani-13', title: 'Rustic Elegance', category: 'Animation', image: '/Animations/ani-13.jpg', link: 'https://www.youtube.com/watch?v=4ceO2u_6D_I' },
   ],
   'Drone Animation': [
     { id: 'drone-1', title: 'Cinematic Mountain FPV Flight', category: 'Drone Animation', image: 'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1200&q=80', link: '#' },
@@ -138,12 +137,9 @@ const allProjects: Record<string, Array<{ id: string; title: string; category: s
     { id: 'mji-2', title: 'Modern Japandi Interior View 2', category: 'Architecture Visualization', subCategory: 'Modern Japandi Interior', image: '/architecture/Modern Japandi Interior/mji2.jpg', link: '#' },
   ],
   '360 Virtual Tour': [
-    { id: 'tour-1', title: '360° Virtual Real Estate Tour', category: '360 Virtual Tour', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'tour-2', title: 'Interactive Hotel Panorama', category: '360 Virtual Tour', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'tour-3', title: 'Museum 360 Virtual Walkthrough', category: '360 Virtual Tour', image: 'https://images.unsplash.com/photo-1565060169194-15949d0fc64d?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'tour-4', title: 'Factory Floor 360° Explorer', category: '360 Virtual Tour', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'tour-5', title: 'Campus Virtual 360 Tour', category: '360 Virtual Tour', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'tour-6', title: 'Showroom Panorama 360', category: '360 Virtual Tour', image: 'https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=1200&q=80', link: '#' },
+    { id: 'tour-1', title: '360° Virtual Real Estate Tour', category: '360 Virtual Tour', image: '/360/360-1.jpg', link: 'https://aexusstudios.com/ESouthRiver/'},
+    { id: 'tour-2', title: '360° Virtual Real Estate Tour', category: '360 Virtual Tour', image: '/360/360-2.png', link: 'https://aexusstudios.com/ivf-academy/'},
+   
   ],
   'Web Development': [
     { id: 'web-1', title: 'PrimeLoop US Platform', category: 'Web Development', image: '/web-image/web-1.jpg', link: 'https://primeloop.us/' },
@@ -180,6 +176,9 @@ export default function LatestWorkGrid() {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   
+  // State for YouTube Video Modal Player
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  
   // State to handle "See More" toggle specifically on mobile devices
   const [showAllMobile, setShowAllMobile] = useState(false);
 
@@ -195,11 +194,14 @@ export default function LatestWorkGrid() {
     return matchesSubCategory && matchesSearch;
   });
 
-  // On mobile (< md breakpoint, i.e., Tailwind md:), limit to 3 items unless showAllMobile is true
-  const displayedProjects = filteredProjects.filter((_, index) => {
-    // On desktop (md and above), show all items. On mobile, if showAllMobile is false, limit to first 3 items.
-    return true; // We use CSS classes or conditional slice below for cleaner rendering
-  });
+  // YouTube URL to Embed URL Converter Function
+  const getEmbedUrl = (url: string) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11
+      ? `https://www.youtube.com/embed/${match[2]}?autoplay=1`
+      : url;
+  };
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -249,7 +251,8 @@ export default function LatestWorkGrid() {
   };
 
   return (
-<section className="w-full bg-[#0A1B31] py-16 md:py-20 relative overflow-hidden select-none px-4 md:px-12 lg:px-16">      <div className="absolute top-1/4 left-[-5%] w-[600px] h-[600px] bg-[var(--color-aexus-orange)]/10 rounded-full blur-[160px] pointer-events-none" />
+    <section className="w-full bg-[#0A1B31] py-16 md:py-20 relative overflow-hidden select-none px-4 md:px-12 lg:px-16">
+      <div className="absolute top-1/4 left-[-5%] w-[600px] h-[600px] bg-[var(--color-aexus-orange)]/10 rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute bottom-10 right-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="w-full relative z-10">
@@ -263,7 +266,7 @@ export default function LatestWorkGrid() {
               </span>
             </div>
             <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white">
-               Portfolio
+                Portfolio
             </h2>
           </div>
 
@@ -274,7 +277,7 @@ export default function LatestWorkGrid() {
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
-                setShowAllMobile(false); // Reset mobile see more on search
+                setShowAllMobile(false);
               }}
               className="w-full bg-white/[0.03] backdrop-blur-xl border border-white/15 rounded-2xl px-5 py-3.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-aexus-orange)] focus:ring-2 focus:ring-[var(--color-aexus-orange)]/20 transition-all duration-300 shadow-inner"
             />
@@ -282,7 +285,6 @@ export default function LatestWorkGrid() {
           </div>
         </div>
 
-        {/* Categories Navigation with 3D Beveled Look matching reference image */}
         <div className="flex items-center gap-4 overflow-x-auto pb-4 mb-6 scrollbar-none px-2">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
@@ -291,7 +293,7 @@ export default function LatestWorkGrid() {
                 key={cat}
                 onClick={() => {
                   setActiveCategory(cat);
-                  setShowAllMobile(false); // Reset see more when changing category tab
+                  setShowAllMobile(false);
                   if (cat === 'Architecture Visualization') {
                     setActiveSubCategory(archSubCategories[0]);
                   }
@@ -317,7 +319,7 @@ export default function LatestWorkGrid() {
                   key={subCat}
                   onClick={() => {
                     setActiveSubCategory(subCat);
-                    setShowAllMobile(false); // Reset see more when changing subcategory filter
+                    setShowAllMobile(false);
                   }}
                   className={`text-xs font-semibold px-4 py-2 rounded-xl whitespace-nowrap transition-all duration-200 cursor-pointer ${
                     isSubActive
@@ -336,21 +338,25 @@ export default function LatestWorkGrid() {
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => {
               const isModalTrigger = project.link === '#';
+              // Check if project link is a YouTube URL
+              const isYouTubeLink = project.link.includes('youtube.com') || project.link.includes('youtu.be');
               
-              // On mobile: Hide cards after index 2 (i.e. show only first 3 cards) unless showAllMobile is true
               const isHiddenOnMobileClass = (!showAllMobile && index >= 3) ? 'hidden md:flex' : 'flex';
 
               return (
                 <div 
                   key={project.id}
                   className={`group relative items-center justify-center rounded-[24px] overflow-hidden p-[2px] h-[340px] cursor-pointer border border-white/15 hover:border-transparent transition-all duration-480 ease-[cubic-bezier(0.23,1,0.32,1)] hover:scale-[1.05] hover:shadow-[0rem_6px_13px_rgba(255,102,0,0.15),0rem_24px_24px_rgba(255,102,0,0.1)] ${isHiddenOnMobileClass}`}
+                  onClick={() => {
+                    if (isYouTubeLink) {
+                      setSelectedVideo(project.link);
+                    } else if (isModalTrigger) {
+                      setCurrentIndex(index);
+                    } else {
+                      window.open(project.link, '_blank', 'noopener,noreferrer');
+                    }
+                  }}
                 >
-                  {isModalTrigger ? (
-                    <div className="absolute inset-0 z-20" onClick={() => setCurrentIndex(index)} />
-                  ) : (
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20" />
-                  )}
-
                   <div className="absolute inset-[-60%] rounded-[inherit] bg-gradient-to-r from-[var(--color-aexus-orange)] via-amber-500 to-[var(--color-aexus-orange)] opacity-0 group-hover:opacity-100 transition-all duration-500 z-0" />
 
                   <div className="relative z-10 w-full h-full flex flex-col justify-between p-6 rounded-[22px] bg-[#0b0c10] transition-all duration-480 overflow-hidden pointer-events-none">
@@ -372,7 +378,7 @@ export default function LatestWorkGrid() {
 
                     <div className="relative z-10 flex items-end justify-end gap-4 mt-auto">
                       <span className="shrink-0 bg-[var(--color-aexus-orange)] text-black text-xs font-black tracking-wider uppercase px-4 py-2.5 rounded-full shadow-md transition-transform duration-300 group-hover:scale-105">
-                        {isModalTrigger ? 'VIEW' : 'VISIT'}
+                        {isYouTubeLink ? 'WATCH' : isModalTrigger ? 'VIEW' : 'VISIT'}
                       </span>
                     </div>
 
@@ -393,7 +399,6 @@ export default function LatestWorkGrid() {
           )}
         </div>
 
-        {/* Mobile "See More / See Less" button (Visible only on mobile screens when items exceed 3) */}
         {filteredProjects.length > 3 && (
           <div className="flex md:hidden justify-center mt-10">
             <button
@@ -408,6 +413,7 @@ export default function LatestWorkGrid() {
 
       </div>
 
+      {/* Image Zoom Modal */}
       {currentIndex !== null && filteredProjects[currentIndex] && (
         <div 
           className="fixed inset-0 z-50 bg-black/85 backdrop-blur-lg flex items-center justify-center p-4 md:p-10 select-none transition-all duration-300"
@@ -459,6 +465,34 @@ export default function LatestWorkGrid() {
           >
             ❯
           </button>
+        </div>
+      )}
+
+      {/* YouTube Video Embed Modal */}
+      {selectedVideo && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-lg flex items-center justify-center p-4 md:p-10 select-none transition-all duration-300"
+          onClick={() => setSelectedVideo(null)}
+        >
+          <div 
+            className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl aspect-video border border-white/20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedVideo(null)}
+              className="absolute top-4 right-4 z-20 text-white bg-black/60 hover:bg-[var(--color-aexus-orange)] hover:text-black rounded-full w-10 h-10 flex items-center justify-center font-bold transition-colors cursor-pointer"
+            >
+              ✕
+            </button>
+
+            <iframe
+              src={getEmbedUrl(selectedVideo)}
+              title="YouTube video player"
+              className="w-full h-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       )}
     </section>

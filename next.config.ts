@@ -1,15 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: "export",
+  output: "export",
   images: {
-    unoptimized: true, // Ye line add karni hai
+    unoptimized: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
   turbopack: {
-    root: __dirname,
+    root: process.cwd(),
   },
 };
 
