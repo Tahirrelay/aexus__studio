@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  /* Apke logo ke colors yahan define kiye gaye hain */
+  --color-aexus-white: #ffffff;
+  --color-aexus-orange: #ff8800; /* Yeh apke gradient ka representative orange hai */
+}
+
+@layer base {
+  body {
+    /* Background dark rakha hai taaki white text aur orange highlight achi tarah dikhein */
+    background-color: #05060a; 
+    color: var(--color-aexus-white);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* Smooth selection color bhi orange kar diya hai */
+    ::selection {
+      background-color: var(--color-aexus-orange);
+      color: #05060a;
+    }
+  }
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #05060a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1d29;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-aexus-orange);
+}
+/* Social Icons Container Styles */
+.socialContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: #0a0f18;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+/* Instagram Hover */
+.containerOne:hover {
+  background-color: #d62976 !important;
+  border-color: #d62976 !important;
+}
+
+/* TikTok Hover */
+.containerTwo:hover {
+  background-color: #25f4ee !important;
+  border-color: #25f4ee !important;
+}
+
+/* Facebook Hover */
+.containerThree:hover {
+  background-color: #1877f2 !important;
+  border-color: #1877f2 !important;
+}
+
+/* WhatsApp Hover */
+.containerFour:hover {
+  background-color: #25d366 !important;
+  border-color: #25d366 !important;
+}
+
+.socialContainer:active {
+  transform: scale(0.9);
+}
+
+.socialSvg {
+  width: 19px;
+}
+
+.largeIcon {
+  width: 24px;
+}
+
+.socialContainer:hover .socialSvg {
+  animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
