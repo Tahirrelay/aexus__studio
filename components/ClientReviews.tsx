@@ -4,34 +4,34 @@ import React, { useRef, useEffect, useState } from 'react';
 const reviews = [
   {
     id: 1,
-    quote: "The team completely transformed our online presence. The 3D configurator they built is incredibly smooth and increased our user engagement by 40% in just two months. Absolute game changer.",
-    name: "Tim Barth",
+    quote: "I had a good experience working with this AexusStudios. One thing that really stood out was how responsive he was throughout the project",
+    name: "jess",
     company: "Virtual Immo",
-    project: "Interactive Virtual Tour",
-    metric: "+40% Engagement"
+    project: "Service Configurator",
+    metric: "Configurator"
   },
   {
     id: 2,
     quote: "Working with them was a seamless experience. They understood our complex requirements for the VR space and delivered a flawless application that our clients love.",
-    name: "Filippo Medina",
+    name: "Mike",
     company: "Hyperreal Estate",
-    project: "VR Application",
-    metric: "Flawless Execution"
+    project: "Service Configurator",
+    metric: "Configurator"
   },
   {
     id: 3,
-    quote: "We had some technical hiccups with our previous vendor, but this team stepped in and built a robust, high-performance configurator that looks stunning on all devices.",
-    name: "Abel",
+    quote: " Aexus was timely with all work and communication. Renderings were precise and he was able to deliver everything we need exactly as we needed it..",
+    name: "Samueal",
     company: "CM Marketing",
-    project: "Cap Configurator",
-    metric: "High Performance"
+    project: " Service 3d Rendering",
+    metric: " 3d Rendering"
   },
   {
     id: 4,
-    quote: "Exceptional attention to detail and a fantastic eye for modern UI/UX. The digital twin they created for our architectural firm has become our primary sales tool.",
-    name: "Sarah Jenkins",
-    company: "ArchTech",
-    project: "Architectural Digital Twin",
+    quote: "Thank you for the outstanding job Aexus. Your attention to detail transformed my space beyond expectations. Communication was excellent, and you met deadlines with efficiency. I've received numerous compliments and wholeheartedly recommend your services. Looking forward to future collaborations.",
+    name: " Shafin Service",
+    company: "VXt Studios",
+    project: " Service 3d Rendering",
     metric: "Primary Sales Tool"
   },
   {
@@ -127,7 +127,7 @@ export default function ClientReviews() {
   const marqueeReviews = [...reviews, ...reviews];
 
   return (
-    <section className="w-full bg-[#0A1B31] py-16 md:py-20 relative overflow-hidden select-none">
+    <section className="w-full bg-[#333333] py-16 md:py-20 relative overflow-hidden select-none">
       
       {/* Top Parallel Border Line */}
       <div className="w-full h-[1px] bg-white/15 max-w-[1600px] mx-auto mb-12" />

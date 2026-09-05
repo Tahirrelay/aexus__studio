@@ -99,7 +99,7 @@ export default function RealTimeStackSection() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <section className="relative w-full bg-[#0A1B31] py-16 md:py-20 text-white overflow-hidden select-none">
+    <section className="relative w-full bg-[#333333] py-16 md:py-20 text-white overflow-hidden select-none">
       
       {/* Top Parallel Border Line */}
       <div className="w-full h-[1px] bg-white/15 max-w-[1600px] mx-auto mb-12" />
@@ -147,7 +147,7 @@ export default function RealTimeStackSection() {
           {/* Left Side Image Card */}
           <div className="lg:col-span-5 order-2 lg:order-1 relative rounded-3xl overflow-hidden border border-white/15 shadow-2xl h-[300px] sm:h-[450px] lg:h-[600px] bg-[#121212]">
             <img 
-              src="conf.jpeg" 
+              src="Interior_01.jpg" 
               alt="Real Time Technology" 
               className="w-full h-full object-cover filter brightness-95 hover:scale-105 transition-transform duration-700"
             />

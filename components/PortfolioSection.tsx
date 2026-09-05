@@ -3,22 +3,23 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const projects = [
-  { id: '01', title: 'TOYOTA CONFIGURATOR', mediaUrl: '/videos/Car_Configurator.mp4' },
-  { id: '02', title: 'JACKET CONFIGURATOR', mediaUrl: '/videos/jacket-configurator.mp4' },
-  { id: '03', title: 'BIKE CONFIGURATOR', mediaUrl: '/videos/bike.mp4' }
+   { id: '01', title: 'BIKE CONFIGURATOR', mediaUrl: '/videos/bike.mp4' },
+  { id: '02', title: 'TOYOTA CONFIGURATOR', mediaUrl: '/videos/Car_Configurator.mp4' },
+  { id: '03', title: 'JACKET CONFIGURATOR', mediaUrl: '/videos/jacket-configurator.mp4' },
+   { id: '04', title: 'TOYOTA CONFIGURATOR', mediaUrl: '/videos/Car_Configurator.mp4' }
 ];
 
 const panelColors = ['#d4d4d8', '#ca8a04', '#ea580c'];
 
 export default function PortfolioSection() {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(1);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  if (!isMounted) return <div className="min-h-screen bg-[#070707]" />;
+  if (!isMounted) return <div className="min-h-screen bg-[#333333]" />;
 
   return (
     <StyledWrapper>
@@ -52,16 +53,7 @@ export default function PortfolioSection() {
                     />
                   </div>
 
-                  <button 
-                    className="close-back-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveIndex(0);
-                    }}
-                    title="Back / Close"
-                  >
-                    ✕
-                  </button>
+                 
                 </div>
               </div>
             );
@@ -77,7 +69,8 @@ const StyledWrapper = styled.div`
     position: relative;
     width: 100%;
     min-height: 100vh;
-background: linear-gradient(#0A1B31);    display: flex;
+    background: #333333;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -110,7 +103,7 @@ background: linear-gradient(#0A1B31);    display: flex;
     width: 100%;
     max-width: 1300px;
     height: 650px;
-    background: #0f172a;
+    background: #222222;
     border-radius: 28px;
     overflow: hidden;
     box-shadow: 0 30px 60px rgba(0,0,0,0.3);
@@ -193,7 +186,6 @@ background: linear-gradient(#0A1B31);    display: flex;
   .video-wrapper video {
     width: 100%;
     height: 100%;
-    /* Badlaav yahan kiya gaya hai: contain ki bajaye cover */
     object-fit: cover; 
   }
 

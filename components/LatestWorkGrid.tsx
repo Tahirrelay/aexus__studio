@@ -4,7 +4,6 @@ import { useState } from 'react';
 const categories = [
   'Configurators', 
   'Animation', 
-  'Drone Animation', 
   'Architecture Visualization', 
   '360 Virtual Tour', 
   'Web Development', 
@@ -51,14 +50,7 @@ const allProjects: Record<string, Array<{ id: string; title: string; category: s
     { id: 'ani-12', title: 'Luxury Interior Design', category: 'Animation', image: '/Animations/ani-12.jpg', link: 'https://www.youtube.com/watch?v=kb7NjYL70h4' },
     { id: 'ani-13', title: 'Rustic Elegance', category: 'Animation', image: '/Animations/ani-13.jpg', link: 'https://www.youtube.com/watch?v=4ceO2u_6D_I' },
   ],
-  'Drone Animation': [
-    { id: 'drone-1', title: 'Cinematic Mountain FPV Flight', category: 'Drone Animation', image: 'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'drone-2', title: 'Urban Skyline Drone Sweep', category: 'Drone Animation', image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'drone-3', title: 'Coastal Resort Aerial Tour', category: 'Drone Animation', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'drone-4', title: 'Industrial Plant Flyover', category: 'Drone Animation', image: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'drone-5', title: 'Forest Canopy 3D Tracking', category: 'Drone Animation', image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80', link: '#' },
-    { id: 'drone-6', title: 'High-Speed Racing Chase Cam', category: 'Drone Animation', image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80', link: '#' },
-  ],
+  
   'Architecture Visualization': [
     { id: 'nx-1', title: 'Nexgen View 1', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-1.jpg', link: '#' },
     { id: 'nx-2', title: 'Nexgen View 2', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-2.jpg', link: '#' },
@@ -251,7 +243,7 @@ export default function LatestWorkGrid() {
   };
 
   return (
-    <section className="w-full bg-[#0A1B31] py-16 md:py-20 relative overflow-hidden select-none px-4 md:px-12 lg:px-16">
+    <section className="w-full bg-[#333333] py-16 md:py-20 relative overflow-hidden select-none px-4 md:px-12 lg:px-16">
       <div className="absolute top-1/4 left-[-5%] w-[600px] h-[600px] bg-[var(--color-aexus-orange)]/10 rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute bottom-10 right-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
 

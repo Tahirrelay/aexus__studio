@@ -1,7 +1,9 @@
-export default function CaseStudiesPage() {
+import PortfolioSection from "@/components/PortfolioSection";
+export default function PortfolioSectionPage() {
   return (
     <div>
-      <h1>Case Studies</h1>
+      
+      <PortfolioSection />
     </div>
   );
 }

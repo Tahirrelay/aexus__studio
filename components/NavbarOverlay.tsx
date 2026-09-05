@@ -1,23 +1,38 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function NavbarOverlay() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    router.push(href);
+
+    if (href.includes('#')) {
+      const [path, hash] = href.split('#');
+      const targetPath = path === '' ? '/' : path;
+
+      if (pathname === targetPath) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        router.push(href);
+      }
+    } else {
+      router.push(href);
+    }
   };
 
   return (
     <>
       {/* Top Header Bar */}
       <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-12 py-6 bg-transparent pointer-events-auto">
-        {/* Logo Image Added Here */}
         <Link href="/" onClick={(e) => handleNavigation(e, '/')} className="flex items-center cursor-pointer">
           <img 
             src="/logo-images/Aexus-Logo.png" 
@@ -26,7 +41,6 @@ export default function NavbarOverlay() {
           />
         </Link>
 
-        {/* Right side buttons: Contact + Menu Toggle */}
         <div className="flex items-center gap-4">
           <Link 
             href="/contact" 
@@ -49,10 +63,10 @@ export default function NavbarOverlay() {
         </div>
       </header>
 
-      {/* Menu Overlay with Transparent Glassmorphism */}
-      <div className={`fixed inset-0 bg-black/20 backdrop-blur-md z-40 transition-transform duration-500 ease-in-out flex items-start justify-end px-8 md:px-32 pt-28 md:pt-32 overflow-y-auto ${isOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'}`}>
+      {/* Menu Overlay with #333333 background */}
+      <div className={`fixed inset-0 bg-[#333333]/90 backdrop-blur-md z-40 transition-transform duration-500 ease-in-out flex items-start justify-end px-8 md:px-32 pt-28 md:pt-32 overflow-y-auto ${isOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'}`}>
         <nav className="flex flex-col gap-3 md:gap-4 text-2xl md:text-4xl font-extrabold tracking-tight text-right text-white">
-          <Link href="/" onClick={(e) => handleNavigation(e, '/')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Home</Link>
+          <Link href="/#home" onClick={(e) => handleNavigation(e, '/#home')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Home</Link>
           <Link href="/about" onClick={(e) => handleNavigation(e, '/about')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">About Us</Link>
           <Link href="/portfolio" onClick={(e) => handleNavigation(e, '/portfolio')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Portfolio</Link>
           <Link href="/case-studies" onClick={(e) => handleNavigation(e, '/case-studies')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Case Studies</Link>

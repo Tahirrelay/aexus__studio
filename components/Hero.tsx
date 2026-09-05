@@ -4,19 +4,22 @@ import { useState, useEffect } from 'react';
 const slides = [
   {
     id: '01',
-    title: 'THE RESIDENCE',
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
+    title: 'EXTERIOR_RENDERING',
+    image: "/Hero/Exterior_Rendering.png"
   },
-  {
+   {
     id: '02',
-    title: 'MODERN INTERIORS',
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80"
+    title: 'INTERIOR_RENDERING',
+    image: "/Hero/interior_Rendering.jpg"
   },
-  {
+ 
+   {
     id: '03',
-    title: 'ARCHITECTURAL SPACES',
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80"
+    title: 'FLOORPLAN_RENDERING',
+    image: "/Hero/FLOOR.png"
   }
+  
+  
 ];
 
 export default function Hero() {

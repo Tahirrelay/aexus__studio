@@ -14,14 +14,14 @@ const clientLogos = [
 
 export default function ClientSlider() {
   return (
-    <section className="relative w-full py-6 md:py-8 bg-[#05060a] overflow-hidden select-none flex items-center">
+    <section className="relative w-full py-6 md:py-8 bg-[#333333] overflow-hidden select-none flex items-center">
       
       {/* Main Strip with Top and Bottom Borders */}
       <div className="w-full border-t border-b border-white/15 py-3 md:py-4 relative overflow-hidden flex items-center">
         
         {/* Left & Right Smooth Gradient Fades */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-[#05060a] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-[#05060a] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-[#333333] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-[#333333] to-transparent z-10 pointer-events-none" />
 
         {/* Continuous Marquee Track */}
         <div className="flex w-max items-center animate-marquee">
