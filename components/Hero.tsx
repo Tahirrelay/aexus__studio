@@ -12,14 +12,11 @@ const slides = [
     title: 'INTERIOR_RENDERING',
     image: "/Hero/interior_Rendering.jpg"
   },
- 
    {
     id: '03',
     title: 'FLOORPLAN_RENDERING',
     image: "/Hero/FLOOR.png"
   }
-  
-  
 ];
 
 export default function Hero() {
@@ -60,7 +57,7 @@ export default function Hero() {
 
   return (
     <section 
-      className="relative w-full h-[65vh] sm:h-[75vh] md:h-screen bg-[#05060a] overflow-hidden flex items-center justify-center select-none"
+      className="relative w-full h-[65vh] sm:h-[75vh] md:h-screen bg-[#000000] overflow-hidden flex items-center justify-center select-none"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -78,7 +75,7 @@ export default function Hero() {
             <img
               src={s.image}
               alt={s.title}
-              className="w-full h-full object-cover object-center bg-[#05060a]"
+              className="w-full h-full object-cover object-center bg-[#000000]"
             />
           </div>
         ))}

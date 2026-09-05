@@ -141,7 +141,7 @@ function IndustryCard({ item }: { item: typeof industriesData[0] }) {
 
 export default function IndustriesSection() {
   return (
-    <section className="relative w-full bg-[#333333] py-16 px-4 sm:px-6 select-none overflow-hidden">
+    <section className="relative w-full bg-[#000000] py-16 px-4 sm:px-6 select-none overflow-hidden">
       <div className="w-full max-w-[1750px] mx-auto">
         
         <div className="text-center mb-12">

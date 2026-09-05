@@ -6,7 +6,7 @@ const reviews = [
     id: 1,
     quote: "I had a good experience working with Aexus Studios. One thing that really stood out was how responsive he was throughout the project.",
     name: "Jess",
-    project: "3D Kitchen Configurator",
+    project: "3D Lattice Configurator",
     metric: "Configurator"
   },
   {
@@ -20,7 +20,7 @@ const reviews = [
     id: 3,
     quote: "Aexus was timely with all work and communication. Renderings were precise and he was able to deliver everything we need exactly as we needed it.",
     name: "Samuel",
-    project: "Graveyard Rendering",
+    project: "E South River Rendering",
     metric: "3D Rendering"
   },
   {
@@ -34,16 +34,10 @@ const reviews = [
     id: 5,
     quote: "The level of creativity and technical execution they brought to our web animation project exceeded all expectations. Our conversion rates have doubled since launch.",
     name: "Kashif",
-    project: "Entrance Rendering",
+    project: "DHA Rendering",
     metric: "3D Rendering"
-  },
-  {
-    id: 6,
-    quote: "Fast communication, brilliant problem-solving skills, and a final product that looks straight out of the future. Highly recommended for any advanced web tech project.",
-    name: "Elena Rostova",
-    project: "Immersive Web Experience",
-    metric: "Web Development"
   }
+  
 ];
 
 export default function ClientReviews() {
@@ -121,7 +115,7 @@ export default function ClientReviews() {
   const marqueeReviews = [...reviews, ...reviews];
 
   return (
-    <section className="w-full bg-[#333333] py-16 md:py-20 relative overflow-hidden select-none">
+    <section className="w-full bg-[#000000] py-16 md:py-20 relative overflow-hidden select-none">
       
       {/* Top Parallel Border Line */}
       <div className="w-full h-[1px] bg-white/15 max-w-[1600px] mx-auto mb-12" />

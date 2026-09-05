@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import Footer from '@/components/Footer';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,7 +18,7 @@ export function Header() {
   `;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1B31]/80 backdrop-blur-md border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#000000]/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 h-24 flex items-center justify-between">
         
         {/* Left Corner: Logo */}
@@ -81,7 +80,7 @@ export function Header() {
 
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-24 left-0 w-full bg-[#0A1B31] border-b border-white/10 px-6 py-8 flex flex-col gap-4 shadow-2xl">
+        <div className="lg:hidden absolute top-24 left-0 w-full bg-[#000000] border-b border-white/10 px-6 py-8 flex flex-col gap-4 shadow-2xl">
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className={`${navButtonStyle} text-center block w-full`}>
             Home
           </Link>
@@ -122,7 +121,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#0A1B31] text-white selection:bg-[var(--color-aexus-orange)] selection:text-black">
+    <main className="min-h-screen bg-[#000000] text-white selection:bg-[var(--color-aexus-orange)] selection:text-black">
       <Header />
       
       {/* Hero Section */}
@@ -140,11 +139,11 @@ export default function AboutPage() {
         </h1>
         
         <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-16">
-Aexus Studios objective is to reach the firm in such a level from where we can create
-most of opportunity for young new professionals to excel learning more about the
-website and designing world. I saved over 50% using Mouno over my company. The
-customer care support staff was very helpful. I will definitely do future collaborations.
-Thank you !!!        </p>
+          Aexus Studios objective is to reach the firm in such a level from where we can create
+          most of opportunity for young new professionals to excel learning more about the
+          website and designing world. I saved over 50% using Mouno over my company. The
+          customer care support staff was very helpful. I will definitely do future collaborations.
+          Thank you !!!        </p>
 
         {/* Hero Image */}
         <div className="relative w-full h-[350px] md:h-[550px] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl mb-12 group">
@@ -153,7 +152,7 @@ Thank you !!!        </p>
             alt="Engineering and Development Team" 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1B31]/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/80 via-transparent to-transparent" />
         </div>
 
         {/* Stats Grid Box */}
@@ -182,7 +181,7 @@ Thank you !!!        </p>
       </section>
 
       {/* Who We Are, What We Offer & Why Choose Us */}
-      <section className="bg-[#0A1B31] text-white py-24 px-6 md:px-16 border-t border-white/10 overflow-hidden">
+      <section className="bg-[#000000] text-white py-24 px-6 md:px-16 border-t border-white/10 overflow-hidden">
         <div className="max-w-6xl mx-auto space-y-32">
           
           {/* Who We Are */}
@@ -279,8 +278,6 @@ Thank you !!!        </p>
 
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

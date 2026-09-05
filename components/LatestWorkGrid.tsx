@@ -243,7 +243,7 @@ export default function LatestWorkGrid() {
   };
 
   return (
-    <section className="w-full bg-[#333333] py-16 md:py-20 relative overflow-hidden select-none px-4 md:px-12 lg:px-16">
+    <section className="w-full bg-[#000000] py-16 md:py-20 relative overflow-hidden select-none px-4 md:px-12 lg:px-16">
       <div className="absolute top-1/4 left-[-5%] w-[600px] h-[600px] bg-[var(--color-aexus-orange)]/10 rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute bottom-10 right-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
 

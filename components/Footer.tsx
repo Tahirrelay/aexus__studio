@@ -17,7 +17,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative w-full bg-[#333333] text-white pt-20 pb-12 border-t border-white/10 select-none overflow-hidden">
+    <footer className="relative w-full bg-[#000000] text-white pt-20 pb-12 border-t border-white/10 select-none overflow-hidden">
       
       {/* Background Subtle Atmospheric Orange Glow matching the screenshot */}
       <div className="absolute bottom-0 left-0 w-full h-[400px] bg-gradient-to-t from-[#ff6600]/15 via-transparent to-transparent pointer-events-none filter blur-[60px]" />
@@ -29,12 +29,14 @@ export default function Footer() {
           
           {/* Column 1: Brand Info & Socials */}
           <div className="flex flex-col gap-5">
-            <div className="relative w-[180px] h-[45px]">
+            {/* Logo size bara kar diya hai */}
+            <div className="relative w-[500px] h-[100px]">
               <Image 
                 src="/logo-images/Aexus-Logo.png" 
                 alt="Aexus Studio Logo" 
                 fill 
                 className="object-contain object-left"
+                priority
               />
             </div>
 
@@ -135,20 +137,8 @@ export default function Footer() {
 
         </div>
 
-        {/* MASSIVE BRAND LOGO WATERMARK */}
-        <div className="w-full pt-16 pb-8 overflow-hidden text-center select-none flex flex-col items-center justify-center">
-          <div className="relative w-full max-w-[650px] h-[100px] sm:h-[140px] opacity-80">
-            <Image 
-              src="/logo-images/Aexus-Logo.png" 
-              alt="Aexus Studio Watermark Logo" 
-              fill sizes="100vw"
-              className="object-contain"
-            />
-          </div>
-        </div>
-
         {/* COPYRIGHT & LINKS BOTTOM BAR */}
-        <div className="pt-8 pb-4 flex flex-col md:flex-row items-center justify-between text-xs sm:text-sm tracking-wider text-white/60 uppercase gap-6 border-t border-white/10">
+        <div className="pt-8 pb-4 flex flex-col md:flex-row items-center justify-between text-xs sm:text-sm tracking-wider text-white/60 uppercase gap-6">
           
           {/* Left Side: Copyright Text */}
           <p>© 2026 Aexus Studio. All rights reserved.</p>

@@ -69,7 +69,7 @@ const StyledWrapper = styled.div`
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: #333333;
+    background: #000000;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
 
 export default function ThankYouPage() {
@@ -12,14 +13,16 @@ export default function ThankYouPage() {
         {/* Top Accent Line */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-[#ff6600] to-transparent" />
 
-        {/* Logo / Brand */}
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-8 h-8 rounded-lg bg-[#ff6600] text-black font-black flex items-center justify-center text-sm">
-            A
-          </div>
-          <span className="text-white font-bold tracking-widest uppercase text-sm">
-            Aexus <span className="text-white/50 font-normal">Studios</span>
-          </span>
+        {/* Logo / Brand Image - Left aligned and bigger */}
+        <div className="w-full flex items-center justify-start mb-8">
+          <Image 
+            src="/logo-images/Aexus-logo.png" 
+            alt="Aexus Studios Logo" 
+            width={220} 
+            height={60} 
+            className="h-10 sm:h-12 w-auto object-contain"
+            priority
+          />
         </div>
 
         {/* Success Check Icon */}

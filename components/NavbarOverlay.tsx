@@ -63,8 +63,8 @@ export default function NavbarOverlay() {
         </div>
       </header>
 
-      {/* Menu Overlay with #333333 background */}
-      <div className={`fixed inset-0 bg-[#333333]/90 backdrop-blur-md z-40 transition-transform duration-500 ease-in-out flex items-start justify-end px-8 md:px-32 pt-28 md:pt-32 overflow-y-auto ${isOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'}`}>
+     
+      <div className={`fixed inset-0 bg-[#000000]/90 backdrop-blur-md z-40 transition-transform duration-500 ease-in-out flex items-start justify-end px-8 md:px-32 pt-28 md:pt-32 overflow-y-auto ${isOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'}`}>
         <nav className="flex flex-col gap-3 md:gap-4 text-2xl md:text-4xl font-extrabold tracking-tight text-right text-white">
           <Link href="/#home" onClick={(e) => handleNavigation(e, '/#home')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Home</Link>
           <Link href="/about" onClick={(e) => handleNavigation(e, '/about')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">About Us</Link>

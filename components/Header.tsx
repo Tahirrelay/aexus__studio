@@ -96,9 +96,9 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Fullscreen Menu Overlay */}
+      {/* Fullscreen Menu Overlay - Updated to solid black background */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[998] bg-[#05060a]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-6">
+        <div className="fixed inset-0 z-[998] bg-[#000000] backdrop-blur-2xl flex flex-col items-center justify-center gap-6">
           
           <Link
             href="/#home"

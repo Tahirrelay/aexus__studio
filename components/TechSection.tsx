@@ -99,7 +99,7 @@ export default function RealTimeStackSection() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <section className="relative w-full bg-[#333333] py-16 md:py-20 text-white overflow-hidden select-none">
+    <section className="relative w-full bg-[#000000] py-16 md:py-20 text-white overflow-hidden select-none">
       
       {/* Top Parallel Border Line */}
       <div className="w-full h-[1px] bg-white/15 max-w-[1600px] mx-auto mb-12" />

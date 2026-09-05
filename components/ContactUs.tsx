@@ -40,18 +40,18 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="relative w-full bg-[#333333] py-12 sm:py-16 px-4 sm:px-6 lg:px-8 select-none overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none" style={{ background: '#333333' }} />
+    <section className="relative w-full bg-[#000000] py-12 sm:py-16 px-4 sm:px-6 lg:px-8 select-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none" style={{ background: '#000000' }} />
 
       <div className="relative w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16 z-10">
         
         {/* LEFT SIDE */}
         <div className="w-full lg:w-5/12 flex flex-col justify-center text-center lg:text-left">
-          <span className="text-[11px] sm:text-xs font-extrabold tracking-[0.3em] text-[#ff6600] uppercase mb-2 sm:mb-3 block">
+          <span className="text-[11px] sm:text-xs font-extrabold tracking-[0.3em] text-[#ff8800] uppercase mb-2 sm:mb-3 block">
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase leading-[1.1]">
             LET'S BUILD <br />
-            <span className="text-[#ff6600]">SOMETHING</span> <br />
+            <span className="text-[#ff8800]">SOMETHING</span> <br />
             REMARKABLE.
           </h1>
           <p className="text-sm sm:text-base text-white/70 tracking-wide mt-3 sm:mt-4 mb-6 lg:mb-8 leading-relaxed max-w-md mx-auto lg:mx-0">
@@ -73,7 +73,7 @@ export default function ContactUs() {
             {/* Hidden input for selected interest so EmailJS template receives it */}
             <input type="hidden" name="interest" value={selectedInterest} />
 
-            {/* Interest Selection Tabs */}
+            {/* Interest Selection Tabs - Hover Full #ff8800 */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
               {interests.map((label) => {
                 const isSelected = selectedInterest === label;
@@ -82,14 +82,12 @@ export default function ContactUs() {
                     key={label}
                     type="button"
                     onClick={() => setSelectedInterest(label)}
-                    className={`relative flex items-center justify-between px-4 py-3.5 transition-all cursor-pointer rounded-xl font-sans active:translate-y-0.5 ${
-                      isSelected
-                        ? 'bg-gradient-to-b from-[#7a7d85] to-[#4a4d55] text-white shadow-[0_6px_0_#22242a,0_10px_20px_rgba(0,0,0,0.5)] border-t border-white/40'
-                        : 'bg-gradient-to-b from-[#3a3d45] to-[#22242a] text-white/80 shadow-[0_6px_0_#14161a,0_10px_15px_rgba(0,0,0,0.4)] border-t border-white/20 hover:text-white'
+                    className={`relative flex items-center justify-between px-4 py-3.5 transition-all cursor-pointer rounded-xl font-sans active:translate-y-0.5 bg-gradient-to-b from-[#3a3d45] to-[#22242a] text-white/90 shadow-[0_6px_0_#14161a,0_10px_15px_rgba(0,0,0,0.4)] border-t border-white/20 hover:!bg-[#ff8800] hover:!from-[#ff8800] hover:!to-[#ff8800] hover:border-[#ff8800] hover:text-black group ${
+                      isSelected ? 'border-[#ff8800] text-[#ff8800]' : ''
                     }`}
                   >
-                    <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-left">{label}</span>
-                    <span className={`text-xs font-bold ${isSelected ? 'text-[#ff6600]' : 'text-white/40'}`}>
+                    <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-left group-hover:text-black">{label}</span>
+                    <span className={`text-xs font-bold ${isSelected ? 'text-[#ff8800]' : 'text-white/40'} group-hover:text-black`}>
                       {isSelected ? '—' : '+'}
                     </span>
                   </button>
@@ -103,14 +101,14 @@ export default function ContactUs() {
                 <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-2">NAME</label>
                 <div className="relative flex items-center">
                   <span className="absolute left-4 text-white/40 text-sm">👤</span>
-                  <input required name="name" type="text" placeholder="Enter your name" className="w-full bg-[#04060b] border border-white/10 rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff6600] transition-colors" />
+                  <input required name="name" type="text" placeholder="Enter your name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
                 </div>
               </div>
               <div>
                 <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-2">COMPANY</label>
                 <div className="relative flex items-center">
                   <span className="absolute left-4 text-white/40 text-sm">🏢</span>
-                  <input name="company" type="text" placeholder="Company name" className="w-full bg-[#04060b] border border-white/10 rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff6600] transition-colors" />
+                  <input name="company" type="text" placeholder="Company name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
                 </div>
               </div>
             </div>
@@ -120,21 +118,21 @@ export default function ContactUs() {
                 <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-2">EMAIL</label>
                 <div className="relative flex items-center">
                   <span className="absolute left-4 text-white/40 text-sm">✉️</span>
-                  <input required name="email" type="email" placeholder="name@example.com" className="w-full bg-[#04060b] border border-white/10 rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff6600] transition-colors" />
+                  <input required name="email" type="email" placeholder="name@example.com" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
                 </div>
               </div>
               <div>
                 <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-2">PHONE NUMBER</label>
                 <div className="relative flex items-center">
                   <span className="absolute left-4 text-white/40 text-sm">📞</span>
-                  <input name="phone" type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-[#04060b] border border-white/10 rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff6600] transition-colors" />
+                  <input name="phone" type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
                 </div>
               </div>
             </div>
 
             <div className="mb-4 sm:mb-5">
               <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-2">HOW DID YOU HEAR ABOUT US?</label>
-              <select name="hearAbout" className="w-full bg-[#04060b] border border-white/10 rounded-xl px-4 py-3 sm:py-3.5 text-base sm:text-sm text-white/70 focus:outline-none focus:border-[#ff6600] transition-colors">
+              <select name="hearAbout" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl px-4 py-3 sm:py-3.5 text-base sm:text-sm text-white/70 focus:outline-none focus:border-[#ff8800] transition-colors">
                 <option value="">Select an option</option>
                 <option value="Google Search">Google Search</option>
                 <option value="Social Media">Social Media</option>
@@ -147,7 +145,7 @@ export default function ContactUs() {
               <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-2">MESSAGE</label>
               <div className="relative">
                 <span className="absolute left-4 top-4 text-white/40 text-sm">✏️</span>
-                <textarea name="message" rows={4} maxLength={1000} placeholder="Tell us about your project..." className="w-full bg-[#04060b] border border-white/10 rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff6600] transition-colors resize-none" />
+                <textarea name="message" rows={4} maxLength={1000} placeholder="Tell us about your project..." className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors resize-none" />
               </div>
             </div>
 
@@ -157,10 +155,11 @@ export default function ContactUs() {
               </div>
             )}
 
+            {/* GET UPDATES Submit Button - Hover Full #ff8800 */}
             <button 
               disabled={loading}
               type="submit" 
-              className="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-b from-[#7a7d85] to-[#4a4d55] border-t border-white/40 text-white font-black uppercase tracking-widest text-xs sm:text-sm transition-all shadow-[0_6px_0_#22242a,0_10px_25px_rgba(0,0,0,0.6)] active:translate-y-1 active:shadow-[0_2px_0_#22242a] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-b from-[#7a7d85] to-[#4a4d55] border-t border-white/40 text-white font-black uppercase tracking-widest text-xs sm:text-sm transition-all shadow-[0_6px_0_#22242a,0_10px_25px_rgba(0,0,0,0.6)] active:translate-y-1 active:shadow-[0_2px_0_#22242a] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 hover:!bg-[#ff8800] hover:!from-[#ff8800] hover:!to-[#ff8800] hover:border-[#ff8800] hover:text-black"
             >
               <span>{loading ? 'SENDING...' : 'GET UPDATES'}</span>
             </button>
