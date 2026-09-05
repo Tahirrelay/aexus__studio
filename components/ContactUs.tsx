@@ -1,12 +1,14 @@
 'use client';
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { useRouter } from 'next/navigation';
 
 export default function ContactUs() {
   const [selectedInterest, setSelectedInterest] = useState('DISCUSSING A PRODUCTION');
   const [loading, setLoading] = useState(false);
   const [formResponse, setFormResponse] = useState<{ success?: boolean; message?: string } | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const router = useRouter();
 
   const interests = [
     'DISCUSSING A PRODUCTION',
@@ -23,19 +25,16 @@ export default function ContactUs() {
 
     try {
       await emailjs.sendForm(
-        'service_q1rz2tu', // Updated with your new SMTP Service ID
+        'service_q1rz2tu', 
         'template_855fz0f',
         formRef.current,
         'fGjOubEIg4wlcp-FG'
       );
 
-      setFormResponse({ success: true, message: 'Message sent successfully!' });
-      formRef.current.reset();
-      setSelectedInterest('DISCUSSING A PRODUCTION');
+      router.push('/thank-you');
     } catch (error: any) {
-  console.error('Email error details:', error?.text || error?.message || error);
-  setFormResponse({ success: false, message: error?.text || 'Something went wrong. Please try again.' });
-} finally {
+      console.error('Email error details:', error?.text || error?.message || error);
+      setFormResponse({ success: false, message: error?.text || 'Something went wrong. Please try again.' });
       setLoading(false);
     }
   };

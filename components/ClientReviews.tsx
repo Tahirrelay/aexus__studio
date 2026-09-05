@@ -4,51 +4,45 @@ import React, { useRef, useEffect, useState } from 'react';
 const reviews = [
   {
     id: 1,
-    quote: "I had a good experience working with this AexusStudios. One thing that really stood out was how responsive he was throughout the project",
-    name: "jess",
-    company: "Virtual Immo",
-    project: "Service Configurator",
+    quote: "I had a good experience working with Aexus Studios. One thing that really stood out was how responsive he was throughout the project.",
+    name: "Jess",
+    project: "3D Kitchen Configurator",
     metric: "Configurator"
   },
   {
     id: 2,
     quote: "Working with them was a seamless experience. They understood our complex requirements for the VR space and delivered a flawless application that our clients love.",
     name: "Mike",
-    company: "Hyperreal Estate",
-    project: "Service Configurator",
+    project: "Jacket Configurator",
     metric: "Configurator"
   },
   {
     id: 3,
-    quote: " Aexus was timely with all work and communication. Renderings were precise and he was able to deliver everything we need exactly as we needed it..",
-    name: "Samueal",
-    company: "CM Marketing",
-    project: " Service 3d Rendering",
-    metric: " 3d Rendering"
+    quote: "Aexus was timely with all work and communication. Renderings were precise and he was able to deliver everything we need exactly as we needed it.",
+    name: "Samuel",
+    project: "Graveyard Rendering",
+    metric: "3D Rendering"
   },
   {
     id: 4,
     quote: "Thank you for the outstanding job Aexus. Your attention to detail transformed my space beyond expectations. Communication was excellent, and you met deadlines with efficiency. I've received numerous compliments and wholeheartedly recommend your services. Looking forward to future collaborations.",
-    name: " Shafin Service",
-    company: "VXt Studios",
-    project: " Service 3d Rendering",
-    metric: "Primary Sales Tool"
+    name: "Shafin",
+    project: "Fan Rendering",
+    metric: "Rendering"
   },
   {
     id: 5,
     quote: "The level of creativity and technical execution they brought to our web animation project exceeded all expectations. Our conversion rates have doubled since launch.",
-    name: "David Miller",
-    company: "Luxe Living",
-    project: "3D Product Showcase",
-    metric: "2x Conversions"
+    name: "Kashif",
+    project: "Entrance Rendering",
+    metric: "3D Rendering"
   },
   {
     id: 6,
     quote: "Fast communication, brilliant problem-solving skills, and a final product that looks straight out of the future. Highly recommended for any advanced web tech project.",
     name: "Elena Rostova",
-    company: "NextGen Innovations",
     project: "Immersive Web Experience",
-    metric: "Next-Gen Tech"
+    metric: "Web Development"
   }
 ];
 
@@ -206,7 +200,7 @@ export default function ClientReviews() {
                     <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-gray-400">
                       <span className="text-white font-medium">{review.name}</span>
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-                      <span>{review.company}</span>
+                    
                     </div>
                   </div>
 
