@@ -26,7 +26,7 @@ jobs:
       - name: Sync files to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.aexusstudios.com
+          server: 95.111.239.188
           username: aexusstudioscom
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
