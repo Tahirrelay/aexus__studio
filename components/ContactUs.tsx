@@ -31,6 +31,15 @@ export default function ContactUs() {
         'fGjOubEIg4wlcp-FG'
       );
 
+      // GTM Conversion Tracking DataLayer Push (Fixed for TypeScript)
+      const win = window as any;
+      win.dataLayer = win.dataLayer || [];
+      win.dataLayer.push({
+        event: 'contact_form_success',
+        formName: 'Contact Us',
+        selectedInterest: selectedInterest
+      });
+
       router.push('/thank-you');
     } catch (error: any) {
       console.error('Email error details:', error?.text || error?.message || error);
@@ -38,7 +47,6 @@ export default function ContactUs() {
       setLoading(false);
     }
   };
-
   return (
     <section className="relative w-full bg-[#000000] py-12 sm:py-16 px-4 sm:px-6 lg:px-8 select-none overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" style={{ background: '#000000' }} />
