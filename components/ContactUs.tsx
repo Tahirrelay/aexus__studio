@@ -73,7 +73,7 @@ export default function ContactUs() {
             {/* Hidden input for selected interest so EmailJS template receives it */}
             <input type="hidden" name="interest" value={selectedInterest} />
 
-            {/* Interest Selection Tabs - Hover Full #ff8800 */}
+            {/* Interest Selection Tabs - Selected is Gray, Unselected are #ff8800 */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
               {interests.map((label) => {
                 const isSelected = selectedInterest === label;
@@ -82,12 +82,16 @@ export default function ContactUs() {
                     key={label}
                     type="button"
                     onClick={() => setSelectedInterest(label)}
-                    className={`relative flex items-center justify-between px-4 py-3.5 transition-all cursor-pointer rounded-xl font-sans active:translate-y-0.5 bg-gradient-to-b from-[#3a3d45] to-[#22242a] text-white/90 shadow-[0_6px_0_#14161a,0_10px_15px_rgba(0,0,0,0.4)] border-t border-white/20 hover:!bg-[#ff8800] hover:!from-[#ff8800] hover:!to-[#ff8800] hover:border-[#ff8800] hover:text-black group ${
-                      isSelected ? 'border-[#ff8800] text-[#ff8800]' : ''
+                    className={`relative flex items-center justify-between px-4 py-3.5 transition-all cursor-pointer rounded-xl font-sans active:translate-y-0.5 group ${
+                      isSelected 
+                        ? 'bg-gradient-to-b from-[#3a3d45] to-[#22242a] border border-white/20 text-white shadow-[0_6px_0_#14161a,0_10px_15px_rgba(0,0,0,0.4)] hover:!bg-[#ff8800] hover:!from-[#ff8800] hover:!to-[#ff8800] hover:border-[#ff8800] hover:text-black' 
+                        : 'bg-[#ff8800] border border-[#ff8800] text-black shadow-[0_6px_0_#b35f00,0_10px_15px_rgba(0,0,0,0.4)] hover:!bg-gradient-to-b hover:!from-[#3a3d45] hover:!to-[#22242a] hover:border-white/20 hover:text-white'
                     }`}
                   >
-                    <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-left group-hover:text-black">{label}</span>
-                    <span className={`text-xs font-bold ${isSelected ? 'text-[#ff8800]' : 'text-white/40'} group-hover:text-black`}>
+                    <span className={`text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-left ${isSelected ? 'text-white/90 group-hover:text-black' : 'text-black group-hover:text-white/90'}`}>
+                      {label}
+                    </span>
+                    <span className={`text-xs font-bold ${isSelected ? 'text-white/60 group-hover:text-black' : 'text-black group-hover:text-white/60'}`}>
                       {isSelected ? '—' : '+'}
                     </span>
                   </button>
@@ -125,7 +129,7 @@ export default function ContactUs() {
                 <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-2">PHONE NUMBER</label>
                 <div className="relative flex items-center">
                   <span className="absolute left-4 text-white/40 text-sm">📞</span>
-                  <input name="phone" type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                  <input name="phone" type="tel" placeholder="+92 (555) 000-0000" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 sm:py-3.5 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
                 </div>
               </div>
             </div>
@@ -155,11 +159,11 @@ export default function ContactUs() {
               </div>
             )}
 
-            {/* GET UPDATES Submit Button - Hover Full #ff8800 */}
+            {/* GET UPDATES Submit Button - Permanent #ff8800, Hover Gray */}
             <button 
               disabled={loading}
               type="submit" 
-              className="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-b from-[#7a7d85] to-[#4a4d55] border-t border-white/40 text-white font-black uppercase tracking-widest text-xs sm:text-sm transition-all shadow-[0_6px_0_#22242a,0_10px_25px_rgba(0,0,0,0.6)] active:translate-y-1 active:shadow-[0_2px_0_#22242a] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 hover:!bg-[#ff8800] hover:!from-[#ff8800] hover:!to-[#ff8800] hover:border-[#ff8800] hover:text-black"
+              className="w-full py-3.5 sm:py-4 rounded-xl bg-[#ff8800] border-t border-[#ff8800] text-black font-black uppercase tracking-widest text-xs sm:text-sm transition-all shadow-[0_6px_0_#b35f00,0_10px_25px_rgba(0,0,0,0.6)] active:translate-y-1 active:shadow-[0_2px_0_#b35f00] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 hover:!bg-gradient-to-b hover:!from-[#7a7d85] hover:!to-[#4a4d55] hover:border-white/40 hover:text-white"
             >
               <span>{loading ? 'SENDING...' : 'GET UPDATES'}</span>
             </button>

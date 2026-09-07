@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const projects = [
    { id: '01', title: 'BIKE CONFIGURATOR', mediaUrl: '/videos/bike.mp4' },
-  { id: '02', title: 'TOYOTA CONFIGURATOR', mediaUrl: '/videos/Car_Configurator.mp4' },
-  { id: '03', title: 'JACKET CONFIGURATOR', mediaUrl: '/videos/jacket-configurator.mp4' },
+  { id: '02', title: 'GMC CONFIGURATOR', mediaUrl: '/videos/Car_Configurator.mp4' },
+  { id: '03', title: 'GMC CONFIGURATOR', mediaUrl: '/videos/jacket-configurator.mp4' },
    { id: '04', title: 'TOYOTA CONFIGURATOR', mediaUrl: '/videos/Car_Configurator.mp4' }
 ];
 

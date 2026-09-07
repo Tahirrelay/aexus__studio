@@ -16,7 +16,7 @@ export default function ThankYouPage() {
         {/* Logo / Brand Image - Left aligned and bigger */}
         <div className="w-full flex items-center justify-start mb-8">
           <Image 
-            src="/logo-images/Aexus-logo.png" 
+            src="/logo-images/Aexus-Logo.png" 
             alt="Aexus Studios Logo" 
             width={220} 
             height={60} 

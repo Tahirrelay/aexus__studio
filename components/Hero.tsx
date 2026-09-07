@@ -5,7 +5,7 @@ const slides = [
   {
     id: '01',
     title: 'EXTERIOR_RENDERING',
-    image: "/Hero/Exterior_Rendering.png"
+    image: "/Hero/Exterior_Rendering.jpg"
   },
    {
     id: '02',
