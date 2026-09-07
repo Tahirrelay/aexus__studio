@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
         run: npm install
@@ -26,8 +26,9 @@ jobs:
       - name: Sync files to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.aexusstudios.com
+          server: 95.111.239.188
           username: aexusstudioscom
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
           server-dir: ./public_html/
+          protocol: ftp
