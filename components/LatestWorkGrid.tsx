@@ -243,28 +243,29 @@ export default function LatestWorkGrid() {
   };
 
   return (
-    <section className="w-full bg-[#000000] py-16 md:py-20 relative overflow-hidden select-none px-4 md:px-12 lg:px-16">
-      <div className="absolute top-1/4 left-[-5%] w-[600px] h-[600px] bg-[var(--color-aexus-orange)]/10 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-10 right-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
+    <section className="w-full bg-[#000000] py-16 md:py-20 relative overflow-hidden select-none px-4 md:px-12 lg:px-16" aria-labelledby="portfolio-heading">
+      <div className="absolute top-1/4 left-[-5%] w-[600px] h-[600px] bg-[var(--color-aexus-orange)]/10 rounded-full blur-[160px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-10 right-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" aria-hidden="true" />
 
       <div className="w-full relative z-10">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 border-b border-white/10 pb-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-aexus-orange)] animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-[var(--color-aexus-orange)] animate-ping" aria-hidden="true" />
               <span className="text-xs uppercase tracking-[0.3em] font-bold text-[var(--color-aexus-orange)]">
-               
+                Aexus Studio Showcase
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white">
-                Portfolio
+            <h2 id="portfolio-heading" className="text-4xl md:text-6xl font-black tracking-tight text-white">
+              Portfolio & 3D Design Showcase
             </h2>
           </div>
 
           <div className="relative w-full md:w-85">
             <input 
               type="text" 
+              aria-label="Search portfolio projects"
               placeholder="Search concepts, 3D, UI..."
               value={searchQuery}
               onChange={(e) => {
@@ -273,16 +274,18 @@ export default function LatestWorkGrid() {
               }}
               className="w-full bg-white/[0.03] backdrop-blur-xl border border-white/15 rounded-2xl px-5 py-3.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-aexus-orange)] focus:ring-2 focus:ring-[var(--color-aexus-orange)]/20 transition-all duration-300 shadow-inner"
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 text-xs font-mono">⌘K</span>
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 text-xs font-mono" aria-hidden="true">⌘K</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-4 overflow-x-auto pb-4 mb-6 scrollbar-none px-2">
+        <div className="flex items-center gap-4 overflow-x-auto pb-4 mb-6 scrollbar-none px-2" role="tablist" aria-label="Portfolio Categories">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
               <button
                 key={cat}
+                role="tab"
+                aria-selected={isActive}
                 onClick={() => {
                   setActiveCategory(cat);
                   setShowAllMobile(false);
@@ -303,12 +306,14 @@ export default function LatestWorkGrid() {
         </div>
 
         {activeCategory === 'Architecture Visualization' && (
-          <div className="flex items-center gap-2 overflow-x-auto pb-6 mb-8 scrollbar-none">
+          <div className="flex items-center gap-2 overflow-x-auto pb-6 mb-8 scrollbar-none" role="tablist" aria-label="Architecture Sub-categories">
             {archSubCategories.map((subCat) => {
               const isSubActive = activeSubCategory === subCat;
               return (
                 <button
                   key={subCat}
+                  role="tab"
+                  aria-selected={isSubActive}
                   onClick={() => {
                     setActiveSubCategory(subCat);
                     setShowAllMobile(false);
@@ -330,9 +335,7 @@ export default function LatestWorkGrid() {
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => {
               const isModalTrigger = project.link === '#';
-              // Check if project link is a YouTube URL
               const isYouTubeLink = project.link.includes('youtube.com') || project.link.includes('youtu.be');
-              
               const isHiddenOnMobileClass = (!showAllMobile && index >= 3) ? 'hidden md:flex' : 'flex';
 
               return (
@@ -349,11 +352,11 @@ export default function LatestWorkGrid() {
                     }
                   }}
                 >
-                  <div className="absolute inset-[-60%] rounded-[inherit] bg-gradient-to-r from-[var(--color-aexus-orange)] via-amber-500 to-[var(--color-aexus-orange)] opacity-0 group-hover:opacity-100 transition-all duration-500 z-0" />
+                  <div className="absolute inset-[-60%] rounded-[inherit] bg-gradient-to-r from-[var(--color-aexus-orange)] via-amber-500 to-[var(--color-aexus-orange)] opacity-0 group-hover:opacity-100 transition-all duration-500 z-0" aria-hidden="true" />
 
                   <div className="relative z-10 w-full h-full flex flex-col justify-between p-6 rounded-[22px] bg-[#0b0c10] transition-all duration-480 overflow-hidden pointer-events-none">
                     
-                    <div className="absolute inset-0 z-0 overflow-hidden">
+                    <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
                       <img 
                         src={project.image} 
                         alt={project.title} 
@@ -398,7 +401,7 @@ export default function LatestWorkGrid() {
               className="px-8 py-3.5 rounded-2xl bg-[#12141a] text-[var(--color-aexus-orange)] border border-[var(--color-aexus-orange)]/30 font-bold text-xs uppercase tracking-widest shadow-[0_6px_14px_rgba(0,0,0,0.7)] active:scale-95 transition-all duration-300 cursor-pointer flex items-center gap-2"
             >
               <span>{showAllMobile ? 'See Less' : `See More (${filteredProjects.length - 3} more)`}</span>
-              <span className={`transform transition-transform duration-300 ${showAllMobile ? 'rotate-180' : ''}`}>▼</span>
+              <span className={`transform transition-transform duration-300 ${showAllMobile ? 'rotate-180' : ''}`} aria-hidden="true">▼</span>
             </button>
           </div>
         )}
@@ -410,9 +413,13 @@ export default function LatestWorkGrid() {
         <div 
           className="fixed inset-0 z-50 bg-black/85 backdrop-blur-lg flex items-center justify-center p-4 md:p-10 select-none transition-all duration-300"
           onClick={() => setCurrentIndex(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Project Image Preview"
         >
           <button 
             onClick={() => setCurrentIndex(null)}
+            aria-label="Close modal"
             className="absolute top-6 right-6 text-white bg-white/10 hover:bg-[var(--color-aexus-orange)] hover:text-black w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-all duration-300 cursor-pointer z-50 shadow-lg"
           >
             ✕
@@ -420,9 +427,10 @@ export default function LatestWorkGrid() {
 
           <button 
             onClick={handlePrev}
+            aria-label="Previous project"
             className="absolute left-4 md:left-8 text-white bg-white/10 hover:bg-[var(--color-aexus-orange)] hover:text-black w-12 h-12 rounded-full flex items-center justify-center text-xl transition-all z-50 shadow-lg cursor-pointer"
           >
-            ❮
+            <span aria-hidden="true">❮</span>
           </button>
 
           <div 
@@ -436,26 +444,20 @@ export default function LatestWorkGrid() {
                 className="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] border border-white/20 pointer-events-none" 
               />
 
-              <div className="absolute inset-0 z-10 pointer-events-auto" onContextMenu={(e) => e.preventDefault()} />
+              <div className="absolute inset-0 z-10 pointer-events-auto" onContextMenu={(e) => e.preventDefault()} aria-hidden="true" />
               
               <div className="absolute bottom-6 right-6 z-20 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-white/20 text-white/90 font-bold font-mono text-xs tracking-wider pointer-events-none shadow-md">
                 {filteredProjects[currentIndex].title}
               </div>
-
-              <button 
-                onClick={() => handleDownloadWithWatermark(filteredProjects[currentIndex].image, filteredProjects[currentIndex].title)}
-                className="absolute bottom-6 left-6 z-20 px-5 py-2.5 bg-[var(--color-aexus-orange)] text-black rounded-xl font-black text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all cursor-pointer flex items-center gap-2"
-              >
-               
-              </button>
             </div>
           </div>
 
           <button 
             onClick={handleNext}
+            aria-label="Next project"
             className="absolute right-4 md:right-8 text-white bg-white/10 hover:bg-[var(--color-aexus-orange)] hover:text-black w-12 h-12 rounded-full flex items-center justify-center text-xl transition-all z-50 shadow-lg cursor-pointer"
           >
-            ❯
+            <span aria-hidden="true">❯</span>
           </button>
         </div>
       )}
@@ -465,6 +467,9 @@ export default function LatestWorkGrid() {
         <div 
           className="fixed inset-0 z-50 bg-black/85 backdrop-blur-lg flex items-center justify-center p-4 md:p-10 select-none transition-all duration-300"
           onClick={() => setSelectedVideo(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="YouTube Video Player"
         >
           <div 
             className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl aspect-video border border-white/20"
@@ -472,6 +477,7 @@ export default function LatestWorkGrid() {
           >
             <button
               onClick={() => setSelectedVideo(null)}
+              aria-label="Close video player"
               className="absolute top-4 right-4 z-20 text-white bg-black/60 hover:bg-[var(--color-aexus-orange)] hover:text-black rounded-full w-10 h-10 flex items-center justify-center font-bold transition-colors cursor-pointer"
             >
               ✕

@@ -6,48 +6,56 @@ const solutions = [
   {
     id: '01',
     title: 'Interactive Configurators',
+    alt: 'Custom Interactive 3D Product Configurator Development Services',
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
     link: '#'
   },
   {
     id: '02',
     title: 'Photoreal 3D Rendering',
+    alt: 'Photorealistic 3D Rendering and Visualization Services',
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
     link: '#'
   },
   {
     id: '03',
     title: 'Immersive VR Experiences',
+    alt: 'Immersive Virtual Reality and 3D Experience Creation',
     image: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=1200&q=80',
     link: '#'
   },
   {
     id: '04',
     title: 'Dynamic Motion Graphics',
+    alt: 'Dynamic 3D Motion Graphics and Animation Studio',
     image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80',
     link: '#'
   },
   {
     id: '05',
     title: 'Engaging 2D Animation',
+    alt: 'Engaging 2D Commercial Animation Services',
     image: 'https://images.unsplash.com/photo-1626544827763-d516dce335e2?auto=format&fit=crop&w=1200&q=80',
     link: '#'
   },
   {
     id: '06',
     title: 'Sales-Driven Commercials',
+    alt: 'Sales-Driven 3D Commercial Production and Digital Marketing Media',
     image: 'https://images.unsplash.com/photo-1579389083078-4e7018379f7e?auto=format&fit=crop&w=1200&q=80',
     link: '#'
   },
   {
     id: '07',
     title: 'Architectural Digital Twin',
+    alt: 'Architectural Digital Twin and Real Estate Virtual Solutions',
     image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
     link: '#'
   },
   {
     id: '08',
     title: 'Next-Gen E-Commerce',
+    alt: 'Next-Gen E-Commerce 3D Web Development Solutions',
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80',
     link: '#'
   }
@@ -115,7 +123,7 @@ export default function SolutionsSection() {
         {/* Header container with padding */}
         <div className="max-w-[1600px] mx-auto px-4 sm:px-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white text-left uppercase">
-            Turning Technology <span className="text-orange-500">Into Results</span>
+            Turning 3D Technology & Web Development <span className="text-orange-500">Into Results</span>
           </h2>
 
           <Link 
@@ -160,7 +168,7 @@ export default function SolutionsSection() {
                 <div className="relative w-full h-44 sm:h-60 md:h-72 rounded-[1.2rem] sm:rounded-[1.5rem] overflow-hidden bg-black/40 pointer-events-none">
                   <img 
                     src={item.image} 
-                    alt={item.title} 
+                    alt={item.alt} 
                     className="w-full h-full object-cover transition-transform duration-700 pointer-events-none"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />

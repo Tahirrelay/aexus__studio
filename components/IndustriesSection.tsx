@@ -15,49 +15,49 @@ const industriesData = [
   {
     id: '01',
     title: 'Real Estate',
-    description: 'Off-plan visualization & sales centre installations.',
+    description: 'Off-plan 3D visualization & interactive real estate sales centre solutions.',
     icon: Building2,
   },
   {
     id: '02',
     title: 'Architecture',
-    description: 'Render production for design firms & competitions.',
+    description: 'Photorealistic architectural render production for design firms & architectural competitions.',
     icon: Ruler,
   },
   {
     id: '03',
     title: 'Interior Design',
-    description: 'Photoreal interior visualization for hospitality.',
+    description: 'Photorealistic interior 3D visualization and virtual showrooms for hospitality.',
     icon: Sofa,
   },
   {
     id: '04',
     title: 'Manufacturing',
-    description: 'Hero shots, exploded views, assembly animations.',
+    description: '3D hero shots, exploded product views, and technical assembly animations.',
     icon: Factory,
   },
   {
     id: '05',
     title: 'E-Commerce',
-    description: '3D configurators, AR shopping & virtual showrooms.',
+    description: 'Interactive 3D product configurators, AR shopping experiences & virtual showrooms.',
     icon: ShoppingCart,
   },
   {
     id: '06',
     title: 'Automotive',
-    description: 'Vehicle configurators, digital showrooms & VR test drives.',
+    description: 'Custom vehicle 3D configurators, digital car showrooms & VR test drives.',
     icon: Car,
   },
   {
     id: '07',
     title: 'Healthcare',
-    description: 'Medical device viz, surgical sim & patient education.',
+    description: 'Medical device 3D visualization, surgical simulations & patient education tools.',
     icon: HeartPulse,
   },
   {
     id: '08',
     title: 'Education & Training',
-    description: 'Immersive learning, VR training & virtual classrooms.',
+    description: 'Immersive learning software, VR training simulations & virtual classrooms.',
     icon: GraduationCap,
   },
 ];
@@ -145,11 +145,12 @@ export default function IndustriesSection() {
       <div className="w-full max-w-[1750px] mx-auto">
         
         <div className="text-center mb-12">
+          {/* SEO Optimized H2 Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase">
-            Industries <span className="text-orange-500">We Empower</span>
+            Industries <span className="text-orange-500">We Empower with 3D & Web Solutions</span>
           </h2>
           <p className="text-slate-400 text-sm mt-2">
-            Explore cutting-edge digital solutions tailored for every sector.
+            Explore cutting-edge 3D product configurators, architectural visualization, and digital solutions tailored for every sector.
           </p>
         </div>
 

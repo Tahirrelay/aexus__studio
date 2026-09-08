@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Aexus Studios | Digital Experience & 3D Studio",
   description: "We transform concepts into captivating digital experiences, specializing in Web Product Configurators and 3D Visualizations.",
+  verification: {
+    google: "aMGpYJ-0fNIIDEKIzR0oyACaUjhkCx59yFoFXn1Ce60",
+  },
 };
 
 export default function RootLayout({

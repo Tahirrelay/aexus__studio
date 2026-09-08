@@ -3,10 +3,30 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const projects = [
-   { id: '01', title: 'BIKE CONFIGURATOR', mediaUrl: '/videos/bike.mp4' },
-  { id: '02', title: 'GMC CONFIGURATOR', mediaUrl: '/videos/Car_Configurator.mp4' },
-  { id: '03', title: 'GMC CONFIGURATOR', mediaUrl: '/videos/jacket-configurator.mp4' },
-   { id: '04', title: 'TOYOTA CONFIGURATOR', mediaUrl: '/videos/Car_Configurator.mp4' }
+  { 
+    id: '01', 
+    title: 'BIKE CONFIGURATOR', 
+    mediaUrl: '/videos/bike.mp4',
+    alt: 'Interactive 3D Bike Configurator Showcase Video'
+  },
+  { 
+    id: '02', 
+    title: 'GMC CONFIGURATOR', 
+    mediaUrl: '/videos/Car_Configurator.mp4',
+    alt: 'GMC 3D Car Configurator and Customization Software Video'
+  },
+  { 
+    id: '03', 
+    title: 'JACKET CONFIGURATOR', 
+    mediaUrl: '/videos/jacket-configurator.mp4',
+    alt: 'Real-time 3D Apparel and Jacket Customizer Product View'
+  },
+  { 
+    id: '04', 
+    title: 'GMC CONFIGURATOR', 
+    mediaUrl: '/videos/Car_Configurator.mp4',
+    alt: 'Toyota Digital Automotive 3D Configurator Experience'
+  }
 ];
 
 const panelColors = ['#d4d4d8', '#ca8a04', '#ea580c'];
@@ -25,8 +45,9 @@ export default function PortfolioSection() {
     <StyledWrapper>
       <section className="portfolio-section">
         <div className="section-header">
+          {/* SEO Optimized H2 Heading */}
           <h2 className="portfolio-title">
-            OUR <span className="highlight">Latest Work</span>
+            OUR <span className="highlight">Latest 3D Configurator Projects</span>
           </h2>
         </div>
 
@@ -49,11 +70,10 @@ export default function PortfolioSection() {
                   <div className="video-wrapper">
                     <video 
                       src={project.mediaUrl}
+                      title={project.alt}
                       autoPlay loop muted playsInline
                     />
                   </div>
-
-                 
                 </div>
               </div>
             );
@@ -187,32 +207,6 @@ const StyledWrapper = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover; 
-  }
-
-  .close-back-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 30;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(8px);
-  }
-
-  .close-back-btn:hover {
-    background: #ffffff;
-    color: #000000;
-    transform: scale(1.08);
   }
 
   @media (max-width: 768px) {

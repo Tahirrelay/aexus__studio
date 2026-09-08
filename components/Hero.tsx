@@ -5,16 +5,19 @@ const slides = [
   {
     id: '01',
     title: 'EXTERIOR_RENDERING',
+    alt: '3D Exterior Architectural Rendering and Visualization Services',
     image: "/Hero/Exterior_Rendering.jpg"
   },
-   {
+  {
     id: '02',
     title: 'INTERIOR_RENDERING',
+    alt: 'Photorealistic Interior Architectural Rendering and Design',
     image: "/Hero/interior_Rendering.jpg"
   },
-   {
+  {
     id: '03',
     title: 'FLOORPLAN_RENDERING',
+    alt: 'Interactive 3D Floorplan Rendering Solutions',
     image: "/Hero/FLOOR.png"
   }
 ];
@@ -63,6 +66,11 @@ export default function Hero() {
       onTouchEnd={handleTouchEnd}
       onClick={() => setCurrentSlide((currentSlide + 1) % slides.length)}
     >
+      {/* SEO Optimized Hidden H1 for Search Engine Indexing */}
+      <h1 className="sr-only">
+        3D Architectural Rendering, Visualization & Product Configurator Agency | Aexus Studios
+      </h1>
+
       <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
         {slides.map((s, index) => (
           <div
@@ -74,7 +82,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-black/40 z-10" />
             <img
               src={s.image}
-              alt={s.title}
+              alt={s.alt}
               className="w-full h-full object-cover object-center bg-[#000000]"
             />
           </div>

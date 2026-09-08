@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://aexusstudio.com
+
+# Sitemaps
+Sitemap: https://aexusstudio.com/sitemap.xml
