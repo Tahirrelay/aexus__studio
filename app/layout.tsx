@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   verification: {
     google: "aMGpYJ-0fNIIDEKIzR0oyACaUjhkCx59yFoFXn1Ce60",
   },
+  icons: {
+    // Agar folder mein image ka naam "fav icon.png" hai toh URL encoding '%20' use hoga
+    icon: "/favicon-2.png", 
+  },
 };
 
 export default function RootLayout({
@@ -34,6 +38,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Explicit Favicon Link to override default/Vercel icons */}
+        <link rel="icon" href="/favicon-2.png" type="image/png" />
+
         {/* Google Tag Manager - Head Script */}
         <script
           dangerouslySetInnerHTML={{

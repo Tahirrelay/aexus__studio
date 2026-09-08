@@ -1,11 +1,12 @@
+import { Suspense } from 'react';
 import LatestWorkGrid from '@/components/LatestWorkGrid';
 
-export default function PortfolioMainPage() {
+export default function PortfolioPage() {
   return (
-    <main className="min-h-screen bg-[#030408] flex flex-col">
-      <div className="flex-grow pt-24 md:pt-32">
+    <main className="min-h-screen bg-[#05060a] text-white">
+      <Suspense fallback={<div className="w-full h-96 flex items-center justify-center text-white/50">Loading portfolio...</div>}>
         <LatestWorkGrid />
-      </div>
+      </Suspense>
     </main>
   );
 }

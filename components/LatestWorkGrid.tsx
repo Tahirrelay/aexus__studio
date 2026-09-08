@@ -1,17 +1,22 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
+// Categories objects ki shakal mein
 const categories = [
-  'Configurators', 
-  'Animation', 
-  'Architecture Visualization', 
-  '360 Virtual Tour', 
-  'Web Development', 
-  'Product Visualization', 
-  'Logo & Business Card'
+  { name: 'Architecture Visualization', slug: 'architecture-visualization' },
+  { name: 'Animation', slug: 'animation' },
+  { name: 'Realtime Walkthrough', slug: 'walk-through' },
+  { name: '360 Virtual Tour', slug: '360-virtual-tour' },
+  { name: 'Configurators', slug: 'configurators' },
+  { name: 'Web Development', slug: 'web-development' },
+  { name: 'Product Visualization', slug: 'product-visualization' },
+  { name: 'Logo & Business Card', slug: 'logo-business-card' }
 ];
 
 const archSubCategories = [
+  'Exterior Rendering',
+  'Kids Room Interior',
   'Nexgen', 
   'Ns-Arcade', 
   'E South River', 
@@ -26,15 +31,82 @@ const archSubCategories = [
 ];
 
 const allProjects: Record<string, Array<{ id: string; title: string; category: string; subCategory?: string; image: string; link: string }>> = {
-  Configurators: [
-    { id: 'conf-1', title: 'Winter Garden Configurator', category: 'Configurators', image: '/configurator/conf-1.jpg', link: 'https://aexusstudios.com/Winter-Garden-Configurator/' },
-    { id: 'conf-2', title: 'Office Pod 3D Builder', category: 'Configurators', image: '/configurator/conf-2.jpg', link: 'https://aexusstudios.com/3dPodsConfigurator/' },
-    { id: 'conf-3', title: 'L-Profil Metal Configurator', category: 'Configurators', image: '/configurator/conf-3.jpg', link: 'https://aexusstudios.com/LShape-Configurator' },
-    { id: 'conf-4', title: 'Wedding Ring 3D Studio', category: 'Configurators', image: '/configurator/conf-4.jpg', link: 'https://aexusstudios.com/ring-configurator' },
-    { id: 'conf-5', title: 'Pallet & Logistics Configurator', category: 'Configurators', image: '/configurator/conf-5.jpg', link: 'https://aexusstudios.com/pallet-configurator' },
-    { id: 'conf-6', title: 'Luxury Watch Customizer', category: 'Configurators', image: '/configurator/conf-6.jpg', link: 'https://aexusstudios.com/watch-configurator' },
-    { id: 'conf-7', title: 'Advanced 3D Configurator VII', category: 'Configurators', image: '/configurator/conf-7.jpg', link: 'https://aexusstudios.com/Sofaconfigurator' },
-    { id: 'conf-8', title: 'Custom Product Builder VIII', category: 'Configurators', image: '/configurator/conf-8.jpg', link: 'https://aexusstudios.com/2d-cornhole-configurator' },
+  'Architecture Visualization': [
+    { id: 'ER-1', title: 'Exterior Rendering 1', category: 'Architecture Visualization', subCategory: 'Exterior Rendering', image: '/architecture/Exterior Rendering/House_01.png', link: '#' },
+    { id: 'ER-2', title: 'Exterior Rendering 2', category: 'Architecture Visualization', subCategory: 'Exterior Rendering', image: '/architecture/Exterior Rendering/House_02.png', link: '#' },
+    { id: 'ER-3', title: 'Exterior Rendering 3', category: 'Architecture Visualization', subCategory: 'Exterior Rendering', image: '/architecture/Exterior Rendering/House_03.png', link: '#' },
+    { id: 'ER-4', title: 'Exterior Rendering 4', category: 'Architecture Visualization', subCategory: 'Exterior Rendering', image: '/architecture/Exterior Rendering/House_04.png', link: '#' },
+    { id: 'KRI-1', title: 'Kids Room Interior 1', category: 'Architecture Visualization', subCategory: 'Kids Room Interior', image: '/architecture/Kids Room Interior/Aziz_01.png', link: '#' },
+    { id: 'KRI-2', title: 'Kids Room Interior 2', category: 'Architecture Visualization', subCategory: 'Kids Room Interior', image: '/architecture/Kids Room Interior/Aziz_02.png', link: '#' },
+    { id: 'KRI-3', title: 'Kids Room Interior 3', category: 'Architecture Visualization', subCategory: 'Kids Room Interior', image: '/architecture/Kids Room Interior/Aziz_03.png', link: '#' },
+    { id: 'KRI-4', title: 'Kids Room Interior 4', category: 'Architecture Visualization', subCategory: 'Kids Room Interior', image: '/architecture/Kids Room Interior/Aziz_04.png', link: '#' },
+    { id: 'KRI-5', title: 'Kids Room Interior 5', category: 'Architecture Visualization', subCategory: 'Kids Room Interior', image: '/architecture/Kids Room Interior/Aziz_05.png', link: '#' },
+    { id: 'KRI-6', title: 'Kids Room Interior 6', category: 'Architecture Visualization', subCategory: 'Kids Room Interior', image: '/architecture/Kids Room Interior/Aziz_06.png', link: '#' },
+    { id: 'nx-1', title: 'Nexgen View 1', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-1.jpg', link: '#' },
+    { id: 'nx-2', title: 'Nexgen View 2', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-2.jpg', link: '#' },
+    { id: 'nx-3', title: 'Nexgen View 3', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-3.jpg', link: '#' },
+    { id: 'nx-4', title: 'Nexgen View 4', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-4.jpg', link: '#' },
+    { id: 'nx-5', title: 'Nexgen View 5', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-5.jpg', link: '#' },
+    { id: 'nx-6', title: 'Nexgen View 6', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-6.jpg', link: '#' },
+    { id: 'nx-7', title: 'Nexgen View 7', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-7.jpg', link: '#' },
+    { id: 'nx-8', title: 'Nexgen View 8', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-8.jpg', link: '#' },
+    { id: 'nx-9', title: 'Nexgen View 9', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-9.jpg', link: '#' },
+    { id: 'nx-10', title: 'Nexgen View 10', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-10.jpg', link: '#' },
+    { id: 'nx-11', title: 'Nexgen View 11', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-11.jpg', link: '#' },
+    { id: 'nx-12', title: 'Nexgen View 12', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-12.jpg', link: '#' },
+    { id: 'nx-13', title: 'Nexgen View 13', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-13.jpg', link: '#' },
+    { id: 'ns-1', title: 'Ns-Arcade View 1', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc1.jpg', link: '#' },
+    { id: 'ns-2', title: 'Ns-Arcade View 2', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc2.jpg', link: '#' },
+    { id: 'ns-3', title: 'Ns-Arcade View 3', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc3.jpg', link: '#' },
+    { id: 'ns-4', title: 'Ns-Arcade View 4', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc4.jpg', link: '#' },
+    { id: 'ns-5', title: 'Ns-Arcade View 5', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc5.jpg', link: '#' },
+    { id: 'ns-6', title: 'Ns-Arcade View 6', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc6.jpg', link: '#' },
+    { id: 'ns-7', title: 'Ns-Arcade View 7', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc7.jpg', link: '#' },
+    { id: 'ns-8', title: 'Ns-Arcade View 8', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc8.jpg', link: '#' },
+    { id: 'esr-1', title: 'E South River View 1', category: 'Architecture Visualization', subCategory: 'E South River', image: '/architecture/E South/e1.jpg', link: '#' },
+    { id: 'esr-2', title: 'E South River View 2', category: 'Architecture Visualization', subCategory: 'E South River', image: '/architecture/E South/e2.jpg', link: '#' },
+    { id: 'esr-3', title: 'E South River View 3', category: 'Architecture Visualization', subCategory: 'E South River', image: '/architecture/E South/e3.jpg', link: '#' },
+    { id: 'eh-1', title: 'Exterior House View 1', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext1.jpg', link: '#' },
+    { id: 'eh-2', title: 'Exterior House View 2', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext2.jpg', link: '#' },
+    { id: 'eh-3', title: 'Exterior House View 3', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext3.jpg', link: '#' },
+    { id: 'eh-4', title: 'Exterior House View 4', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext4.jpg', link: '#' },
+    { id: 'eh-5', title: 'Exterior House View 5', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext5.jpg', link: '#' },
+    { id: 'eh-6', title: 'Exterior House View 6', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext6.jpg', link: '#' },
+    { id: 'eh-7', title: 'Exterior House View 7', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext7.jpg', link: '#' },
+    { id: 'eh-8', title: 'Exterior House View 8', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext8.jpg', link: '#' },
+    { id: 'com-1', title: 'Commtel View 1', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm1.jpg', link: '#' },
+    { id: 'com-2', title: 'Commtel View 2', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm2.jpg', link: '#' },
+    { id: 'com-3', title: 'Commtel View 3', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm3.jpg', link: '#' },
+    { id: 'com-4', title: 'Commtel View 4', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm4.jpg', link: '#' },
+    { id: 'com-5', title: 'Commtel View 5', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm5.jpg', link: '#' },
+    { id: 'com-6', title: 'Commtel View 6', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm6.jpg', link: '#' },
+    { id: 'com-7', title: 'Commtel View 7', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm7.jpg', link: '#' },
+    { id: 'com-8', title: 'Commtel View 8', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm8.jpg', link: '#' },
+    { id: 'com-9', title: 'Commtel View 9', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm9.jpg', link: '#' },
+    { id: 'com-10', title: 'Commtel View 10', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm10.jpg', link: '#' },
+    { id: 'com-11', title: 'Commtel View 11', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm11.jpg', link: '#' },
+    { id: 'com-12', title: 'Commtel View 12', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm12.jpg', link: '#' },
+    { id: 'gh-1', title: 'Governer House View 1', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov1.jpg', link: '#' },
+    { id: 'gh-2', title: 'Governer House View 2', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov2.jpg', link: '#' },
+    { id: 'gh-3', title: 'Governer House View 3', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov3.jpg', link: '#' },
+    { id: 'gh-4', title: 'Governer House View 4', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov4.jpg', link: '#' },
+    { id: 'gh-5', title: 'Governer House View 5', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov5.jpg', link: '#' },
+    { id: 'cv-1', title: 'Classic Villa View 1', category: 'Architecture Visualization', subCategory: 'Classic Villa', image: '/architecture/Classic Villa/cl1.jpg', link: '#' },
+    { id: 'cv-2', title: 'Classic Villa View 2', category: 'Architecture Visualization', subCategory: 'Classic Villa', image: '/architecture/Classic Villa/cl2.jpg', link: '#' },
+    { id: 'cv-3', title: 'Classic Villa View 3', category: 'Architecture Visualization', subCategory: 'Classic Villa', image: '/architecture/Classic Villa/cl3.jpg', link: '#' },
+    { id: 'cv-4', title: 'Classic Villa View 4', category: 'Architecture Visualization', subCategory: 'Classic Villa', image: '/architecture/Classic Villa/cl4.jpg', link: '#' },
+    { id: 'mk-1', title: 'Modern Kitchen View 1', category: 'Architecture Visualization', subCategory: 'Modern Kitchen', image: '/architecture/Modern Kitchen/mk1.jpg', link: '#' },
+    { id: 'mk-2', title: 'Modern Kitchen View 2', category: 'Architecture Visualization', subCategory: 'Modern Kitchen', image: '/architecture/Modern Kitchen/mk2.jpg', link: '#' },
+    { id: 'mk-3', title: 'Modern Kitchen View 3', category: 'Architecture Visualization', subCategory: 'Modern Kitchen', image: '/architecture/Modern Kitchen/mk3.jpg', link: '#' },
+    { id: 'ji-1', title: 'Japandi Interior View 1', category: 'Architecture Visualization', subCategory: 'Japandi Interior', image: '/architecture/Japandi Interior/jp1.jpg', link: '#' },
+    { id: 'ji-2', title: 'Japandi Interior View 2', category: 'Architecture Visualization', subCategory: 'Japandi Interior', image: '/architecture/Japandi Interior/jp2.jpg', link: '#' },
+    { id: 'ji-3', title: 'Japandi Interior View 3', category: 'Architecture Visualization', subCategory: 'Japandi Interior', image: '/architecture/Japandi Interior/jp3.jpg', link: '#' },
+    { id: 'ji-4', title: 'Japandi Interior View 4', category: 'Architecture Visualization', subCategory: 'Japandi Interior', image: '/architecture/Japandi Interior/jp4.jpg', link: '#' },
+    { id: 'mi-1', title: 'Modern Interior View 1', category: 'Architecture Visualization', subCategory: 'Modern Interior', image: '/architecture/Modern Interior/mi1.jpg', link: '#' },
+    { id: 'mi-2', title: 'Modern Interior View 2', category: 'Architecture Visualization', subCategory: 'Modern Interior', image: '/architecture/Modern Interior/mi2.jpg', link: '#' },
+    { id: 'mi-3', title: 'Modern Interior View 3', category: 'Architecture Visualization', subCategory: 'Modern Interior', image: '/architecture/Modern Interior/mi3.jpg', link: '#' },
+    { id: 'mji-1', title: 'Modern Japandi Interior View 1', category: 'Architecture Visualization', subCategory: 'Modern Japandi Interior', image: '/architecture/Modern Japandi Interior/mji1.jpg', link: '#' },
+    { id: 'mji-2', title: 'Modern Japandi Interior View 2', category: 'Architecture Visualization', subCategory: 'Modern Japandi Interior', image: '/architecture/Modern Japandi Interior/mji2.jpg', link: '#' },
   ],
   Animation: [
     { id: 'ani-1', title: ' AI Animation', category: 'Animation', image: '/Animations/ani-1.jpg', link: 'https://www.youtube.com/watch?v=a9-ztuh_vrM' },
@@ -50,88 +122,22 @@ const allProjects: Record<string, Array<{ id: string; title: string; category: s
     { id: 'ani-12', title: 'Luxury Interior Design', category: 'Animation', image: '/Animations/ani-12.jpg', link: 'https://www.youtube.com/watch?v=kb7NjYL70h4' },
     { id: 'ani-13', title: 'Rustic Elegance', category: 'Animation', image: '/Animations/ani-13.jpg', link: 'https://www.youtube.com/watch?v=4ceO2u_6D_I' },
   ],
-  
-  'Architecture Visualization': [
-    { id: 'nx-1', title: 'Nexgen View 1', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-1.jpg', link: '#' },
-    { id: 'nx-2', title: 'Nexgen View 2', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-2.jpg', link: '#' },
-    { id: 'nx-3', title: 'Nexgen View 3', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-3.jpg', link: '#' },
-    { id: 'nx-4', title: 'Nexgen View 4', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-4.jpg', link: '#' },
-    { id: 'nx-5', title: 'Nexgen View 5', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-5.jpg', link: '#' },
-    { id: 'nx-6', title: 'Nexgen View 6', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-6.jpg', link: '#' },
-    { id: 'nx-7', title: 'Nexgen View 7', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-7.jpg', link: '#' },
-    { id: 'nx-8', title: 'Nexgen View 8', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-8.jpg', link: '#' },
-    { id: 'nx-9', title: 'Nexgen View 9', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-9.jpg', link: '#' },
-    { id: 'nx-10', title: 'Nexgen View 10', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-10.jpg', link: '#' },
-    { id: 'nx-11', title: 'Nexgen View 11', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-11.jpg', link: '#' },
-    { id: 'nx-12', title: 'Nexgen View 12', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-12.jpg', link: '#' },
-    { id: 'nx-13', title: 'Nexgen View 13', category: 'Architecture Visualization', subCategory: 'Nexgen', image: '/architecture/arc-13.jpg', link: '#' },
-
-    { id: 'ns-1', title: 'Ns-Arcade View 1', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc1.jpg', link: '#' },
-    { id: 'ns-2', title: 'Ns-Arcade View 2', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc2.jpg', link: '#' },
-    { id: 'ns-3', title: 'Ns-Arcade View 3', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc3.jpg', link: '#' },
-    { id: 'ns-4', title: 'Ns-Arcade View 4', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc4.jpg', link: '#' },
-    { id: 'ns-5', title: 'Ns-Arcade View 5', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc5.jpg', link: '#' },
-    { id: 'ns-6', title: 'Ns-Arcade View 6', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc6.jpg', link: '#' },
-    { id: 'ns-7', title: 'Ns-Arcade View 7', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc7.jpg', link: '#' },
-    { id: 'ns-8', title: 'Ns-Arcade View 8', category: 'Architecture Visualization', subCategory: 'Ns-Arcade', image: '/architecture/ns-arcade/nc8.jpg', link: '#' },
-
-    { id: 'esr-1', title: 'E South River View 1', category: 'Architecture Visualization', subCategory: 'E South River', image: '/architecture/E South/e1.jpg', link: '#' },
-    { id: 'esr-2', title: 'E South River View 2', category: 'Architecture Visualization', subCategory: 'E South River', image: '/architecture/E South/e2.jpg', link: '#' },
-    { id: 'esr-3', title: 'E South River View 3', category: 'Architecture Visualization', subCategory: 'E South River', image: '/architecture/E South/e3.jpg', link: '#' },
-
-    { id: 'eh-1', title: 'Exterior House View 1', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext1.jpg', link: '#' },
-    { id: 'eh-2', title: 'Exterior House View 2', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext2.jpg', link: '#' },
-    { id: 'eh-3', title: 'Exterior House View 3', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext3.jpg', link: '#' },
-    { id: 'eh-4', title: 'Exterior House View 4', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext4.jpg', link: '#' },
-    { id: 'eh-5', title: 'Exterior House View 5', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext5.jpg', link: '#' },
-    { id: 'eh-6', title: 'Exterior House View 6', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext6.jpg', link: '#' },
-    { id: 'eh-7', title: 'Exterior House View 7', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext7.jpg', link: '#' },
-    { id: 'eh-8', title: 'Exterior House View 8', category: 'Architecture Visualization', subCategory: 'Exterior House', image: '/architecture/Exterior House/ext8.jpg', link: '#' },
-
-    { id: 'com-1', title: 'Commtel View 1', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm1.jpg', link: '#' },
-    { id: 'com-2', title: 'Commtel View 2', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm2.jpg', link: '#' },
-    { id: 'com-3', title: 'Commtel View 3', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm3.jpg', link: '#' },
-    { id: 'com-4', title: 'Commtel View 4', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm4.jpg', link: '#' },
-    { id: 'com-5', title: 'Commtel View 5', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm5.jpg', link: '#' },
-    { id: 'com-6', title: 'Commtel View 6', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm6.jpg', link: '#' },
-    { id: 'com-7', title: 'Commtel View 7', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm7.jpg', link: '#' },
-    { id: 'com-8', title: 'Commtel View 8', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm8.jpg', link: '#' },
-    { id: 'com-9', title: 'Commtel View 9', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm9.jpg', link: '#' },
-    { id: 'com-10', title: 'Commtel View 10', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm10.jpg', link: '#' },
-    { id: 'com-11', title: 'Commtel View 11', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm11.jpg', link: '#' },
-    { id: 'com-12', title: 'Commtel View 12', category: 'Architecture Visualization', subCategory: 'Commtel', image: '/architecture/Commtel/cm12.jpg', link: '#' },
-
-    { id: 'gh-1', title: 'Governer House View 1', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov1.jpg', link: '#' },
-    { id: 'gh-2', title: 'Governer House View 2', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov2.jpg', link: '#' },
-    { id: 'gh-3', title: 'Governer House View 3', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov3.jpg', link: '#' },
-    { id: 'gh-4', title: 'Governer House View 4', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov4.jpg', link: '#' },
-    { id: 'gh-5', title: 'Governer House View 5', category: 'Architecture Visualization', subCategory: 'Governer House', image: '/architecture/Governer House/gov5.jpg', link: '#' },
-
-    { id: 'cv-1', title: 'Classic Villa View 1', category: 'Architecture Visualization', subCategory: 'Classic Villa', image: '/architecture/Classic Villa/cl1.jpg', link: '#' },
-    { id: 'cv-2', title: 'Classic Villa View 2', category: 'Architecture Visualization', subCategory: 'Classic Villa', image: '/architecture/Classic Villa/cl2.jpg', link: '#' },
-    { id: 'cv-3', title: 'Classic Villa View 3', category: 'Architecture Visualization', subCategory: 'Classic Villa', image: '/architecture/Classic Villa/cl3.jpg', link: '#' },
-    { id: 'cv-4', title: 'Classic Villa View 4', category: 'Architecture Visualization', subCategory: 'Classic Villa', image: '/architecture/Classic Villa/cl4.jpg', link: '#' },
-
-    { id: 'mk-1', title: 'Modern Kitchen View 1', category: 'Architecture Visualization', subCategory: 'Modern Kitchen', image: '/architecture/Modern Kitchen/mk1.jpg', link: '#' },
-    { id: 'mk-2', title: 'Modern Kitchen View 2', category: 'Architecture Visualization', subCategory: 'Modern Kitchen', image: '/architecture/Modern Kitchen/mk2.jpg', link: '#' },
-    { id: 'mk-3', title: 'Modern Kitchen View 3', category: 'Architecture Visualization', subCategory: 'Modern Kitchen', image: '/architecture/Modern Kitchen/mk3.jpg', link: '#' },
-
-    { id: 'ji-1', title: 'Japandi Interior View 1', category: 'Architecture Visualization', subCategory: 'Japandi Interior', image: '/architecture/Japandi Interior/jp1.jpg', link: '#' },
-    { id: 'ji-2', title: 'Japandi Interior View 2', category: 'Architecture Visualization', subCategory: 'Japandi Interior', image: '/architecture/Japandi Interior/jp2.jpg', link: '#' },
-    { id: 'ji-3', title: 'Japandi Interior View 3', category: 'Architecture Visualization', subCategory: 'Japandi Interior', image: '/architecture/Japandi Interior/jp3.jpg', link: '#' },
-    { id: 'ji-4', title: 'Japandi Interior View 4', category: 'Architecture Visualization', subCategory: 'Japandi Interior', image: '/architecture/Japandi Interior/jp4.jpg', link: '#' },
-
-    { id: 'mi-1', title: 'Modern Interior View 1', category: 'Architecture Visualization', subCategory: 'Modern Interior', image: '/architecture/Modern Interior/mi1.jpg', link: '#' },
-    { id: 'mi-2', title: 'Modern Interior View 2', category: 'Architecture Visualization', subCategory: 'Modern Interior', image: '/architecture/Modern Interior/mi2.jpg', link: '#' },
-    { id: 'mi-3', title: 'Modern Interior View 3', category: 'Architecture Visualization', subCategory: 'Modern Interior', image: '/architecture/Modern Interior/mi3.jpg', link: '#' },
-
-    { id: 'mji-1', title: 'Modern Japandi Interior View 1', category: 'Architecture Visualization', subCategory: 'Modern Japandi Interior', image: '/architecture/Modern Japandi Interior/mji1.jpg', link: '#' },
-    { id: 'mji-2', title: 'Modern Japandi Interior View 2', category: 'Architecture Visualization', subCategory: 'Modern Japandi Interior', image: '/architecture/Modern Japandi Interior/mji2.jpg', link: '#' },
+  'Realtime Walkthrough': [
+    { id: 'walk-1', title: 'Aexus Studios Walk-Through', category: 'Realtime Walkthrough', image: '/walkthroug/walk-t.png', link: 'https://www.youtube.com/watch?v=aNTWqIjUKFE'},
   ],
   '360 Virtual Tour': [
     { id: 'tour-1', title: '360° Virtual Real Estate Tour', category: '360 Virtual Tour', image: '/360/360-1.jpg', link: 'https://aexusstudios.com/ESouthRiver/'},
     { id: 'tour-2', title: '360° Virtual Real Estate Tour', category: '360 Virtual Tour', image: '/360/360-2.png', link: 'https://aexusstudios.com/ivf-academy/'},
-   
+  ],
+  'Configurators': [
+    { id: 'conf-1', title: 'Winter Garden Configurator', category: 'Configurators', image: '/configurator/conf-1.jpg', link: 'https://aexusstudios.com/Winter-Garden-Configurator/' },
+    { id: 'conf-2', title: 'Office Pod 3D Builder', category: 'Configurators', image: '/configurator/conf-2.jpg', link: 'https://aexusstudios.com/3dPodsConfigurator/' },
+    { id: 'conf-3', title: 'L-Profil Metal Configurator', category: 'Configurators', image: '/configurator/conf-3.jpg', link: 'https://aexusstudios.com/LShape-Configurator' },
+    { id: 'conf-4', title: 'Wedding Ring 3D Studio', category: 'Configurators', image: '/configurator/conf-4.jpg', link: 'https://aexusstudios.com/ring-configurator' },
+    { id: 'conf-5', title: 'Pallet & Logistics Configurator', category: 'Configurators', image: '/configurator/conf-5.jpg', link: 'https://aexusstudios.com/pallet-configurator' },
+    { id: 'conf-6', title: 'Luxury Watch Customizer', category: 'Configurators', image: '/configurator/conf-6.jpg', link: 'https://aexusstudios.com/watch-configurator' },
+    { id: 'conf-7', title: 'Advanced 3D Configurator VII', category: 'Configurators', image: '/configurator/conf-7.jpg', link: 'https://aexusstudios.com/Sofaconfigurator' },
+    { id: 'conf-8', title: 'Custom Product Builder VIII', category: 'Configurators', image: '/configurator/conf-8.jpg', link: 'https://aexusstudios.com/2d-cornhole-configurator' },
   ],
   'Web Development': [
     { id: 'web-1', title: 'PrimeLoop US Platform', category: 'Web Development', image: '/web-image/web-1.jpg', link: 'https://primeloop.us/' },
@@ -163,7 +169,14 @@ const allProjects: Record<string, Array<{ id: string; title: string; category: s
 };
 
 export default function LatestWorkGrid() {
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get('category');
+
+  // Find category based on URL slug or default to first category
+  const initialCategory = categories.find((c) => c.slug === categoryParam) || categories[0];
+
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [activeSubCategory, setActiveSubCategory] = useState(archSubCategories[0]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
@@ -174,11 +187,31 @@ export default function LatestWorkGrid() {
   // State to handle "See More" toggle specifically on mobile devices
   const [showAllMobile, setShowAllMobile] = useState(false);
 
-  const currentProjects = allProjects[activeCategory] || [];
+  // Sync state if URL query param changes externally
+  useEffect(() => {
+    if (categoryParam) {
+      const found = categories.find((c) => c.slug === categoryParam);
+      if (found) {
+        setActiveCategory(found);
+      }
+    }
+  }, [categoryParam]);
+
+  const handleCategoryChange = (cat: typeof categories[0]) => {
+    setActiveCategory(cat);
+    setShowAllMobile(false);
+    if (cat.name === 'Architecture Visualization') {
+      setActiveSubCategory(archSubCategories[0]);
+    }
+    // Update URL query parameter without page reload
+    router.push(`?category=${cat.slug}`, { scroll: false });
+  };
+
+  const currentProjects = allProjects[activeCategory.name] || [];
 
   const filteredProjects = currentProjects.filter((item) => {
     const matchesSubCategory = 
-      activeCategory !== 'Architecture Visualization' || 
+      activeCategory.name !== 'Architecture Visualization' || 
       item.subCategory === activeSubCategory;
 
     const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase().trim());
@@ -207,39 +240,6 @@ export default function LatestWorkGrid() {
     if (currentIndex !== null && filteredProjects.length > 0) {
       setCurrentIndex((prev) => (prev! - 1 + filteredProjects.length) % filteredProjects.length);
     }
-  };
-
-  const handleDownloadWithWatermark = (imageSrc: string, title: string) => {
-    const img = document.createElement('img');
-    img.crossOrigin = 'anonymous';
-    img.src = imageSrc;
-
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-
-      if (ctx) {
-        ctx.drawImage(img, 0, 0);
-
-        const fontSize = Math.max(canvas.width * 0.03, 24);
-        ctx.font = `bold ${fontSize}px sans-serif`;
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
-        ctx.shadowBlur = 12;
-        ctx.textAlign = 'right';
-        ctx.textBaseline = 'bottom';
-
-        ctx.fillText('Aexus Studio', canvas.width - 40, canvas.height - 40);
-
-        const dataURL = canvas.toDataURL('image/jpeg');
-        const link = document.createElement('a');
-        link.href = dataURL;
-        link.download = `${title.toLowerCase().replace(/\s+/g, '-')}-aexus-studio.jpg`;
-        link.click();
-      }
-    };
   };
 
   return (
@@ -280,32 +280,26 @@ export default function LatestWorkGrid() {
 
         <div className="flex items-center gap-4 overflow-x-auto pb-4 mb-6 scrollbar-none px-2" role="tablist" aria-label="Portfolio Categories">
           {categories.map((cat) => {
-            const isActive = activeCategory === cat;
+            const isActive = activeCategory.name === cat.name;
             return (
               <button
-                key={cat}
+                key={cat.slug}
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => {
-                  setActiveCategory(cat);
-                  setShowAllMobile(false);
-                  if (cat === 'Architecture Visualization') {
-                    setActiveSubCategory(archSubCategories[0]);
-                  }
-                }}
+                onClick={() => handleCategoryChange(cat)}
                 className={`text-xs md:text-sm font-bold px-7 py-3.5 rounded-2xl whitespace-nowrap transition-all duration-300 cursor-pointer select-none ${
                   isActive 
                     ? 'bg-[var(--color-aexus-orange)] text-black shadow-[0_8px_20px_-4px_rgba(255,102,0,0.5)] border-b-4 border-black/30 translate-y-[-2px]' 
                     : 'bg-[#12141a] text-white/80 hover:text-white border border-white/10 shadow-[0_6px_14px_rgba(0,0,0,0.7)] border-b-4 border-b-[#050608]'
                 }`}
               >
-                {cat}
+                {cat.name}
               </button>
             );
           })}
         </div>
 
-        {activeCategory === 'Architecture Visualization' && (
+        {activeCategory.name === 'Architecture Visualization' && (
           <div className="flex items-center gap-2 overflow-x-auto pb-6 mb-8 scrollbar-none" role="tablist" aria-label="Architecture Sub-categories">
             {archSubCategories.map((subCat) => {
               const isSubActive = activeSubCategory === subCat;

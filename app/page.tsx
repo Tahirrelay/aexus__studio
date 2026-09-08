@@ -1,4 +1,4 @@
-// app/page.tsx
+import { Suspense } from 'react';
 import NavbarOverlay from '@/components/NavbarOverlay';
 import Hero from '@/components/Hero';
 import ClientSlider from '@/components/ClientSlider';
@@ -18,7 +18,11 @@ export default function Home() {
       <div id="home"><Hero /></div>
       <div id="clients"><ClientSlider /></div>
       <div id="portfolio"><PortfolioSection /></div>
-      <div id="latest-work"><LatestWorkGrid /></div>
+      <div id="latest-work">
+        <Suspense fallback={<div className="w-full h-96 flex items-center justify-center text-white/50">Loading portfolio...</div>}>
+          <LatestWorkGrid />
+        </Suspense>
+      </div>
       <div id="reviews"><ClientReviews /></div>
       <div id="solutions"><SolutionsSection /></div>
       <div id="industries"><IndustriesSection /></div>
