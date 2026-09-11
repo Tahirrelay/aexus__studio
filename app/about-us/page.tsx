@@ -48,7 +48,7 @@ export function Header() {
           <Link href="/portfolio" className={navButtonStyle}>
             Portfolio
           </Link>
-          <Link href="/about" className={navButtonStyle}>
+          <Link href="/about-us" className={navButtonStyle}>
             About Us
           </Link>
         </nav>
@@ -56,7 +56,7 @@ export function Header() {
         {/* Right Corner: Start A Project CTA */}
         <div className="hidden lg:flex items-center">
           <Link 
-            href="/contact"
+            href="/contact-us"
             className="px-8 py-3.5 rounded-full bg-[var(--color-aexus-orange)] text-black font-black text-sm tracking-wider uppercase shadow-lg shadow-[var(--color-aexus-orange)]/20 hover:scale-105 active:scale-95 transition-all duration-200"
           >
             Start A Project
@@ -90,10 +90,10 @@ export function Header() {
           <Link href="/portfolio" onClick={() => setMobileMenuOpen(false)} className={`${navButtonStyle} text-center block w-full`}>
             Portfolio
           </Link>
-          <Link href="/about" onClick={() => setMobileMenuOpen(false)} className={`${navButtonStyle} text-center block w-full`}>
+          <Link href="/about-us" onClick={() => setMobileMenuOpen(false)} className={`${navButtonStyle} text-center block w-full`}>
             About Us
           </Link>
-          <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center rounded-full bg-[var(--color-aexus-orange)] text-black font-black text-sm tracking-wider uppercase mt-4 shadow-lg">
+          <Link href="/contact-us" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 text-center rounded-full bg-[var(--color-aexus-orange)] text-black font-black text-sm tracking-wider uppercase mt-4 shadow-lg">
             Start A Project
           </Link>
         </div>
@@ -139,11 +139,10 @@ export default function AboutPage() {
         </h1>
         
         <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-16">
-          Aexus Studios objective is to reach the firm in such a level from where we can create
-          most of opportunity for young new professionals to excel learning more about the
-          website and designing world. I saved over 50% using Mouno over my company. The
-          customer care support staff was very helpful. I will definitely do future collaborations.
-          Thank you !!!        </p>
+         Aexus Studios' objective is to elevate the firm to a level where we can create 
+  maximum opportunities for young professionals to excel and master the world of 
+  web development and design. We are dedicated to pushing the boundaries of digital 
+  innovation and creative visualization. !!!        </p>
 
         {/* Hero Image */}
         <div className="relative w-full h-[350px] md:h-[550px] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl mb-12 group">
