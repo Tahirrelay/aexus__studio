@@ -21,8 +21,7 @@ export const metadata: Metadata = {
     google: "aMGpYJ-0fNIIDEKIzR0oyACaUjhkCx59yFoFXn1Ce60",
   },
   icons: {
-    // Agar folder mein image ka naam "fav icon.png" hai toh URL encoding '%20' use hoga
-    icon: "/favicon-2.png", 
+    icon: "/favicon.ico",
   },
 };
 
@@ -32,15 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
-      <head>
-        {/* Explicit Favicon Link to override default/Vercel icons */}
-        <link rel="icon" href="/favicon-2.png" type="image/png" />
-
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning><head>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         {/* Google Tag Manager - Head Script */}
         <script
           dangerouslySetInnerHTML={{
@@ -53,8 +45,7 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body 
+      </head><body 
         className="min-h-full flex flex-col bg-[#0b0c10] text-[#c5c6c7]" 
         suppressHydrationWarning
       >
@@ -73,7 +64,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-      </body>
-    </html>
+      </body></html>
   );
 }
