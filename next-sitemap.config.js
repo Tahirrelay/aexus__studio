@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://aexusstudio.com',
+  siteUrl: 'https://aexusstudios.com',
   generateRobotsTxt: true,
   changefreq: 'daily',
   priority: 0.7,

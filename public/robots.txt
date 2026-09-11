@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://aexusstudio.com
+Host: https://aexusstudios.com
 
 # Sitemaps
-Sitemap: https://aexusstudio.com/sitemap.xml
+Sitemap: https://aexusstudios.com/sitemap.xml
