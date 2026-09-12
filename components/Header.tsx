@@ -109,8 +109,8 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/about"
-            onClick={(e) => handleNavigation(e, '/about')}
+            href="/about-us"
+            onClick={(e) => handleNavigation(e, '/about-us')}
             className="text-2xl font-bold tracking-widest text-white hover:text-[var(--color-aexus-orange)] transition-colors uppercase"
           >
             About Us
@@ -133,7 +133,7 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/contact"
+            href="/contact-us"
             onClick={(e) => handleNavigation(e, '/contact')}
             className="px-8 py-3.5 rounded-full bg-[var(--color-aexus-orange)] text-black font-bold text-sm tracking-widest uppercase mt-4 shadow-lg"
           >

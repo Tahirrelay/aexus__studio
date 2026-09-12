@@ -42,7 +42,7 @@ export function Header() {
           <Link href="/" className={navButtonStyle}>
             Home
           </Link>
-          <Link href="/services" className={navButtonStyle}>
+          <Link href="/services-1" className={navButtonStyle}>
             Services
           </Link>
           <Link href="/portfolio" className={navButtonStyle}>

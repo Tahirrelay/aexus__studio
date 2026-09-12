@@ -67,10 +67,10 @@ export default function NavbarOverlay() {
       <div className={`fixed inset-0 bg-[#000000]/90 backdrop-blur-md z-40 transition-transform duration-500 ease-in-out flex items-start justify-end px-8 md:px-32 pt-28 md:pt-32 overflow-y-auto ${isOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'}`}>
         <nav className="flex flex-col gap-3 md:gap-4 text-2xl md:text-4xl font-extrabold tracking-tight text-right text-white">
           <Link href="/#home" onClick={(e) => handleNavigation(e, '/#home')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Home</Link>
-          <Link href="/about" onClick={(e) => handleNavigation(e, '/about')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">About Us</Link>
+          <Link href="/about-us" onClick={(e) => handleNavigation(e, '/about-us')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">About Us</Link>
           <Link href="/portfolio" onClick={(e) => handleNavigation(e, '/portfolio')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Portfolio</Link>
           <Link href="/case-studies" onClick={(e) => handleNavigation(e, '/case-studies')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Case Studies</Link>
-          <Link href="/contact" onClick={(e) => handleNavigation(e, '/contact')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Contact</Link>
+          <Link href="/contact-us" onClick={(e) => handleNavigation(e, '/contact-us')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Contact</Link>
         </nav>
       </div>
     </>
