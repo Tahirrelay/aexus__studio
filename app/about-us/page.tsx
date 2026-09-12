@@ -84,7 +84,7 @@ export function Header() {
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className={`${navButtonStyle} text-center block w-full`}>
             Home
           </Link>
-          <Link href="/services" onClick={() => setMobileMenuOpen(false)} className={`${navButtonStyle} text-center block w-full`}>
+          <Link href="/services-1" onClick={() => setMobileMenuOpen(false)} className={`${navButtonStyle} text-center block w-full`}>
             Services
           </Link>
           <Link href="/portfolio" onClick={() => setMobileMenuOpen(false)} className={`${navButtonStyle} text-center block w-full`}>

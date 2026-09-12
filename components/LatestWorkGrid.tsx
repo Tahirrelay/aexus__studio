@@ -143,9 +143,9 @@ const allProjects: Record<string, Array<{ id: string; title: string; category: s
     { id: 'web-1', title: 'PrimeLoop US Platform', category: 'Web Development', image: '/web-image/web-1.jpg', link: 'https://primeloop.us/' },
     { id: 'web-2', title: 'Maleva Shop E-Commerce', category: 'Web Development', image: '/web-image/web-2.jpg', link: 'https://shopmaleva.com/' },
     { id: 'web-3', title: 'CE and Builders Web App', category: 'Web Development', image: '/web-image/web-3.jpg', link: 'https://ceandbuilders.com/' },
-    { id: 'web-4', title: 'Kurta Dukan Storefront', category: 'Web Development', image: '/web-image/web-4.jpg', link: 'https://www.kurtadukan.com/' },
+    // { id: 'web-4', title: 'Kurta Dukan Storefront', category: 'Web Development', image: '/web-image/web-4.jpg', link: 'https://www.kurtadukan.com/' },
     { id: 'web-5', title: 'Leather Crafted Boutique', category: 'Web Development', image: '/web-image/web-5.jpg', link: 'https://leather-crafted.com/' },
-    { id: 'web-6', title: '1 Click IoT Solutions', category: 'Web Development', image: '/web-image/web-6.jpg', link: 'https://1clickiot.com.pk/' },
+    // { id: 'web-6', title: '1 Click IoT Solutions', category: 'Web Development', image: '/web-image/web-6.jpg', link: 'https://1clickiot.com.pk/' },
   ],
   'Product Visualization': [
     { id: 'prod-1', title: 'Perfume Bottle Studio Lighting', category: 'Product Visualization', image: '/product images/pro-1.jpg', link: '#' },
