@@ -43,11 +43,11 @@ export default function NavbarOverlay() {
 
         <div className="flex items-center gap-4">
           <Link 
-            href="/contact" 
-            onClick={(e) => handleNavigation(e, '/contact')}
+            href="/contact-us" 
+            onClick={(e) => handleNavigation(e, '/contact-us')}
             className="hidden sm:flex relative px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold text-sm tracking-widest hover:bg-[var(--color-aexus-orange)] hover:border-[var(--color-aexus-orange)] transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,165,0,0.5)] items-center gap-2 animate-pulse cursor-pointer"
           >
-            GET IN TOUCH
+            Contact Us
             <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
           </Link>
           

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavbarOverlay from "@/components/NavbarOverlay";
 import Footer from "@/components/Footer";
+import FloatingAiContact from "@/components/FloatingAiContact"; // <-- Yahan import kar liya hai
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning><head>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         {/* Google Tag Manager - Head Script */}
         <script
@@ -45,7 +47,8 @@ export default function RootLayout({
             `,
           }}
         />
-      </head><body 
+      </head>
+      <body 
         className="min-h-full flex flex-col bg-[#0b0c10] text-[#c5c6c7]" 
         suppressHydrationWarning
       >
@@ -63,7 +66,12 @@ export default function RootLayout({
         <main className="flex-grow">
           {children}
         </main>
+        
+        {/* Floating AI & Contact Tab */}
+        <FloatingAiContact /> 
+        
         <Footer />
-      </body></html>
+      </body>
+    </html>
   );
 }

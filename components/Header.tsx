@@ -56,11 +56,11 @@ export default function Header() {
             
             {/* Get In Touch */}
             <Link
-              href="/contact"
-              onClick={(e) => handleNavigation(e, '/contact')}
+              href="/contact-us"
+              onClick={(e) => handleNavigation(e, '/contact-us')}
               className="inline-flex px-5 md:px-7 py-2.5 md:py-3 rounded-full border border-white/20 bg-transparent text-white font-semibold text-[10px] md:text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300"
             >
-              GET IN TOUCH
+              Contact Us
             </Link>
 
             {/* Menu Button - Right Corner */}
@@ -134,10 +134,10 @@ export default function Header() {
 
           <Link
             href="/contact-us"
-            onClick={(e) => handleNavigation(e, '/contact')}
+            onClick={(e) => handleNavigation(e, '/contact-us')}
             className="px-8 py-3.5 rounded-full bg-[var(--color-aexus-orange)] text-black font-bold text-sm tracking-widest uppercase mt-4 shadow-lg"
           >
-            Get In Touch
+           Contact Us
           </Link>
         </div>
       )}

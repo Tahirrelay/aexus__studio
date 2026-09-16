@@ -142,7 +142,7 @@ export default function AboutPage() {
          Aexus Studios' objective is to elevate the firm to a level where we can create 
   maximum opportunities for young professionals to excel and master the world of 
   web development and design. We are dedicated to pushing the boundaries of digital 
-  innovation and creative visualization. !!!        </p>
+  innovation and creative visualization. !!!</p>
 
         {/* Hero Image */}
         <div className="relative w-full h-[350px] md:h-[550px] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl mb-12 group">

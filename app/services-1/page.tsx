@@ -91,7 +91,7 @@ export default function ServicesMainPage() {
       </div>
 
       {/* Imported Global Footer Component */}
-      <Footer />
+    
     </div>
   );
 }
