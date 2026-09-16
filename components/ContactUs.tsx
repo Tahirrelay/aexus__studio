@@ -11,7 +11,7 @@ export default function ContactUs() {
   const router = useRouter();
 
   const interests = [
-    'DISCUSSING A PRODUCTION',
+    'PROJECT DISCUSSION',
     'GET A QUOTE',
     'OTHER'
   ];
@@ -112,17 +112,14 @@ export default function ContactUs() {
                         key={label}
                         type="button"
                         onClick={() => setSelectedInterest(label)}
-                        className={`relative flex items-center justify-between px-3 py-3 transition-all cursor-pointer rounded-xl font-sans active:translate-y-0.5 group ${
+                        className={`relative flex items-center justify-center px-3 py-3 transition-all cursor-pointer rounded-xl font-sans active:translate-y-0.5 group ${
                           isSelected 
-                            ? 'bg-gradient-to-b from-[#3a3d45] to-[#22242a] border border-white/20 text-white shadow-[0_4px_0_#14161a]' 
-                            : 'bg-[#ff8800] border border-[#ff8800] text-black shadow-[0_4px_0_#b35f00]'
+                            ? 'bg-[#ff8800] border border-[#ff8800] text-black shadow-[0_4px_0_#b35f00]' 
+                            : 'bg-gradient-to-b from-[#3a3d45] to-[#22242a] border border-white/20 text-white shadow-[0_4px_0_#14161a]'
                         }`}
                       >
-                        <span className={`text-[10px] font-extrabold uppercase tracking-wider text-left ${isSelected ? 'text-white/90' : 'text-black'}`}>
+                        <span className={`text-[10px] font-extrabold uppercase tracking-wider text-center ${isSelected ? 'text-black' : 'text-white/90'}`}>
                           {label}
-                        </span>
-                        <span className={`text-xs font-bold ${isSelected ? 'text-white/60' : 'text-black'}`}>
-                          {isSelected ? '—' : '+'}
                         </span>
                       </button>
                     );

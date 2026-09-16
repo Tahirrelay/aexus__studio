@@ -13,7 +13,7 @@ export default function ThankYouPage() {
         {/* Top Accent Line */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-[#ff6600] to-transparent" />
 
-        {/* Logo / Brand Image - Left aligned and bigger */}
+        {/* Logo / Brand Image */}
         <div className="w-full flex items-center justify-start mb-8">
           <Image 
             src="/logo-images/Aexus-Logo.png" 
