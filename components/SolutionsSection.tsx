@@ -115,7 +115,7 @@ export default function SolutionsSection() {
     <section className="relative w-full bg-[#000000] py-16 text-white overflow-hidden select-none">
       
       {/* Top Parallel Border Line */}
-      <div className="w-full h-[1px] bg-white/15 max-w-[1600px] mx-auto mb-12" />
+      <div className="w-full h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-white/40 max-w-[1600px] mx-auto mb-12 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
 
       {/* Main Wrapper taking full width edge-to-edge for slider */}
       <div className="w-full">
@@ -189,7 +189,7 @@ export default function SolutionsSection() {
       </div>
 
       {/* Bottom Parallel Border Line */}
-      <div className="w-full h-[1px] bg-white/15 max-w-[1600px] mx-auto mt-12" />
+      <div className="w-full h-[3px] bg-gradient-to-r from-white/40 via-orange-500 to-transparent max-w-[1600px] mx-auto mt-12 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
 
     </section>
   );

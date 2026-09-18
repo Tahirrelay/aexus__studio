@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import { useRouter } from 'next/navigation';
 
 export default function ContactUs() {
-  const [selectedInterest, setSelectedInterest] = useState('DISCUSSING A PRODUCTION');
+  const [selectedInterest, setSelectedInterest] = useState('PROJECT DISCUSSION');
   const [loading, setLoading] = useState(false);
   const [formResponse, setFormResponse] = useState<{ success?: boolean; message?: string } | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -162,7 +162,7 @@ export default function ContactUs() {
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Description *</label>
+                  <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Project Details *</label>
                   <div className="relative">
                     <span className="absolute left-4 top-3.5 text-white/40 text-sm">✏️</span>
                     <textarea required name="message" rows={4} maxLength={1000} placeholder="Tell us about your project..." className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors resize-none" />
@@ -189,66 +189,6 @@ export default function ContactUs() {
             </div>
 
           </div>
-        </div>
-
-        {/* BOTTOM 4 INTERACTIVE INFO CARDS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          
-          {/* Card 1: Address (Links to Google Maps) */}
-          <a 
-            href="https://maps.google.com/?q=Office+No.305,3rd+Floor,+Ittehad+Lane+12,+Building+No.23C,+Phase+2+Ext+D.H.A+Karachi" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-[#0b0d13]/80 border border-white/10 hover:border-[#ff8800] p-6 rounded-2xl text-center flex flex-col items-center justify-center backdrop-blur-md transition-all cursor-pointer group"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#ff8800]/10 border border-[#ff8800]/20 flex items-center justify-center text-[#ff8800] text-xl mb-4 group-hover:scale-110 transition-transform">
-              📍
-            </div>
-            <h4 className="text-white text-xs font-black uppercase tracking-wider mb-1">Address</h4>
-            <p className="text-white/60 text-xs uppercase leading-relaxed">
-              OFFICE NO.305, 3RD FLOOR, ITTEHAD LANE 12, BUILDING NO.23C, PHASE 2 EXT D.H.A KARACHI
-            </p>
-          </a>
-
-          {/* Card 2: Contact (Links to phone dialer) */}
-          <a 
-            href="tel:+923390095259"
-            className="bg-[#0b0d13]/80 border border-white/10 hover:border-[#ff8800] p-6 rounded-2xl text-center flex flex-col items-center justify-center backdrop-blur-md transition-all cursor-pointer group"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#ff8800]/10 border border-[#ff8800]/20 flex items-center justify-center text-[#ff8800] text-xl mb-4 group-hover:scale-110 transition-transform">
-              📞
-            </div>
-            <h4 className="text-white text-xs font-black uppercase tracking-wider mb-1">Contact</h4>
-            <p className="text-white/60 text-xs">+923390095259</p>
-          </a>
-
-          {/* Card 3: Email (Links to mail client) */}
-          <a 
-            href="mailto:info@aexusstudios.com"
-            className="bg-[#0b0d13]/80 border border-white/10 hover:border-[#ff8800] p-6 rounded-2xl text-center flex flex-col items-center justify-center backdrop-blur-md transition-all cursor-pointer group"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#ff8800]/10 border border-[#ff8800]/20 flex items-center justify-center text-[#ff8800] text-xl mb-4 group-hover:scale-110 transition-transform">
-              ✉️
-            </div>
-            <h4 className="text-white text-xs font-black uppercase tracking-wider mb-1">Email</h4>
-            <p className="text-white/60 text-xs lowercase">info@aexusstudios.com</p>
-          </a>
-
-          {/* Card 4: Google Map */}
-          <a 
-            href="https://maps.google.com/?q=Office+No.305,3rd+Floor,+Ittehad+Lane+12,+Building+No.23C,+Phase+2+Ext+D.H.A+Karachi" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-[#0b0d13]/80 border border-white/10 hover:border-[#ff8800] p-6 rounded-2xl text-center flex flex-col items-center justify-center backdrop-blur-md transition-all cursor-pointer group"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#ff8800]/10 border border-[#ff8800]/20 flex items-center justify-center text-[#ff8800] text-xl mb-4 group-hover:scale-110 transition-transform">
-              🗺️
-            </div>
-            <h4 className="text-white text-xs font-black uppercase tracking-wider mb-1">Google Map</h4>
-            <p className="text-white/60 text-xs mb-2">Discover our prime location</p>
-            <span className="text-[#ff8800] text-xs font-bold group-hover:underline">View More →</span>
-          </a>
-
         </div>
 
       </div>

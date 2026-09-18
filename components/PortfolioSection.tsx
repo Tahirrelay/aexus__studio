@@ -23,7 +23,7 @@ const projects = [
   },
   { 
     id: '04', 
-    title: 'GMC CONFIGURATOR', 
+    title: 'TOYOTA CONFIGURATOR', 
     mediaUrl: '/videos/Car_Configurator.mp4',
     alt: 'Toyota Digital Automotive 3D Configurator Experience'
   }
@@ -39,11 +39,15 @@ export default function PortfolioSection() {
     setIsMounted(true);
   }, []);
 
-  if (!isMounted) return <div className="min-h-screen bg-[#333333]" />;
+  if (!isMounted) return <div className="min-h-screen bg-[#000000]" />;
 
   return (
     <StyledWrapper>
       <section className="portfolio-section">
+        
+        {/* Top Parallel Border Line */}
+        <div className="w-full h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-white/40 max-w-[1300px] mx-auto mb-12 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
+
         <div className="section-header">
           {/* SEO Optimized H2 Heading */}
           <h2 className="portfolio-title">
@@ -79,11 +83,14 @@ export default function PortfolioSection() {
             );
           })}
         </div>
+
+        {/* Bottom Parallel Border Line */}
+        <div className="w-full h-[3px] bg-gradient-to-r from-white/40 via-orange-500 to-transparent max-w-[1300px] mx-auto mt-12 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
+
       </section>
     </StyledWrapper>
   );
 }
-
 const StyledWrapper = styled.div`
   .portfolio-section {
     position: relative;
@@ -94,7 +101,7 @@ const StyledWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4vw;
+    padding: 4vw 2vw;
   }
 
   .section-header {
@@ -115,7 +122,7 @@ const StyledWrapper = styled.div`
   }
 
   .portfolio-title .highlight {
-    color: #e2a012;
+    color: #f97316;
   }
 
   .accordion-container {
@@ -123,10 +130,11 @@ const StyledWrapper = styled.div`
     width: 100%;
     max-width: 1300px;
     height: 650px;
-    background: #222222;
+    background: #0c0e15;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
     gap: 12px;
     padding: 12px;
     z-index: 10;
@@ -138,16 +146,19 @@ const StyledWrapper = styled.div`
     border-radius: 20px;
     cursor: pointer;
     overflow: hidden;
-    transition: flex 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Smooth flex transition for expanding/collapsing */
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
   }
 
+  /* Jab panel collapsed ho */
   .accordion-panel.collapsed {
-    flex: 0 0 75px;
+    flex: 0 0 70px;
   }
 
+  /* Jab panel active ho toh poora bacha hua space le lega */
   .accordion-panel.active {
-    flex: 1 1 auto;
+    flex: 1;
   }
 
   .collapsed-content {

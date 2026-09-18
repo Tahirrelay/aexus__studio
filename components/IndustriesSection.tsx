@@ -85,18 +85,18 @@ function IndustryCard({ item }: { item: typeof industriesData[0] }) {
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative flex flex-col justify-between p-6 sm:p-7 h-[220px] rounded-[24px] bg-[#070e17] border border-white/10 cursor-pointer overflow-hidden transition-all duration-500 hover:border-orange-500/40 shadow-xl text-left"
+      className="group relative flex flex-col justify-between p-6 sm:p-7 h-[220px] rounded-[24px] bg-[#0c0e15] border border-white/20 cursor-pointer overflow-hidden transition-all duration-500 hover:border-white text-left"
       style={{
         boxShadow: `
-          rgba(0, 0, 0, 0.45) 0px -15px 25px 0px inset, 
-          rgba(0, 0, 0, 0.35) 0px -30px 30px 0px inset, 
-          rgba(0, 0, 0, 0.3) 0px 10px 20px 0px
+          0 12px 40px rgba(0, 0, 0, 0.7), 
+          inset 0 1px 1px rgba(255, 255, 255, 0.2),
+          inset 0 -10px 20px rgba(0, 0, 0, 0.5)
         `
       }}
     >
       {/* Desktop Direction-Aware Spotlight Hover Effect */}
       <div 
-        className={`absolute w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-orange-600 via-orange-500 to-amber-300 transition-transform duration-500 ease-out pointer-events-none -translate-x-1/2 -translate-y-1/2 z-0 hidden md:block ${
+        className={`absolute w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-orange-600 via-orange-500 to-amber-300 transition-transform duration-500 ease-out pointer-events-none -translate-x-1/2 -translate-y-1/2 z-0 hidden md:block ${
           isHovered ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
         }`}
         style={{
@@ -117,7 +117,7 @@ function IndustryCard({ item }: { item: typeof industriesData[0] }) {
 
       {/* Top Icon */}
       <div className={`relative z-10 w-11 h-11 rounded-xl flex items-center justify-center transition-colors ${
-        isHovered ? 'bg-black/10 text-black' : 'bg-blue-500/10 text-blue-400'
+        isHovered ? 'bg-black/10 text-black' : 'bg-orange-500/10 text-orange-400'
       }`}>
         <IconComponent size={22} />
       </div>
@@ -142,14 +142,18 @@ function IndustryCard({ item }: { item: typeof industriesData[0] }) {
 export default function IndustriesSection() {
   return (
     <section className="relative w-full bg-[#000000] py-16 px-4 sm:px-6 select-none overflow-hidden">
+      
+      {/* Top Parallel Border Line */}
+      <div className="w-full h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-orange/40 max-w-[1750px] mx-auto mb-16 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
+
       <div className="w-full max-w-[1750px] mx-auto">
         
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 md:mb-16">
           {/* SEO Optimized H2 Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase">
             Industries <span className="text-orange-500">We Empower with 3D & Web Solutions</span>
           </h2>
-          <p className="text-slate-400 text-sm mt-2">
+          <p className="text-slate-400 text-sm md:text-base mt-3 max-w-xl mx-auto font-medium">
             Explore cutting-edge 3D product configurators, architectural visualization, and digital solutions tailored for every sector.
           </p>
         </div>
@@ -162,6 +166,10 @@ export default function IndustriesSection() {
         </div>
 
       </div>
+
+      {/* Bottom Parallel Border Line */}
+      <div className="w-full h-[3px] bg-gradient-to-r from-white/40 via-orange-500 to-transparent max-w-[1750px] mx-auto mt-16 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
+
     </section>
   );
 }

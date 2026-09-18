@@ -26,6 +26,34 @@ export default function Home() {
       <div id="reviews"><ClientReviews /></div>
       <div id="solutions"><SolutionsSection /></div>
       <div id="industries"><IndustriesSection /></div>
+{/* --- SLIDING AEXUS STUDIOS TICKER --- */}
+<div className="relative w-full bg-[#000000] py-4 overflow-hidden z-20 select-none">
+  <div className="animate-marquee-custom">
+    {/* Set 1 */}
+    <div className="flex items-center">
+      <span className="font-black tracking-[0.5em] uppercase text-xl sm:text-5xl font-sans mx-6 flex items-center gap-3">
+        <span className="text-white">A E X U S</span> <span className="text-[#ff8800]">S T U D I O S</span>
+        <span className="text-white/30 mx-6"> </span>
+      </span>
+      <span className="font-black tracking-[0.5em] uppercase text-xl sm:text-5xl font-sans mx-6 flex items-center gap-3">
+        <span className="text-white">A E X U S</span> <span className="text-[#ff8800]">S T U D I O S</span>
+        <span className="text-white/30 mx-6"></span>
+      </span>
+    </div>
+    {/* Set 2 (Seamless loop ke liye duplicate set) */}
+    <div className="flex items-center" aria-hidden="true">
+      <span className="font-black tracking-[0.5em] uppercase text-xl sm:text-5xl font-sans mx-6 flex items-center gap-3">
+        <span className="text-white">A E X U S</span> <span className="text-[#ff8800]">S T U D I O S</span>
+        <span className="text-white/30 mx-6"></span>
+      </span>
+      <span className="font-black tracking-[0.5em] uppercase text-xl sm:text-5xl font-sans mx-6 flex items-center gap-3">
+        <span className="text-white">A E X U S</span> <span className="text-[#ff8800]">S T U D I O S</span>
+        <span className="text-white/30 mx-6"></span>
+      </span>
+    </div>
+  </div>
+</div>
+      
       <div id="tech"><TechSection /></div>
       <div id="news"><LatestNewsSection /></div>
       <div id="contact"><ContactUs /></div>

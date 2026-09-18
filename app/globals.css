@@ -98,3 +98,22 @@
     opacity: 1;
   }
 }
+/* Continuous Marquee Sliding Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-custom {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-custom:hover {
+  animation-play-state: paused; /* Jab mouse le kar jayein toh rokne ke liye (optional) */
+}

@@ -6,6 +6,8 @@ import Image from 'next/image';
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -16,21 +18,36 @@ export default function Footer() {
     if (email) setSubscribed(true);
   };
 
+  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    setIsHovered(true);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
   return (
-    <footer className="relative w-full bg-[#000000] text-white pt-20 pb-12 border-t border-white/10 select-none overflow-hidden">
+    <footer className="relative w-full bg-[#000000] text-white pt-16 pb-12 select-none overflow-hidden">
       
-      {/* Background Subtle Atmospheric Orange Glow matching the screenshot */}
+      {/* Bold Orange & White Mix Top Line */}
+      <div className="w-full h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-white/40 max-w-[1600px] mx-auto mb-16 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
+
+      {/* Background Subtle Atmospheric Orange Glow */}
       <div className="absolute bottom-0 left-0 w-full h-[400px] bg-gradient-to-t from-[#ff6600]/15 via-transparent to-transparent pointer-events-none filter blur-[60px]" />
 
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 z-10 relative">
+      <div className="w-full max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-16 z-10 relative">
 
         {/* MAIN FOOTER GRID (4 COLUMNS) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10 text-sm sm:text-base">
           
           {/* Column 1: Brand Info & Socials */}
           <div className="flex flex-col gap-5">
-            {/* Logo size bara kar diya hai */}
-            <div className="relative w-[500px] h-[100px]">
+            <div className="relative w-[220px] h-[55px]">
               <Image 
                 src="/logo-images/Aexus-Logo.png" 
                 alt="Aexus Studio Logo" 
@@ -126,11 +143,24 @@ export default function Footer() {
                 placeholder="Enter your email" 
                 className="w-full bg-[#1c1c1c] border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff6600] transition-colors"
               />
+              {/* Updated Subscribe Button with Hover Glow Effect */}
               <button 
                 type="submit"
-                className="w-full py-3 rounded-lg bg-[#ff6600] hover:bg-[#e05b00] text-white font-bold text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg shadow-[#ff6600]/20"
+                onMouseEnter={handleMouseEnter}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={() => setIsHovered(false)}
+                className="relative group overflow-hidden w-full py-3 rounded-lg bg-[#0c0e15] border border-white/20 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 cursor-pointer shadow-[0_6px_20px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.15)] hover:border-orange-500 active:scale-95"
               >
-                {subscribed ? '✨ SUBSCRIBED!' : 'Subscribe'}
+                <div 
+                  className={`absolute w-[300px] h-[300px] rounded-full bg-gradient-to-tr from-orange-600 via-orange-500 to-amber-300 transition-transform duration-500 ease-out pointer-events-none -translate-x-1/2 -translate-y-1/2 z-0 hidden md:block ${
+                    isHovered ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+                  }`}
+                  style={{ left: `${position.x}px`, top: `${position.y}px` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-orange-600 to-amber-400 opacity-0 transition-opacity duration-300 md:hidden active:opacity-100 z-0" />
+                <span className={`relative z-10 transition-colors ${isHovered ? 'text-black font-extrabold' : 'text-white'}`}>
+                  {subscribed ? '✨ SUBSCRIBED!' : 'Subscribe'}
+                </span>
               </button>
             </form>
           </div>
@@ -158,6 +188,10 @@ export default function Footer() {
         </div>
 
       </div>
+
+      {/* Bold Orange & White Mix Bottom Line */}
+      <div className="w-full h-[3px] bg-gradient-to-r from-white/40 via-orange-500 to-transparent max-w-[1600px] mx-auto mt-12 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
+
     </footer>
   );
 }

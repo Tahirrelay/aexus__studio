@@ -50,35 +50,92 @@ const blogsData = [
 ];
 
 function BlogCard({ item, onClick }: { item: typeof blogsData[0]; onClick: () => void }) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    setIsHovered(true);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
   return (
     <div
       onClick={onClick}
-      className="group relative w-full h-[360px] rounded-2xl cursor-pointer overflow-hidden border border-white/10 bg-[#070e17] p-7 flex flex-col justify-between shadow-lg transition-all duration-500 hover:scale-[1.02] hover:border-orange-500 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)]"
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative w-full h-[360px] rounded-[24px] cursor-pointer overflow-hidden border border-white/10 bg-[#0c0e15] p-7 flex flex-col justify-between transition-all duration-500 hover:border-orange-500 hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] text-left"
+      style={{
+        boxShadow: `
+          0 12px 40px rgba(0, 0, 0, 0.7), 
+          inset 0 1px 1px rgba(255, 255, 255, 0.1),
+          inset 0 -10px 20px rgba(0, 0, 0, 0.5)
+        `
+      }}
     >
-      {/* Background Gradient Layer on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-t from-orange-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      {/* Desktop Direction-Aware Spotlight Hover Effect */}
+      <div 
+        className={`absolute w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-orange-600 via-orange-500 to-amber-300 transition-transform duration-500 ease-out pointer-events-none -translate-x-1/2 -translate-y-1/2 z-0 hidden md:block ${
+          isHovered ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+        }`}
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+        }}
+      />
+
+      {/* Mobile touch gradient layer */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-orange-600 to-amber-400 opacity-0 transition-opacity duration-300 md:hidden active:opacity-100 z-0" />
 
       {/* Card Header */}
       <div className="relative z-10 flex items-center justify-between">
-        <span className="w-10 h-10 rounded-xl bg-orange-600/20 border border-orange-500/30 flex items-center justify-center text-lg text-orange-500 shadow-inner">
+        <span className={`w-10 h-10 rounded-xl border flex items-center justify-center text-lg transition-colors ${
+          isHovered ? 'bg-black/20 border-black/20 text-black' : 'bg-orange-600/20 border-orange-500/30 text-orange-500 shadow-inner'
+        }`}>
           {item.icon}
         </span>
-        <span className="text-[10px] font-mono tracking-widest uppercase font-semibold text-white/50">
+        <span className={`text-[10px] font-mono tracking-widest uppercase font-semibold transition-colors ${
+          isHovered ? 'text-black/70' : 'text-white/50'
+        }`}>
           {item.tag}
         </span>
       </div>
 
       {/* Card Content */}
       <div className="relative z-10 my-auto py-2">
-        <h3 className="text-sm sm:text-base font-extrabold tracking-wide uppercase mb-1 line-clamp-2 text-white">
+        <h3 className={`text-sm sm:text-base font-extrabold tracking-wide uppercase mb-1 line-clamp-2 transition-colors ${
+          isHovered ? 'text-black' : 'text-white'
+        }`}>
           {item.title}
         </h3>
-        <p className="text-xs font-bold mb-2 tracking-wide text-orange-500">
+        <p className={`text-xs font-bold mb-2 tracking-wide transition-colors ${
+          isHovered ? 'text-black/80 font-extrabold' : 'text-orange-500'
+        }`}>
           {item.subtitle}
         </p>
-        <p className="text-xs leading-relaxed line-clamp-3 font-medium text-white/60">
+        <p className={`text-xs leading-relaxed line-clamp-3 font-medium transition-colors ${
+          isHovered ? 'text-black/80' : 'text-white/60'
+        }`}>
           {item.desc}
         </p>
+      </div>
+
+      {/* Card Footer ID/Badge */}
+      <div className="relative z-10 flex items-center justify-between pt-3 border-t border-white/10 group-hover:border-black/10">
+        <span className={`text-[10px] font-mono transition-colors ${isHovered ? 'text-black/60' : 'text-white/40'}`}>
+          {item.date}
+        </span>
+        <span className={`text-xs font-bold transition-colors ${isHovered ? 'text-black' : 'text-orange-400'}`}>
+          Read →
+        </span>
       </div>
     </div>
   );
@@ -88,12 +145,12 @@ export default function LatestWorkGrid() {
   const [activeCard, setActiveCard] = useState<any | null>(null);
 
   return (
-    <section className="relative w-full bg-[#000000] py-16 md:py-20 text-white overflow-hidden select-none">      
+    <section className="relative w-full bg-[#000000] py-16 md:py-20 text-white overflow-hidden select-none">    
       
-      {/* Top Parallel Border Line */}
-      <div className="w-full h-[1px] bg-white/15 max-w-[1600px] mx-auto mb-12" />
+      {/* Bold Orange & White Mix Top Line */}
+      <div className="w-full h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-orange/20 max-w-[1600px] mx-auto mb-16 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
 
-      {/* Main Content Wrapper (Container box removed, matching layout structure) */}
+      {/* Main Content Wrapper */}
       <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         
         {/* Top Header */}
@@ -106,7 +163,7 @@ export default function LatestWorkGrid() {
           </p>
         </div>
 
-        {/* Cards Grid Layout */}
+        {/* Cards Grid Layout (4 columns on large screens) */}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {blogsData.map((item) => (
             <BlogCard key={item.id} item={item} onClick={() => setActiveCard(item)} />
@@ -115,13 +172,13 @@ export default function LatestWorkGrid() {
 
       </div>
 
-      {/* Bottom Parallel Border Line */}
-      <div className="w-full h-[1px] bg-white/15 max-w-[1600px] mx-auto mt-12" />
+      {/* Bold Orange & White Mix Bottom Line */}
+      <div className="w-full h-[3px] bg-gradient-to-r from-orange/40 via-orange-500 to-transparent max-w-[1600px] mx-auto mt-16 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
 
       {/* FULL-SCREEN ZOOM MODAL OVERLAY */}
       {activeCard && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 transition-all duration-300">
-          <div className="relative w-full max-w-2xl bg-gradient-to-b from-[#070e17] to-[#030712] border border-orange-500/60 rounded-3xl p-8 sm:p-12 shadow-2xl text-white transform animate-in fade-in zoom-in-95 duration-300">
+          <div className="relative w-full max-w-2xl bg-gradient-to-b from-[#0c0e15] to-[#030712] border border-orange-500/60 rounded-3xl p-8 sm:p-12 shadow-2xl text-white transform animate-in fade-in zoom-in-95 duration-300">
             
             {/* Close Button */}
             <button
