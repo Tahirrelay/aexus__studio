@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavbarOverlay from "@/components/NavbarOverlay";
 import Footer from "@/components/Footer";
-import FloatingAiContact from "@/components/FloatingAiContact"; // <-- Yahan import kar liya hai
+import FloatingAiContact from "@/components/FloatingAiContact";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,11 +18,37 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Aexus Studios | Digital Experience & 3D Studio",
   description: "We transform concepts into captivating digital experiences, specializing in Web Product Configurators and 3D Visualizations.",
+  // --- Canonical URL Added ---
+  alternates: {
+    canonical: "https://aexusstudios.com",
+  },
   verification: {
     google: "aMGpYJ-0fNIIDEKIzR0oyACaUjhkCx59yFoFXn1Ce60",
   },
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: "Aexus Studios | Digital Experience & 3D Studio",
+    description: "We transform concepts into captivating digital experiences, specializing in Web Product Configurators and 3D Visualizations.",
+    url: "https://aexusstudios.com",
+    siteName: "Aexus Studios",
+    images: [
+      {
+        url: "https://aexusstudios.com/Interior_01.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Aexus Studios Showcase",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aexus Studios | Digital Experience & 3D Studio",
+    description: "We transform concepts into captivating digital experiences, specializing in Web Product Configurators and 3D Visualizations.",
+    images: ["https://aexusstudios.com/Interior_01.jpg"],
   },
 };
 
