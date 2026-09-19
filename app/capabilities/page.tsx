@@ -1,7 +1,7 @@
 export default function CapabilitiesPage() {
   return (
     <div>
-      <h1>Capabilities</h1>
+      <h2>Capabilities</h2>
     </div>
   );
 }
