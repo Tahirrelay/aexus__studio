@@ -126,12 +126,12 @@ export default function SolutionsSection() {
             Turning 3D Technology & Web Development <span className="text-orange-500">Into Results</span>
           </h2>
 
-          <Link 
+          {/* <Link 
             href="#"
             className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-90 text-white font-bold text-xs md:text-sm tracking-wider transition-all duration-300 shadow-lg"
           >
             Start Your Project
-          </Link>
+          </Link> */}
         </div>
 
         {/* Auto-Scrolling & Draggable Container */}

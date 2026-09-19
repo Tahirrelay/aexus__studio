@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 
 // Categories objects ki shakal mein
 const categories = [
@@ -158,9 +159,7 @@ const allProjects: Record<string, Array<{ id: string; title: string; category: s
     { id: 'web-1', title: 'PrimeLoop US Platform', category: 'Web Development', image: '/web-image/web-1.jpg', link: 'https://primeloop.us/' },
     { id: 'web-2', title: 'Maleva Shop E-Commerce', category: 'Web Development', image: '/web-image/web-2.jpg', link: 'https://shopmaleva.com/' },
     { id: 'web-3', title: 'CE and Builders Web App', category: 'Web Development', image: '/web-image/web-3.jpg', link: 'https://ceandbuilders.com/' },
-    // { id: 'web-4', title: 'Kurta Dukan Storefront', category: 'Web Development', image: '/web-image/web-4.jpg', link: 'https://www.kurtadukan.com/' },
     { id: 'web-5', title: 'Leather Crafted Boutique', category: 'Web Development', image: '/web-image/web-5.jpg', link: 'https://leather-crafted.com/' },
-    // { id: 'web-6', title: '1 Click IoT Solutions', category: 'Web Development', image: '/web-image/web-6.jpg', link: 'https://1clickiot.com.pk/' },
   ],
   'Product Visualization': [
     { id: 'prod-1', title: 'Perfume Bottle Studio Lighting', category: 'Product Visualization', image: '/product images/pro-1.jpg', link: '#' },
@@ -188,21 +187,15 @@ export default function LatestWorkGrid() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('category');
 
-  // Find category based on URL slug or default to first category
   const initialCategory = categories.find((c) => c.slug === categoryParam) || categories[0];
 
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [activeSubCategory, setActiveSubCategory] = useState(archSubCategories[0]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
-  
-  // State for YouTube Video Modal Player
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-  
-  // State to handle "See More" toggle specifically on mobile devices
   const [showAllMobile, setShowAllMobile] = useState(false);
 
-  // Sync state if URL query param changes externally
   useEffect(() => {
     if (categoryParam) {
       const found = categories.find((c) => c.slug === categoryParam);
@@ -218,7 +211,6 @@ export default function LatestWorkGrid() {
     if (cat.name === 'Architecture Visualization') {
       setActiveSubCategory(archSubCategories[0]);
     }
-    // Update URL query parameter without page reload
     router.push(`?category=${cat.slug}`, { scroll: false });
   };
 
@@ -234,7 +226,6 @@ export default function LatestWorkGrid() {
     return matchesSubCategory && matchesSearch;
   });
 
-  // YouTube URL to Embed URL Converter Function
   const getEmbedUrl = (url: string) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = url.match(regExp);
@@ -366,9 +357,13 @@ export default function LatestWorkGrid() {
                   <div className="relative z-10 w-full h-full flex flex-col justify-between p-6 rounded-[22px] bg-[#0b0c10] transition-all duration-480 overflow-hidden pointer-events-none">
                     
                     <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-                      <img 
+                      {/* Optimized using Next.js Image Component */}
+                      <Image 
                         src={project.image} 
                         alt={project.title} 
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={index < 3}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-85 group-hover:opacity-95"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent transition-all duration-480 pointer-events-none" />
@@ -446,11 +441,14 @@ export default function LatestWorkGrid() {
             className="relative max-w-5xl max-h-[85vh] w-full h-full flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative flex items-center justify-center">
-              <img 
+            <div className="relative flex items-center justify-center w-full h-[75vh]">
+              {/* Optimized Modal Image using Next.js Image Component */}
+              <Image 
                 src={filteredProjects[currentIndex].image} 
                 alt={filteredProjects[currentIndex].title} 
-                className="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] border border-white/20 pointer-events-none" 
+                fill
+                sizes="90vw"
+                className="object-contain rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] border border-white/20 pointer-events-none" 
               />
 
               <div className="absolute inset-0 z-10 pointer-events-auto" onContextMenu={(e) => e.preventDefault()} aria-hidden="true" />
@@ -484,13 +482,13 @@ export default function LatestWorkGrid() {
             className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl aspect-video border border-white/20"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setSelectedVideo(null)}
-              aria-label="Close video player"
-              className="absolute top-4 right-4 z-20 text-white bg-black/60 hover:bg-[var(--color-aexus-orange)] hover:text-black rounded-full w-10 h-10 flex items-center justify-center font-bold transition-colors cursor-pointer"
-            >
-              ✕
-            </button>
+           <button
+  onClick={() => setSelectedVideo(null)}
+  aria-label="Close video player"
+  className="absolute top-4 right-4 z-20 text-white bg-black/60 hover:bg-[var(--color-aexus-orange)] hover:text-black rounded-full w-10 h-10 flex items-center justify-center font-bold transition-colors cursor-pointer"
+>
+  ✕
+</button>
 
             <iframe
               src={getEmbedUrl(selectedVideo)}
