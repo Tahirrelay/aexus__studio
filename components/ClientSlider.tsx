@@ -33,6 +33,7 @@ export default function ClientSlider() {
               <img 
                 src={client.logo} 
                 alt={client.name} 
+                loading="lazy"
                 className="h-[35px] sm:h-[42px] md:h-[50px] max-w-[120px] sm:max-w-[140px] md:max-w-[160px] w-auto object-contain transition-all duration-300 pointer-events-none mb-2"
               />
               <span className="text-white/80 group-hover:text-white text-xs sm:text-sm font-medium tracking-wider uppercase transition-colors duration-300 text-center whitespace-nowrap">

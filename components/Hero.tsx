@@ -83,6 +83,7 @@ export default function Hero() {
             <img
               src={s.image}
               alt={s.alt}
+              loading={index === 0 ? 'eager' : 'lazy'}
               className="w-full h-full object-cover object-center bg-[#000000]"
             />
           </div>

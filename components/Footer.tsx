@@ -53,7 +53,7 @@ export default function Footer() {
                 alt="Aexus Studio Logo" 
                 fill 
                 className="object-contain object-left"
-                priority
+                loading="lazy"
               />
             </div>
 
@@ -102,7 +102,7 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div className="flex flex-col gap-3.5">
-            <h5 className="font-extrabold uppercase tracking-[0.2em] text-[#ff6600] mb-2 text-xs sm:text-sm">Quick Links</h5>
+            <h2 className="font-extrabold uppercase tracking-[0.2em] text-[#ff6600] mb-2 text-xs sm:text-sm">Quick Links</h2>
             <Link href="#" className="text-white/80 hover:text-white hover:translate-x-1 transition-all text-sm sm:text-base">Home</Link>
             <Link href="#" className="text-white/80 hover:text-white hover:translate-x-1 transition-all text-sm sm:text-base">About Us</Link>
             <Link href="#" className="text-white/80 hover:text-white hover:translate-x-1 transition-all text-sm sm:text-base">Capabilities</Link>
@@ -112,7 +112,7 @@ export default function Footer() {
 
           {/* Column 3: Services */}
           <div className="flex flex-col gap-3.5">
-            <h5 className="font-extrabold uppercase tracking-[0.2em] text-[#ff6600] mb-2 text-xs sm:text-sm">Services</h5>
+            <h2 className="font-extrabold uppercase tracking-[0.2em] text-[#ff6600] mb-2 text-xs sm:text-sm">Services</h2>
             <Link href="#" className="text-white/80 hover:text-white hover:translate-x-1 transition-all text-sm sm:text-base">3D Web Apps & Configurators</Link>
             <Link href="#" className="text-white/80 hover:text-white hover:translate-x-1 transition-all text-sm sm:text-base">Architectural Viz</Link>
             <Link href="#" className="text-white/80 hover:text-white hover:translate-x-1 transition-all text-sm sm:text-base">3D Product Design</Link>
@@ -122,7 +122,7 @@ export default function Footer() {
 
           {/* Column 4: Get In Touch & Newsletter */}
           <div className="flex flex-col gap-4">
-            <h5 className="font-extrabold uppercase tracking-[0.2em] text-[#ff6600] mb-2 text-xs sm:text-sm">Get In Touch</h5>
+            <h2 className="font-extrabold uppercase tracking-[0.2em] text-[#ff6600] mb-2 text-xs sm:text-sm">Get In Touch</h2>
             
             <div className="flex flex-col gap-1.5 text-sm">
               <a href="mailto:info@aexusstudios.com" className="text-[#ff6600] hover:underline font-semibold">info@aexusstudios.com</a>

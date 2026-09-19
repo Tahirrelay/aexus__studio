@@ -64,13 +64,13 @@ export default function ContactUs() {
               <span className="text-[11px] sm:text-xs font-extrabold tracking-[0.3em] text-[#ff8800] uppercase mb-3 block">
                 CONTACT US
               </span>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase leading-[1.1] text-white">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase leading-[1.1] text-white">
                 Let's Build <br />
                 Something <br />
                 <span className="text-[#ff8800]">Great Together.</span>
-              </h1>
+              </h2>
               <p className="text-sm sm:text-base text-white/70 tracking-wide mt-4 mb-6 leading-relaxed max-w-md mx-auto lg:mx-0">
-                Have a project in mind or just want to say hello? We’d love to hear from you. Our team is here to help and answer any questions you may have.
+                Have a project in mind? Send us a message. Our team can answer your questions and help you get started.
               </p>
 
               <div className="hidden lg:flex items-center gap-4 bg-[#121622] border border-white/10 p-4 rounded-2xl mt-4">
@@ -78,7 +78,7 @@ export default function ContactUs() {
                   🎧
                 </div>
                 <div className="text-left">
-                  <h4 className="text-white text-sm font-bold">Dedicated Support</h4>
+                  <h3 className="text-white text-sm font-bold">Dedicated Support</h3>
                   <p className="text-white/50 text-xs">Ready to assist your production goals</p>
                 </div>
               </div>

@@ -59,12 +59,12 @@ function TechCard({ item }: { item: typeof techStackData[0] }) {
       </span>
       <div className="relative z-10 flex flex-col items-center justify-center gap-2">
         <div className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
-          <img src={item.icon} alt={item.title} className="w-full h-full object-contain filter brightness-90 group-hover:brightness-100 transition-all" />
+          <img src={item.icon} alt={item.title} loading="lazy" className="w-full h-full object-contain filter brightness-90 group-hover:brightness-100 transition-all" />
         </div>
         <div>
-          <h4 className={`text-xs sm:text-sm font-extrabold tracking-wide uppercase truncate transition-colors ${isHovered ? 'text-black' : 'text-white'}`}>
+          <h3 className={`text-xs sm:text-sm font-extrabold tracking-wide uppercase truncate transition-colors ${isHovered ? 'text-black' : 'text-white'}`}>
             {item.title}
-          </h4>
+          </h3>
           <p className={`text-[10px] sm:text-[11px] mt-0.5 hidden sm:block transition-colors ${isHovered ? 'text-black/80 font-medium' : 'text-white/50'}`}>
             {item.subtitle}
           </p>
@@ -89,7 +89,7 @@ export default function RealTimeStackSection() {
             Cinematic Real‑Time<span className="text-orange-500"> Technology</span>
           </h2>
           <p className="text-gray-400 text-sm md:text-base mt-3 tracking-wide max-w-xl mx-auto font-medium">
-            Powered by industry-standard tools to deliver high-end 3D environments, real-time configurators, and immersive web experiences.
+            We use trusted tools to build 3D spaces, live configurators, and rich web experiences.
           </p>
         </div>
 
@@ -116,7 +116,7 @@ export default function RealTimeStackSection() {
             className="lg:col-span-5 order-2 lg:order-1 relative rounded-3xl overflow-hidden border border-white/20 h-[300px] sm:h-[450px] lg:h-[600px] bg-[#0c0e15]"
             style={{ boxShadow: '0 15px 50px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.2)' }}
           >
-            <img src="Interior_01.jpg" alt="Real Time Technology" className="w-full h-full object-cover filter brightness-95 hover:scale-105 transition-transform duration-700" />
+            <img src="Interior_01.jpg" alt="Real Time Technology" loading="lazy" className="w-full h-full object-cover filter brightness-95 hover:scale-105 transition-transform duration-700" />
           </div>
         </div>
       </div>

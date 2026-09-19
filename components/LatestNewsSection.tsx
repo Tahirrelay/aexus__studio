@@ -159,7 +159,7 @@ export default function LatestWorkGrid() {
             LATEST <span className="text-orange-500">BLOGS</span>
           </h2>
           <p className="text-gray-400 text-sm md:text-base mt-3 tracking-wide max-w-xl mx-auto font-medium">
-            Explore our specialized articles and insights into immersive experiences and high-end tech stacks.
+            Read short articles about 3D work, web tools, and immersive design.
           </p>
         </div>
 

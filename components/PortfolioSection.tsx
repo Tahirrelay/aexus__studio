@@ -75,8 +75,12 @@ export default function PortfolioSection() {
                     <video 
                       src={project.mediaUrl}
                       title={project.alt}
+                      aria-describedby={`portfolio-video-description-${project.id}`}
                       autoPlay loop muted playsInline
                     />
+                    <p id={`portfolio-video-description-${project.id}`} className="sr-only">
+                      Muted product demo: {project.title.toLowerCase()}.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -146,17 +150,14 @@ const StyledWrapper = styled.div`
     border-radius: 20px;
     cursor: pointer;
     overflow: hidden;
-    /* Smooth flex transition for expanding/collapsing */
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
   }
 
-  /* Jab panel collapsed ho */
   .accordion-panel.collapsed {
     flex: 0 0 70px;
   }
 
-  /* Jab panel active ho toh poora bacha hua space le lega */
   .accordion-panel.active {
     flex: 1;
   }
@@ -221,22 +222,28 @@ const StyledWrapper = styled.div`
   }
 
   @media (max-width: 768px) {
+    .portfolio-title {
+      font-size: 1.8rem;
+    }
     .accordion-container {
-      height: auto;
+      height: 520px;
       flex-direction: column;
       padding: 8px;
+      gap: 8px;
     }
     .accordion-panel.collapsed {
-      flex: 0 0 60px;
+      flex: 0 0 50px;
       width: 100%;
     }
     .accordion-panel.active {
-      height: 420px;
+      flex: 1;
       width: 100%;
+      height: auto;
     }
     .vertical-title {
       writing-mode: horizontal-tb;
       transform: none;
+      font-size: 12px;
     }
   }
 `;

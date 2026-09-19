@@ -363,7 +363,7 @@ export default function LatestWorkGrid() {
                         alt={project.title} 
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority={index < 3}
+                        loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-85 group-hover:opacity-95"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent transition-all duration-480 pointer-events-none" />
@@ -448,6 +448,7 @@ export default function LatestWorkGrid() {
                 alt={filteredProjects[currentIndex].title} 
                 fill
                 sizes="90vw"
+                loading="lazy"
                 className="object-contain rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] border border-white/20 pointer-events-none" 
               />
 
@@ -492,11 +493,16 @@ export default function LatestWorkGrid() {
 
             <iframe
               src={getEmbedUrl(selectedVideo)}
-              title="YouTube video player"
+              title="Aexus Studios project video"
+              aria-describedby="project-video-description"
+              loading="lazy"
               className="w-full h-full border-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
+            <p id="project-video-description" className="sr-only">
+              Embedded Aexus Studios project video. Captions are available through the YouTube player when provided.
+            </p>
           </div>
         </div>
       )}
