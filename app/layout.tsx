@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   // --- Canonical URL Added ---
   alternates: {
     canonical: "https://aexusstudios.com",
+    languages: {
+      en: "https://aexusstudios.com",
+    },
   },
   verification: {
     google: "aMGpYJ-0fNIIDEKIzR0oyACaUjhkCx59yFoFXn1Ce60",
