@@ -174,9 +174,10 @@ export default function Footer() {
           <p>© 2026 Aexus Studio. All rights reserved.</p>
 
           {/* Right Side: Privacy Policy & Actions */}
-          <div className="flex items-center gap-6">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
             
             <button 
               onClick={scrollToTop}

@@ -1,197 +1,190 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
 
-const solutions = [
-  {
-    id: '01',
-    title: 'Interactive Configurators',
-    alt: 'Custom Interactive 3D Product Configurator Development Services',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-    link: '#'
-  },
-  {
-    id: '02',
-    title: 'Photoreal 3D Rendering',
-    alt: 'Photorealistic 3D Rendering and Visualization Services',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-    link: '#'
-  },
-  {
-    id: '03',
-    title: 'Immersive VR Experiences',
-    alt: 'Immersive Virtual Reality and 3D Experience Creation',
-    image: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=1200&q=80',
-    link: '#'
-  },
-  {
-    id: '04',
-    title: 'Dynamic Motion Graphics',
-    alt: 'Dynamic 3D Motion Graphics and Animation Studio',
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80',
-    link: '#'
-  },
-  {
-    id: '05',
-    title: 'Engaging 2D Animation',
-    alt: 'Engaging 2D Commercial Animation Services',
-    image: 'https://images.unsplash.com/photo-1626544827763-d516dce335e2?auto=format&fit=crop&w=1200&q=80',
-    link: '#'
-  },
-  {
-    id: '06',
-    title: 'Sales-Driven Commercials',
-    alt: 'Sales-Driven 3D Commercial Production and Digital Marketing Media',
-    image: 'https://images.unsplash.com/photo-1579389083078-4e7018379f7e?auto=format&fit=crop&w=1200&q=80',
-    link: '#'
-  },
-  {
-    id: '07',
-    title: 'Architectural Digital Twin',
-    alt: 'Architectural Digital Twin and Real Estate Virtual Solutions',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
-    link: '#'
-  },
-  {
-    id: '08',
-    title: 'Next-Gen E-Commerce',
-    alt: 'Next-Gen E-Commerce 3D Web Development Solutions',
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80',
-    link: '#'
-  }
+import { motion, type Transition } from 'framer-motion';
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react';
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+
+export type StoryMedia = {
+  type: 'color' | 'image' | 'video';
+  src?: string;
+  color?: string;
+  poster?: string;
+};
+
+export type Story = {
+  id?: string;
+  label?: string;
+  title: string;
+  description?: string;
+  image?: string;
+  video?: string;
+  media?: StoryMedia;
+  poster?: string;
+  link?: string;
+  alt?: string;
+};
+
+export type SolutionsSectionProps = {
+  stories?: Story[];
+  heading?: string;
+  accentHeading?: string;
+  autoplay?: boolean;
+  autoplaySpeed?: number;
+  autoplayDirection?: 'next' | 'previous';
+  transitionSpeed?: number;
+  dragSensitivity?: number;
+  cardRadius?: number;
+  cardGap?: number;
+  cardPadding?: number;
+  containerHeight?: number;
+  expandedFlex?: number;
+  collapsedFlex?: number;
+  mobileBreakpoint?: number;
+  showCaption?: boolean;
+  captionOpen?: boolean;
+  captionOverlay?: number;
+  titleFontFamily?: string;
+  titleFontSize?: number;
+  titleLineHeight?: number;
+  titleColor?: string;
+  descriptionFontFamily?: string;
+  descriptionFontSize?: number;
+  descriptionLineHeight?: number;
+  descriptionColor?: string;
+  overlayOpacity?: number;
+  showIndicators?: boolean;
+  activeIndicatorColor?: string;
+  inactiveIndicatorColor?: string;
+  activeIndicatorWidth?: number;
+  inactiveIndicatorWidth?: number;
+  staticRenderer?: boolean;
+  backgroundColor?: string;
+  accentColor?: string;
+  cardColor?: string;
+  cardBorderColor?: string;
+};
+
+const defaultStories: Story[] = [
+  { id: '01', label: 'Plot size / site survey', title: 'The land before the lines', description: 'A technical site survey showing the villa plot, dimensions, north direction and the landscape around it.', image: '/Hero/phase1.png', link: '#', alt: 'Technical plot size site survey plan' },
+  { id: '02', label: 'Plot plane / floor plan', title: 'A plan for living', description: 'A detailed ground-floor plan mapping the entrance, living spaces, bedrooms, kitchen and the flow between them.', image: '/Hero/FLOOR.png', link: '#', alt: 'Villa ground floor architectural plan' },
+  { id: '03', label: 'Plot exterior', title: 'Architecture in daylight', description: 'Dark cladding, white render, clean lines, landscaping, pool and patio brought together in one exterior view.', image: '/Hero/Exterior_Rendering.jpg', link: '#', alt: 'Luxury villa exterior with pool and patio' },
+  { id: '04', label: 'Plot interior', title: 'Light finds its way in', description: 'An open-plan living area with modern furniture, natural light and floor-to-ceiling windows.', image: '/Hero/interior_Rendering.jpg', link: '#', alt: 'Modern luxury villa interior' },
+  { id: '05', label: 'Plot 3D / axonometric', title: 'The whole story, at once', description: 'A dollhouse-like 3D view revealing the ground-floor layout, furniture, bedrooms and pool deck.', image: '/architecture/arc-9.jpg', link: '#', alt: 'Axonometric villa visualization' },
+  // { id: '06', label: 'Single shot', title: 'A detail worth remembering', description: 'A dramatic close-up of a cantilevered master balcony at sunset, with glass, texture and deep shadow.', image: '/architecture/Governer House/gov5.jpg', video: '/videos/Car_Configurator.mp4', link: '#', alt: 'Dramatic architectural balcony detail' },
 ];
 
-export default function SolutionsSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+export default function SolutionsSection({
+  stories = defaultStories,
+  heading = 'Transforming 3D Tech',
+  accentHeading = 'Into Results',
+  autoplay = true,
+  autoplaySpeed = 5200,
+  autoplayDirection = 'next',
+  transitionSpeed = 0.65,
+  dragSensitivity = 1,
+  cardRadius = 24,
+  cardGap = 12,
+  cardPadding = 8,
+  containerHeight = 540,
+  expandedFlex = 4,
+  collapsedFlex = 1,
+  mobileBreakpoint = 720,
+  showCaption = true,
+  captionOpen = true,
+  captionOverlay = 0.82,
+  titleFontFamily = 'ui-sans-serif, system-ui, sans-serif',
+  titleFontSize = 30,
+  titleLineHeight = 0.98,
+  titleColor = '#ffffff',
+  descriptionFontFamily = 'ui-sans-serif, system-ui, sans-serif',
+  descriptionFontSize = 14,
+  descriptionLineHeight = 1.45,
+  descriptionColor = 'rgba(255,255,255,0.68)',
+  overlayOpacity = 0.9,
+  showIndicators = true,
+  activeIndicatorColor = '#ff8800',
+  inactiveIndicatorColor = 'rgba(255,255,255,0.25)',
+  activeIndicatorWidth = 34,
+  inactiveIndicatorWidth = 10,
+  staticRenderer = false,
+  backgroundColor = '#05060a',
+  accentColor = '#ff8800',
+  cardColor = '#0c1017',
+  cardBorderColor = 'rgba(255,255,255,0.16)',
+}: SolutionsSectionProps) {
+  const items = useMemo(() => stories.slice(0, 30), [stories]);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const isPausedRef = useRef(false);
+  const [dragX, setDragX] = useState(0);
+  const [captionExpanded, setCaptionExpanded] = useState(captionOpen);
+  const [isMobile, setIsMobile] = useState(false);
+  const dragStart = useRef(0);
 
   useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
+    const update = () => setIsMobile(window.innerWidth <= mobileBreakpoint);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [mobileBreakpoint]);
 
-    let animationFrameId: number;
-    const speed = 1;
+  useEffect(() => {
+    if (!autoplay || staticRenderer || isDragging || items.length < 2) return;
+    const timer = window.setInterval(() => setActiveIndex((index) => (index + (autoplayDirection === 'next' ? 1 : -1) + items.length) % items.length), autoplaySpeed);
+    return () => window.clearInterval(timer);
+  }, [autoplay, autoplayDirection, autoplaySpeed, isDragging, items.length, staticRenderer]);
 
-    const step = () => {
-      if (!isDragging && !isPausedRef.current) {
-        container.scrollLeft += speed;
-        if (container.scrollLeft >= container.scrollWidth / 2) {
-          container.scrollLeft = 0;
-        }
-      }
-      animationFrameId = requestAnimationFrame(step);
-    };
-
-    animationFrameId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isDragging]);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setStartX(e.pageX - (scrollContainerRef.current?.offsetLeft || 0));
-    setScrollLeft(scrollContainerRef.current?.scrollLeft || 0);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const move = (direction: number) => setActiveIndex((index) => (index + direction + items.length) % items.length);
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => { setIsDragging(true); dragStart.current = event.clientX; event.currentTarget.setPointerCapture(event.pointerId); };
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => { if (isDragging) setDragX((event.clientX - dragStart.current) * dragSensitivity); };
+  const handlePointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - (scrollContainerRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2;
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-    }
+    if (Math.abs(dragX) > 45) move(dragX < 0 ? 1 : -1);
+    setDragX(0);
+    setIsDragging(false);
+    event.currentTarget.releasePointerCapture(event.pointerId);
   };
+  const transition: Transition = { type: 'spring', stiffness: 240, damping: 28, mass: Math.max(0.35, transitionSpeed) };
+  const rootStyle = { '--story-gap': `${cardGap}px`, '--card-padding': `${cardPadding}px`, '--title-font': titleFontFamily, '--description-font': descriptionFontFamily } as CSSProperties;
+
+  if (!items.length) return null;
 
   return (
-    <section className="relative w-full bg-[#000000] py-16 text-white overflow-hidden select-none">
-      
-      {/* Top Parallel Border Line */}
-      <div className="w-full h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-white/40 max-w-[1600px] mx-auto mb-12 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
-
-      {/* Main Wrapper taking full width edge-to-edge for slider */}
-      <div className="w-full">
-        
-        {/* Header container with padding */}
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white text-left uppercase">
-            Turning 3D Technology & Web Development <span className="text-orange-500">Into Results</span>
-          </h2>
-
-          {/* <Link 
-            href="#"
-            className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-90 text-white font-bold text-xs md:text-sm tracking-wider transition-all duration-300 shadow-lg"
-          >
-            Start Your Project
-          </Link> */}
+    <section className="relative overflow-hidden py-20 text-white" style={{ ...rootStyle, backgroundColor }}>
+      <div className="mx-auto w-full max-w-[1500px] px-6 sm:px-10 lg:px-14">
+        <div className="mb-10 flex flex-col gap-5">
+          <div className="min-w-0">
+            <h2 className="max-w-full whitespace-normal break-words text-[clamp(1.7rem,3vw,3.6rem)] font-black uppercase leading-[0.9] tracking-[-0.055em] sm:whitespace-nowrap" style={{ color: titleColor }}>{heading} <span style={{ color: accentColor }}>{accentHeading}</span></h2>
+          </div>
+          <div className="hidden self-end gap-2 sm:flex">
+            <button type="button" aria-label="Previous story" onClick={() => move(-1)} className="grid h-11 w-11 place-items-center rounded-full border transition hover:bg-white hover:text-black" style={{ borderColor: cardBorderColor }}><ChevronLeft size={18} /></button>
+            <button type="button" aria-label="Next story" onClick={() => move(1)} className="grid h-11 w-11 place-items-center rounded-full border transition hover:bg-white hover:text-black" style={{ borderColor: cardBorderColor }}><ChevronRight size={18} /></button>
+          </div>
         </div>
 
-        {/* Auto-Scrolling & Draggable Container */}
-        <div 
-          ref={scrollContainerRef}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => { isPausedRef.current = true; }}
-          onMouseLeave={() => { setIsDragging(false); isPausedRef.current = false; }}
-          onTouchStart={() => { isPausedRef.current = true; }}
-          onTouchEnd={() => { isPausedRef.current = false; }}
-          className="relative w-full overflow-x-auto flex py-4 px-4 sm:px-8 gap-4 sm:gap-6 scrollbar-none cursor-grab active:cursor-grabbing select-none"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {[...solutions, ...solutions].map((item, index) => {
-            const isDimmed = hoveredIndex !== null && hoveredIndex !== index;
-            
-            return (
-              <div 
-                key={`${item.id}-${index}`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                style={{ perspective: '1000px' }}
-                className={`w-[240px] sm:w-[300px] md:w-[380px] flex-shrink-0 flex flex-col bg-[#070e17] border rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden p-2.5 sm:p-3 transition-all duration-500 shadow-xl ${
-                  isDimmed 
-                    ? 'opacity-30 blur-[1px] scale-[0.98] border-white/10' 
-                    : hoveredIndex === index 
-                    ? 'opacity-100 scale-[1.02] border-orange-500 shadow-[0_0_25px_rgba(249,115,22,0.6)]' 
-                    : 'opacity-100 border-white/10'
-                }`}
-              >
-                {/* Image Box */}
-                <div className="relative w-full h-44 sm:h-60 md:h-72 rounded-[1.2rem] sm:rounded-[1.5rem] overflow-hidden bg-black/40 pointer-events-none">
-                  <img 
-                    src={item.image} 
-                    alt={item.alt} 
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 pointer-events-none"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                </div>
-
-                {/* Title Below Image */}
-                <div className="py-3 sm:py-4 px-2 sm:px-3 flex items-center justify-between">
-                  <h3 className="text-xs sm:text-base md:text-xl font-bold text-white tracking-wide whitespace-normal">
-                    {item.title}
-                  </h3>
-                  <span className="text-[10px] sm:text-xs font-mono text-white/40">{item.id}</span>
-                </div>
+        {isMobile && <div className="mb-3 flex flex-col gap-2">
+          {items.map((story, index) => <button key={story.id ?? story.title} type="button" onClick={() => { setActiveIndex(index); setCaptionExpanded(true); }} className="w-full rounded-full px-5 py-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.16em] transition-colors" style={{ backgroundColor: index === activeIndex ? accentColor : '#d9d9df', color: index === activeIndex ? '#05060a' : '#05060a' }}>{story.label || story.title}</button>)}
+        </div>}
+        <div onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerUp} onPointerCancel={handlePointerUp} className={`relative w-full touch-pan-y select-none overflow-hidden px-0 sm:px-8 ${isMobile ? '' : 'flex'}`} style={{ height: isMobile ? 'clamp(360px, 68vh, 520px)' : `clamp(420px, ${containerHeight}px, 82vh)`, gap: isMobile ? Math.min(cardGap, 8) : cardGap, cursor: isDragging ? 'grabbing' : 'grab' }}>
+          {items.map((story, index) => {
+            const isActive = index === activeIndex;
+            const media = story.media ?? (story.video ? { type: 'video' as const, src: story.video, poster: story.poster } : story.image ? { type: 'image' as const, src: story.image } : { type: 'color' as const, color: cardColor });
+            const cardStyle = { flex: isMobile ? 'none' : `${isActive ? expandedFlex : collapsedFlex} 1 0%`, width: isMobile ? '100%' : undefined, height: isMobile ? '100%' : undefined, minWidth: isMobile ? '100%' : 0, position: isMobile ? 'absolute' as const : 'relative' as const, inset: isMobile ? '0 auto auto 0' : undefined, borderRadius: cardRadius, backgroundColor: media.type === 'color' ? (media.color ?? cardColor) : cardColor, borderColor: isActive ? accentColor : cardBorderColor };
+            return <motion.article key={`${story.id ?? story.title}-${index}`} animate={{ flex: isMobile ? 'none' : `${isActive ? expandedFlex : collapsedFlex} 1 0%`, x: isMobile ? `calc(${(index - activeIndex) * 100}% + ${dragX}px)` : dragX, opacity: isMobile && !isActive ? 0 : 1 }} transition={transition} style={cardStyle} className="group relative overflow-hidden border shadow-2xl" onMouseEnter={() => { setActiveIndex(index); setCaptionExpanded(true); }} onClick={() => { if (!isActive) { setActiveIndex(index); setCaptionExpanded(true); } }}>
+              <div className="absolute inset-0">
+                {media.type === 'video' && media.src && <video src={media.src} poster={media.poster} muted playsInline loop autoPlay={isActive && !staticRenderer} preload={staticRenderer ? 'none' : isActive ? 'auto' : 'metadata'} className="h-full w-full object-cover" />}
+                {media.type === 'image' && media.src && <img src={media.src} alt={story.alt || story.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />}
+                <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, rgba(0,0,0,${overlayOpacity * 0.18}) 25%, rgba(0,0,0,${captionExpanded ? captionOverlay : 0.35}) 100%)` }} />
               </div>
-            );
+              {showCaption && isActive && <div className={`absolute inset-x-0 bottom-0 z-10 p-5 sm:p-7 transition-transform duration-500 ${captionExpanded ? 'translate-y-0' : 'translate-y-[calc(100%-88px)]'}`}><div className="flex items-start justify-between gap-5"><div><p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em]" style={{ color: accentColor }}>{story.label}</p><h3 style={{ fontFamily: titleFontFamily, fontSize: titleFontSize, lineHeight: titleLineHeight, color: titleColor }} className="max-w-[560px] font-bold tracking-[-0.04em]">{story.title}</h3></div><button type="button" aria-label={captionExpanded ? `Close ${story.title} details` : `Open ${story.title} details`} onClick={(event) => { event.stopPropagation(); setCaptionExpanded((expanded) => !expanded); }} className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-colors hover:bg-white hover:text-black" style={{ borderColor: 'rgba(255,255,255,.35)' }}>{captionExpanded ? '−' : '+'}</button></div><div className="overflow-hidden" style={{ fontFamily: descriptionFontFamily, fontSize: descriptionFontSize, lineHeight: descriptionLineHeight, color: descriptionColor }}>{story.description && <p className="mt-4 max-w-[560px]">{story.description}</p>}{story.link && <a href={story.link} onClick={(event) => event.stopPropagation()} className="mt-5 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.18em]" style={{ color: accentColor }}>Explore story <ArrowUpRight size={13} /></a>}</div></div>}
+            </motion.article>;
           })}
         </div>
 
+        <div className="mt-7 flex items-center justify-between gap-5">
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: descriptionColor }}>Hover a card to explore</p>
+          {showIndicators && <div className="flex items-center gap-2" role="tablist" aria-label="Story navigation">{items.map((story, index) => <button key={story.id ?? story.title} type="button" role="tab" aria-selected={index === activeIndex} aria-label={`Show ${story.title}`} onClick={() => setActiveIndex(index)} className="h-2 rounded-full transition-all duration-500" style={{ width: index === activeIndex ? activeIndicatorWidth : inactiveIndicatorWidth, backgroundColor: index === activeIndex ? activeIndicatorColor : inactiveIndicatorColor }} />)}</div>}
+        </div>
       </div>
-
-      {/* Bottom Parallel Border Line */}
-      <div className="w-full h-[3px] bg-gradient-to-r from-white/40 via-orange-500 to-transparent max-w-[1600px] mx-auto mt-12 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
-
     </section>
   );
 }

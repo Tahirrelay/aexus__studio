@@ -132,14 +132,14 @@ export default function ContactUs() {
                     <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Your Name *</label>
                     <div className="relative flex items-center">
                       <span className="absolute left-4 text-white/40 text-sm">👤</span>
-                      <input required name="name" type="text" placeholder="Enter your name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <input id="contact-name" required name="name" type="text" autoComplete="name" placeholder="Enter your name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Email *</label>
                     <div className="relative flex items-center">
                       <span className="absolute left-4 text-white/40 text-sm">✉️</span>
-                      <input required name="email" type="email" placeholder="Email address" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <input id="contact-email" required name="email" type="email" autoComplete="email" placeholder="Email address" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
                     </div>
                   </div>
                 </div>
@@ -149,14 +149,14 @@ export default function ContactUs() {
                     <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Phone Number *</label>
                     <div className="relative flex items-center">
                       <span className="absolute left-4 text-white/40 text-sm">📞</span>
-                      <input required name="phone" type="tel" placeholder="Phone number" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <input id="contact-phone" required name="phone" type="tel" autoComplete="tel" placeholder="Phone number" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Company</label>
                     <div className="relative flex items-center">
                       <span className="absolute left-4 text-white/40 text-sm">🏢</span>
-                      <input name="company" type="text" placeholder="Company name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <input id="contact-company" name="company" type="text" autoComplete="organization" placeholder="Company name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
                     </div>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export default function ContactUs() {
                   <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Project Details *</label>
                   <div className="relative">
                     <span className="absolute left-4 top-3.5 text-white/40 text-sm">✏️</span>
-                    <textarea required name="message" rows={4} maxLength={1000} placeholder="Tell us about your project..." className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors resize-none" />
+                    <textarea id="contact-message" required name="message" rows={4} maxLength={1000} placeholder="Tell us about your project..." className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors resize-none" />
                   </div>
                 </div>
 

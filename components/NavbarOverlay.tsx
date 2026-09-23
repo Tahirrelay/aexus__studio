@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 
 export default function NavbarOverlay() {
@@ -34,10 +35,13 @@ export default function NavbarOverlay() {
       {/* Top Header Bar */}
       <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-12 py-6 bg-transparent pointer-events-auto">
         <Link href="/" onClick={(e) => handleNavigation(e, '/')} className="flex items-center cursor-pointer">
-          <img 
+          <Image
             src="/logo-images/Aexus-Logo.png" 
             alt="Aexus Studios Logo" 
-            className="h-14 md:h-16 w-auto object-contain"
+            width={220}
+            height={64}
+            priority
+            className="h-14 w-auto object-contain md:h-16"
           />
         </Link>
 

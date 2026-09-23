@@ -132,28 +132,28 @@ export default function FloatingAiContact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-[10px] font-bold uppercase tracking-wider text-white/50 mb-1">Your Name *</label>
-                    <input required name="name" type="text" placeholder="Enter Your Name " className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800]" />
+                    <input id="floating-contact-name" required name="name" type="text" autoComplete="name" placeholder="Enter Your Name " className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800]" />
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold uppercase tracking-wider text-white/50 mb-1">Email *</label>
-                    <input required name="email" type="email" placeholder="Enter Your Email " className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800]" />
+                    <input id="floating-contact-email" required name="email" type="email" autoComplete="email" placeholder="Enter Your Email " className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800]" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-[10px] font-bold uppercase tracking-wider text-white/50 mb-1">Phone Number *</label>
-                    <input required name="phone" type="tel" placeholder="+92 300 0000000" className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800]" />
+                    <input id="floating-contact-phone" required name="phone" type="tel" autoComplete="tel" placeholder="+92 300 0000000" className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800]" />
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold uppercase tracking-wider text-white/50 mb-1">Company</label>
-                    <input name="company" type="text" placeholder="Company name" className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800]" />
+                    <input id="floating-contact-company" name="company" type="text" autoComplete="organization" placeholder="Company name" className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800]" />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-[10px] font-bold uppercase tracking-wider text-white/50 mb-1">Project Details *</label>
-                  <textarea required name="message" rows={3} placeholder="Tell us about your project requirements..." className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] resize-none" />
+                  <textarea id="floating-contact-message" required name="message" rows={3} placeholder="Tell us about your project requirements..." className="w-full bg-[#04060b] border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] resize-none" />
                 </div>
 
                 {formResponse && (
