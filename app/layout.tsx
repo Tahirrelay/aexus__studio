@@ -16,15 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aexusstudios.com"),
   title: "Aexus Studios | Digital Experience & 3D Studio",
   description: "We transform concepts into captivating digital experiences, specializing in Web Product Configurators and 3D Visualizations.",
-  // --- Canonical URL Added ---
-  alternates: {
-    canonical: "https://aexusstudios.com",
-    languages: {
-      en: "https://aexusstudios.com",
-    },
-  },
   verification: {
     google: "aMGpYJ-0fNIIDEKIzR0oyACaUjhkCx59yFoFXn1Ce60",
   },

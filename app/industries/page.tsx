@@ -1,4 +1,11 @@
+import type { Metadata } from 'next';
 import IndustriesSection from "@/components/IndustriesSection";
+
+export const metadata: Metadata = {
+  title: 'Industries | Aexus Studios',
+  description: 'Discover the industries Aexus Studios serves with 3D, configurator, and digital experience solutions.',
+  alternates: { canonical: '/industries/' },
+};
 
 export default function IndustriesPage() {
   return (

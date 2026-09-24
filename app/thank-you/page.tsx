@@ -1,8 +1,15 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Thank You | Aexus Studios',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function ThankYouPage() {
   return (

@@ -1,6 +1,13 @@
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import LatestWorkGrid from '@/components/LatestWorkGrid';
 import ContactUs from '@/components/ContactUs'; // <-- ContactUs component import kiya
+
+export const metadata: Metadata = {
+  title: 'Portfolio | Aexus Studios',
+  description: 'View selected 3D visualizations, digital products, and interactive experiences created by Aexus Studios.',
+  alternates: { canonical: '/portfolio/' },
+};
 
 export default function PortfolioPage() {
   return (

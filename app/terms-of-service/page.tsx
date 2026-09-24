@@ -4,6 +4,7 @@ import LegalPage from '@/components/LegalPage';
 export const metadata: Metadata = {
   title: 'Terms of Service | Aexus Studios',
   description: 'Review the terms that apply to using the Aexus Studios website and services.',
+  alternates: { canonical: '/terms-of-service/' },
 };
 
 const contact = (

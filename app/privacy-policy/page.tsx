@@ -4,6 +4,7 @@ import LegalPage from '@/components/LegalPage';
 export const metadata: Metadata = {
   title: 'Privacy Policy | Aexus Studios',
   description: 'Learn how Aexus Studios collects, uses, and protects your information.',
+  alternates: { canonical: '/privacy-policy/' },
 };
 
 const contact = (

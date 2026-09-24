@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import type { Metadata } from 'next';
 import NavbarOverlay from '@/components/NavbarOverlay';
 import Hero from '@/components/Hero';
 import ClientSlider from '@/components/ClientSlider';
@@ -10,6 +11,14 @@ import IndustriesSection from '@/components/IndustriesSection';
 import TechSection from '@/components/TechSection';
 import LatestNewsSection from '@/components/LatestNewsSection';
 import ContactUs from '@/components/ContactUs';
+
+export const metadata: Metadata = {
+  title: 'Aexus Studios | Digital Experience & 3D Studio',
+  description: 'Aexus Studios creates 3D visualizations, product configurators, and digital experiences for ambitious brands.',
+  alternates: {
+    canonical: '/',
+  },
+};
 
 export default function Home() {
   const faqSchema = {
