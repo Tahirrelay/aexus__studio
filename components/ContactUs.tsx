@@ -31,7 +31,7 @@ export default function ContactUs() {
         'fGjOubEIg4wlcp-FG'
       );
 
-      // GTM Conversion Tracking DataLayer Push
+      // --- GTM Conversion Tracking DataLayer Push ---
       const win = window as any;
       win.dataLayer = win.dataLayer || [];
       win.dataLayer.push({
@@ -39,11 +39,16 @@ export default function ContactUs() {
         formName: 'Contact Us',
         selectedInterest: selectedInterest
       });
+      // ---------------------------------------------
 
+      // Redirect to Thank You page
       router.push('/thank-you');
     } catch (error: any) {
       console.error('Email error details:', error?.text || error?.message || error);
-      setFormResponse({ success: false, message: error?.text || 'Something went wrong. Please try again.' });
+      setFormResponse({ 
+        success: false, 
+        message: error?.text || 'Something went wrong. Please try again.' 
+      });
       setLoading(false);
     }
   };
@@ -90,7 +95,7 @@ export default function ContactUs() {
               <div className="mb-6">
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-xl">✉️</span>
-                  <h3 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white">
+                  <h3 className="text-lg sm:text-1xl font-black uppercase tracking-wider text-white">
                     Send us a message
                   </h3>
                 </div>
