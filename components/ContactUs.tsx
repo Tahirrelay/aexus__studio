@@ -58,19 +58,14 @@ export default function ContactUs() {
       <div className="absolute inset-0 pointer-events-none" style={{ background: '#000000' }} />
 
       <div className="relative w-full max-w-7xl mx-auto flex flex-col gap-10 z-10">
-        
-        {/* MAIN CONTAINER BOX WITH GLASS/BORDER EFFECT */}
         <div className="w-full bg-[#0b0d13]/80 border border-white/10 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.8)] relative overflow-hidden backdrop-blur-md">
-          
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
-            
-            {/* LEFT SIDE: Heading & Support Agent Graphic / Text */}
             <div className="w-full lg:w-5/12 flex flex-col justify-center text-center lg:text-left">
               <span className="text-[11px] sm:text-xs font-extrabold tracking-[0.3em] text-[#ff8800] uppercase mb-3 block">
                 CONTACT US
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase leading-[1.1] text-white">
-                Let's Build <br />
+                Let&apos;s Build <br />
                 Something <br />
                 <span className="text-[#ff8800]">Great Together.</span>
               </h2>
@@ -89,9 +84,7 @@ export default function ContactUs() {
               </div>
             </div>
 
-            {/* RIGHT SIDE (FORM) */}
             <div className="w-full lg:w-7/12 flex flex-col bg-[#07090e] border border-white/10 p-6 sm:p-8 rounded-2xl">
-              
               <div className="mb-6">
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-xl">✉️</span>
@@ -105,10 +98,8 @@ export default function ContactUs() {
               </div>
 
               <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col w-full">
-                
                 <input type="hidden" name="interest" value={selectedInterest} />
 
-                {/* Interest Selection Tabs */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
                   {interests.map((label) => {
                     const isSelected = selectedInterest === label;
@@ -117,9 +108,10 @@ export default function ContactUs() {
                         key={label}
                         type="button"
                         onClick={() => setSelectedInterest(label)}
+                        aria-pressed={isSelected}
                         className={`relative flex items-center justify-center px-3 py-3 transition-all cursor-pointer rounded-xl font-sans active:translate-y-0.5 group ${
-                          isSelected 
-                            ? 'bg-[#ff8800] border border-[#ff8800] text-black shadow-[0_4px_0_#b35f00]' 
+                          isSelected
+                            ? 'bg-[#ff8800] border border-[#ff8800] text-black shadow-[0_4px_0_#b35f00]'
                             : 'bg-gradient-to-b from-[#3a3d45] to-[#22242a] border border-white/20 text-white shadow-[0_4px_0_#14161a]'
                         }`}
                       >
@@ -131,43 +123,42 @@ export default function ContactUs() {
                   })}
                 </div>
 
-                {/* Inputs Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Your Name *</label>
+                    <label htmlFor="contact-name" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Your Name *</label>
                     <div className="relative flex items-center">
                       <span className="absolute left-4 text-white/40 text-sm">👤</span>
-                      <input id="contact-name" required name="name" type="text" autoComplete="name" placeholder="Enter your name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <input id="contact-name" required name="name" type="text" autoComplete="name" placeholder="Enter your name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#ff8800] transition-colors" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Email *</label>
+                    <label htmlFor="contact-email" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Email *</label>
                     <div className="relative flex items-center">
                       <span className="absolute left-4 text-white/40 text-sm">✉️</span>
-                      <input id="contact-email" required name="email" type="email" autoComplete="email" placeholder="Email address" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <input id="contact-email" required name="email" type="email" autoComplete="email" placeholder="Email address" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#ff8800] transition-colors" />
                     </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Phone Number *</label>
+                    <label htmlFor="contact-phone" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Phone Number *</label>
                     <div className="relative flex items-center">
                       <span className="absolute left-4 text-white/40 text-sm">📞</span>
-                      <input id="contact-phone" required name="phone" type="tel" autoComplete="tel" placeholder="Phone number" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <input id="contact-phone" required name="phone" type="tel" autoComplete="tel" placeholder="Phone number" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#ff8800] transition-colors" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Company</label>
+                    <label htmlFor="contact-company" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Company</label>
                     <div className="relative flex items-center">
                       <span className="absolute left-4 text-white/40 text-sm">🏢</span>
-                      <input id="contact-company" name="company" type="text" autoComplete="organization" placeholder="Company name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <input id="contact-company" name="company" type="text" autoComplete="organization" placeholder="Company name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#ff8800] transition-colors" />
                     </div>
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Project Details *</label>
+                  <label htmlFor="contact-message" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Project Details *</label>
                   <div className="relative">
                     <span className="absolute left-4 top-3.5 text-white/40 text-sm">✏️</span>
                     <textarea id="contact-message" required name="message" rows={4} maxLength={1000} placeholder="Tell us about your project..." className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors resize-none" />
@@ -180,22 +171,18 @@ export default function ContactUs() {
                   </div>
                 )}
 
-                {/* Submit Button */}
-                <button 
+                <button
                   disabled={loading}
-                  type="submit" 
+                  type="submit"
                   className="w-full py-3.5 rounded-xl bg-[#ff8800] text-black font-black uppercase tracking-widest text-xs sm:text-sm transition-all shadow-[0_6px_0_#b35f00,0_10px_25px_rgba(0,0,0,0.6)] active:translate-y-1 active:shadow-[0_2px_0_#b35f00] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 hover:bg-[#ffa733]"
                 >
                   <span>{loading ? 'SENDING...' : 'Send Message'}</span>
                   <span>→</span>
                 </button>
-
               </form>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

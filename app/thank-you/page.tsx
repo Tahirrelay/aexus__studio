@@ -32,6 +32,7 @@ export default function ThankYouPage() {
             width={220} 
             height={60} 
             className="h-10 sm:h-12 w-auto object-contain"
+            style={{ width: 'auto' }}
             priority
           />
         </div>

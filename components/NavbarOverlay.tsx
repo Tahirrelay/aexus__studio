@@ -3,9 +3,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
+import { ChevronDown } from 'lucide-react';
 
 export default function NavbarOverlay() {
   const [isOpen, setIsOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -42,6 +44,7 @@ export default function NavbarOverlay() {
             height={64}
             priority
             className="h-14 w-auto object-contain md:h-16"
+            style={{ width: 'auto' }}
           />
         </Link>
 
@@ -72,6 +75,27 @@ export default function NavbarOverlay() {
         <nav className="flex flex-col gap-3 md:gap-4 text-2xl md:text-4xl font-extrabold tracking-tight text-right text-white">
           <Link href="/#home" onClick={(e) => handleNavigation(e, '/#home')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Home</Link>
           <Link href="/about-us" onClick={(e) => handleNavigation(e, '/about-us')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">About Us</Link>
+          <div className="flex flex-col items-end">
+            <button
+              type="button"
+              onClick={() => setServicesOpen((open) => !open)}
+              aria-expanded={servicesOpen}
+              aria-controls="services-submenu"
+              className="flex items-center gap-2 hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer"
+            >
+              <span>Services</span>
+              <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+            </button>
+            <div
+              id="services-submenu"
+              className={`mr-1 flex flex-col items-end gap-2 overflow-hidden border-r border-[var(--color-aexus-orange)]/50 pr-4 text-sm font-semibold leading-6 transition-all duration-300 md:text-base ${servicesOpen ? 'mt-2 max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
+              aria-hidden={!servicesOpen}
+            >
+              <Link href="/services/Realtime-3DWalkthrough" onClick={(e) => handleNavigation(e, '/services/Realtime-3DWalkthrough')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Realtime-3DWalkthrough</Link>
+              <span aria-disabled="true" className="cursor-not-allowed text-white/40">360-Virtualtour</span>
+              <span aria-disabled="true" className="cursor-not-allowed text-white/40">3D-Animation</span>
+            </div>
+          </div>
           <Link href="/portfolio" onClick={(e) => handleNavigation(e, '/portfolio')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Portfolio</Link>
           <Link href="/case-studies" onClick={(e) => handleNavigation(e, '/case-studies')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Case Studies</Link>
           <Link href="/contact-us" onClick={(e) => handleNavigation(e, '/contact-us')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Contact</Link>

@@ -1,24 +1,25 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const slides = [
   {
     id: '01',
     title: 'EXTERIOR_RENDERING',
     alt: '3D Exterior Architectural Rendering and Visualization Services',
-    image: "/Hero/Exterior_Rendering.jpg"
+    image: "/Hero/Exterior_Rendering.webp"
   },
   {
     id: '02',
     title: 'INTERIOR_RENDERING',
     alt: 'Photorealistic Interior Architectural Rendering and Design',
-    image: "/Hero/interior_Rendering.jpg"
+    image: "/Hero/interior_Rendering.webp"
   },
   {
     id: '03',
     title: 'FLOORPLAN_RENDERING',
     alt: 'Interactive 3D Floorplan Rendering Solutions',
-    image: "/Hero/FLOOR.png"
+    image: "/Hero/FLOOR.webp"
   }
 ];
 
@@ -80,10 +81,13 @@ export default function Hero() {
             }`}
           >
             <div className="absolute inset-0 bg-black/40 z-10" />
-            <img
+            <Image
               src={s.image}
               alt={s.alt}
-              loading={index === 0 ? 'eager' : 'lazy'}
+              fill
+              sizes="100vw"
+              preload={index === 0}
+              loading={index === 0 ? undefined : 'lazy'}
               className="w-full h-full object-cover object-center bg-[#000000]"
             />
           </div>
@@ -94,23 +98,35 @@ export default function Hero() {
       <div 
         className="absolute bottom-3 left-6 md:left-12 md:top-1/2 md:-translate-y-[40%] md:bottom-auto z-25 flex md:flex-col items-center gap-3 md:gap-4 cursor-pointer"
       >
-        <span className="text-xs md:text-sm font-bold tracking-widest text-[var(--color-aexus-orange)]">
+        <span className="text-xs md:text-sm font-bold tracking-widest text-[#ff8800]">
           {slide.id}
         </span>
         <div className="hidden md:block w-[1px] h-16 bg-white/30 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[var(--color-aexus-orange)] animate-pulse" />
+          <div className="absolute inset-0 bg-[#ff8800] animate-pulse" />
         </div>
         <div className="block md:hidden w-8 h-[1px] bg-white/30 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[var(--color-aexus-orange)] animate-pulse" />
+          <div className="absolute inset-0 bg-[#ff8800] animate-pulse" />
         </div>
         <span className="text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase text-white/80 md:[writing-mode:vertical-lr] md:rotate-180 font-medium whitespace-nowrap">
           {slide.title}
         </span>
       </div>
 
+      {/* NEW: Get a Quote Button (Clicking goes directly to contact section) */}
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-30">
+        <a
+          href="#contact"
+          onClick={(e) => e.stopPropagation()} // Prevents slide change on button click
+          className="px-6 sm:px-8 py-3.5 rounded-xl bg-[#ff8800] text-black font-black text-xs uppercase tracking-wider hover:bg-[#ffa733] transition-all shadow-[0_4px_0_#b35f00] active:translate-y-0.5 flex items-center gap-2"
+        >
+          <span>Get a Quote</span>
+          <span>→</span>
+        </a>
+      </div>
+
       {/* Bottom-Right WhatsApp Floating Button */}
       <a
-        href="https://wa.me/03390095259"
+        href="https://wa.me/923390095259"
         target="_blank"
         rel="noopener noreferrer"
         onClick={(e) => e.stopPropagation()} 
