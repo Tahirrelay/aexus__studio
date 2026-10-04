@@ -2,24 +2,22 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { useRouter } from 'next/navigation';
+import { Building2, Mail, MessageSquare, Phone, UserRound } from 'lucide-react';
 
 export default function ContactUs() {
-  const [selectedInterest, setSelectedInterest] = useState('PROJECT DISCUSSION');
+  const [selectedService, setSelectedService] = useState('Realtime 3D Walkthrough');
+  const [selectedProjectType, setSelectedProjectType] = useState('Residential');
   const [loading, setLoading] = useState(false);
   const [formResponse, setFormResponse] = useState<{ success?: boolean; message?: string } | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const router = useRouter();
 
-  const interests = [
-    'PROJECT DISCUSSION',
-    'GET A QUOTE',
-    'OTHER'
-  ];
+  const services = ['Realtime 3D Walkthrough', '3D Animation', '360 Virtual'];
+  const projectTypes = ['Residential', 'Commercial', 'Architecture & Interior', 'Real Estate Development'];
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!formRef.current) return;
-
     setLoading(true);
     setFormResponse(null);
 
@@ -37,7 +35,7 @@ export default function ContactUs() {
       win.dataLayer.push({
         event: 'contact_form_success',
         formName: 'Contact Us',
-        selectedInterest: selectedInterest
+        selectedInterest: selectedService
       });
       // ---------------------------------------------
 
@@ -84,11 +82,11 @@ export default function ContactUs() {
               </div>
             </div>
 
-            <div className="w-full lg:w-7/12 flex flex-col bg-[#07090e] border border-white/10 p-6 sm:p-8 rounded-2xl">
+            <div className="w-full lg:w-7/12 flex flex-col bg-[#07090e] border border-white/10 p-5 sm:p-8 rounded-2xl">
               <div className="mb-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-xl">✉️</span>
-                  <h3 className="text-lg sm:text-1xl font-black uppercase tracking-wider text-white">
+                  <Mail className="h-5 w-5 text-orange-400" aria-hidden="true" />
+                  <h3 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white">
                     Send us a message
                   </h3>
                 </div>
@@ -97,71 +95,93 @@ export default function ContactUs() {
                 </p>
               </div>
 
-              <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col w-full">
-                <input type="hidden" name="interest" value={selectedInterest} />
+              <form ref={formRef} onSubmit={handleSubmit} className="flex w-full flex-col">
+                <input type="hidden" name="interest" value={selectedService} />
+                <input type="hidden" name="project_types" value={selectedProjectType} />
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-                  {interests.map((label) => {
-                    const isSelected = selectedInterest === label;
-                    return (
-                      <button
-                        key={label}
-                        type="button"
-                        onClick={() => setSelectedInterest(label)}
-                        aria-pressed={isSelected}
-                        className={`relative flex items-center justify-center px-3 py-3 transition-all cursor-pointer rounded-xl font-sans active:translate-y-0.5 group ${
-                          isSelected
-                            ? 'bg-[#ff8800] border border-[#ff8800] text-black shadow-[0_4px_0_#b35f00]'
-                            : 'bg-gradient-to-b from-[#3a3d45] to-[#22242a] border border-white/20 text-white shadow-[0_4px_0_#14161a]'
-                        }`}
-                      >
-                        <span className={`text-[10px] font-extrabold uppercase tracking-wider text-center ${isSelected ? 'text-black' : 'text-white/90'}`}>
-                          {label}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+                <fieldset className="mb-5">
+                  <legend className="mb-2 text-[10px] font-bold uppercase tracking-wider text-white/55 sm:text-[11px]">What service do you need? *</legend>
+                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                    {services.map((service) => {
+                      const isSelected = selectedService === service;
+                      return (
+                        <label key={service} className={`flex min-h-11 cursor-pointer items-center gap-2.5 rounded-xl border px-3 py-2.5 text-xs transition-colors ${isSelected ? 'border-orange-400 bg-orange-500/15 text-white' : 'border-white/20 bg-black/20 text-white/70 hover:border-orange-400/70'}`}>
+                          <input
+                            type="radio"
+                            name="service_selection"
+                            value={service}
+                            checked={isSelected}
+                            onChange={() => setSelectedService(service)}
+                            className="h-4 w-4 shrink-0 accent-[#ff8800]"
+                          />
+                          <span className="font-semibold">{service}</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </fieldset>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="contact-name" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Your Name *</label>
+                    <label htmlFor="contact-name" className="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-white/55 sm:text-[11px]">Your Name *</label>
                     <div className="relative flex items-center">
-                      <span className="absolute left-4 text-white/40 text-sm">👤</span>
-                      <input id="contact-name" required name="name" type="text" autoComplete="name" placeholder="Enter your name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <UserRound className="absolute left-3.5 h-4 w-4 text-white/40" aria-hidden="true" />
+                      <input id="contact-name" required name="name" type="text" autoComplete="name" placeholder="Enter your name" className="w-full rounded-xl border border-white/15 bg-[#04060b] py-3 pl-10 pr-4 text-sm text-white placeholder-white/40 transition-colors hover:border-orange-400/60 focus:border-orange-400 focus:outline-none" />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="contact-email" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Email *</label>
+                    <label htmlFor="contact-email" className="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-white/55 sm:text-[11px]">Email *</label>
                     <div className="relative flex items-center">
-                      <span className="absolute left-4 text-white/40 text-sm">✉️</span>
-                      <input id="contact-email" required name="email" type="email" autoComplete="email" placeholder="Email address" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#ff8800] transition-colors" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label htmlFor="contact-phone" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Phone Number *</label>
-                    <div className="relative flex items-center">
-                      <span className="absolute left-4 text-white/40 text-sm">📞</span>
-                      <input id="contact-phone" required name="phone" type="tel" autoComplete="tel" placeholder="Phone number" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#ff8800] transition-colors" />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="contact-company" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Company</label>
-                    <div className="relative flex items-center">
-                      <span className="absolute left-4 text-white/40 text-sm">🏢</span>
-                      <input id="contact-company" name="company" type="text" autoComplete="organization" placeholder="Company name" className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#ff8800] transition-colors" />
+                      <Mail className="absolute left-3.5 h-4 w-4 text-white/40" aria-hidden="true" />
+                      <input id="contact-email" required name="email" type="email" autoComplete="email" placeholder="Email address" className="w-full rounded-xl border border-white/15 bg-[#04060b] py-3 pl-10 pr-4 text-sm text-white placeholder-white/40 transition-colors hover:border-orange-400/60 focus:border-orange-400 focus:outline-none" />
                     </div>
                   </div>
                 </div>
+
+                <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="contact-phone" className="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-white/55 sm:text-[11px]">Phone Number *</label>
+                    <div className="relative flex items-center">
+                      <Phone className="absolute left-3.5 h-4 w-4 text-white/40" aria-hidden="true" />
+                      <input id="contact-phone" required name="phone" type="tel" autoComplete="tel" placeholder="Phone number" className="w-full rounded-xl border border-white/15 bg-[#04060b] py-3 pl-10 pr-4 text-sm text-white placeholder-white/40 transition-colors hover:border-orange-400/60 focus:border-orange-400 focus:outline-none" />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="contact-project-name" className="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-white/55 sm:text-[11px]">Project Name *</label>
+                    <div className="relative flex items-center">
+                      <Building2 className="absolute left-3.5 h-4 w-4 text-white/40" aria-hidden="true" />
+                      <input id="contact-project-name" required name="company" type="text" placeholder="Project name" className="w-full rounded-xl border border-white/15 bg-[#04060b] py-3 pl-10 pr-4 text-sm text-white placeholder-white/40 transition-colors hover:border-orange-400/60 focus:border-orange-400 focus:outline-none" />
+                    </div>
+                  </div>
+                </div>
+
+                <fieldset className="mb-4">
+                  <legend className="mb-2 text-[10px] font-bold uppercase tracking-wider text-white/55 sm:text-[11px]">What do you want to build in {selectedService}? *</legend>
+                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    {projectTypes.map((type) => {
+                      const isSelected = selectedProjectType === type;
+                      return (
+                        <label key={type} className={`flex min-h-10 cursor-pointer items-center gap-2.5 rounded-lg border px-3 py-2 text-xs transition-colors ${isSelected ? 'border-orange-400 bg-orange-500/15 text-white' : 'border-white/20 bg-black/20 text-white/70 hover:border-orange-400/70'}`}>
+                          <input
+                            type="radio"
+                            name="project_type_selection"
+                            value={type}
+                            checked={isSelected}
+                            onChange={() => setSelectedProjectType(type)}
+                            className="h-4 w-4 shrink-0 accent-[#ff8800]"
+                          />
+                          <span className="font-semibold">{type}</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </fieldset>
 
                 <div className="mb-4">
-                  <label htmlFor="contact-message" className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/50 mb-1.5">Project Details *</label>
+                  <label htmlFor="contact-message" className="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-white/55 sm:text-[11px]">Project Details *</label>
                   <div className="relative">
-                    <span className="absolute left-4 top-3.5 text-white/40 text-sm">✏️</span>
-                    <textarea id="contact-message" required name="message" rows={4} maxLength={1000} placeholder="Tell us about your project..." className="w-full bg-[#04060b] border border-white/10 hover:border-[#ff8800] rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#ff8800] transition-colors resize-none" />
+                    <MessageSquare className="absolute left-3.5 top-3.5 h-4 w-4 text-white/40" aria-hidden="true" />
+                    <textarea id="contact-message" required name="message" rows={3} maxLength={1000} placeholder="Tell us about your project..." className="w-full resize-y rounded-xl border border-white/15 bg-[#04060b] py-3 pl-10 pr-4 text-sm text-white placeholder-white/40 transition-colors hover:border-orange-400/60 focus:border-orange-400 focus:outline-none" />
                   </div>
                 </div>
 

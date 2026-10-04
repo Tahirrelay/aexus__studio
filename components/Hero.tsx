@@ -80,6 +80,14 @@ export default function Hero() {
               index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
             }`}
           >
+            <Image
+              src={s.image}
+              alt=""
+              fill
+              sizes="100vw"
+              aria-hidden="true"
+              className="scale-110 object-cover blur-xl opacity-50 md:hidden"
+            />
             <div className="absolute inset-0 bg-black/40 z-10" />
             <Image
               src={s.image}
@@ -88,7 +96,7 @@ export default function Hero() {
               sizes="100vw"
               preload={index === 0}
               loading={index === 0 ? undefined : 'lazy'}
-              className="w-full h-full object-cover object-center bg-[#000000]"
+              className="w-full h-full object-contain object-center bg-transparent md:object-cover md:bg-[#000000]"
             />
           </div>
         ))}

@@ -67,11 +67,11 @@ export default function FloatingAiContact() {
       {/* 1. RIGHT SIDE FIXED VERTICAL TAB BUTTON WITH BLING / GLOW EFFECT */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-[999] bg-gradient-to-b from-[#0b0d13] to-[#161924] border-l border-y border-[#ff8800]/50 text-white px-3 py-5 rounded-l-2xl shadow-[0_0_20px_rgba(255,136,0,0.3)] flex flex-col items-center gap-3 cursor-pointer hover:bg-[#ff8800] hover:text-black hover:shadow-[0_0_30px_rgba(255,136,0,0.8)] transition-all duration-300 group animate-pulse"
+        className="fixed right-0 top-1/2 z-[999] flex -translate-y-1/2 cursor-pointer flex-col items-center gap-2 rounded-l-xl border-y border-l border-[#ff8800]/50 bg-gradient-to-b from-[#0b0d13] to-[#161924] px-2 py-3 text-white shadow-[0_0_20px_rgba(255,136,0,0.3)] transition-all duration-300 group hover:bg-[#ff8800] hover:text-black hover:shadow-[0_0_30px_rgba(255,136,0,0.8)] sm:gap-3 sm:rounded-l-2xl sm:px-3 sm:py-5"
         aria-label="Contact Us"
       >
-        <span className="w-2 h-2 rounded-full bg-[#ff8800] group-hover:bg-black shadow-[0_0_10px_#ff8800] animate-ping" />
-        <span className="text-xs font-black uppercase tracking-[0.25em] [writing-mode:vertical-rl] rotate-180 group-hover:text-black text-white">
+        <span className="h-2 w-2 rounded-full bg-[#ff8800] shadow-[0_0_10px_#ff8800] group-hover:bg-black sm:animate-ping" />
+        <span className="hidden text-xs font-black uppercase tracking-[0.25em] text-white [writing-mode:vertical-rl] rotate-180 group-hover:text-black sm:inline">
           CONTACT US ✨
         </span>
       </button>

@@ -92,8 +92,8 @@ export default function NavbarOverlay() {
               aria-hidden={!servicesOpen}
             >
               <Link href="/services/Realtime-3DWalkthrough" onClick={(e) => handleNavigation(e, '/services/Realtime-3DWalkthrough')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Realtime-3DWalkthrough</Link>
-              <span aria-disabled="true" className="cursor-not-allowed text-white/40">360-Virtualtour</span>
-              <span aria-disabled="true" className="cursor-not-allowed text-white/40">3D-Animation</span>
+              <Link href="/services/360-Virtualtour" onClick={(e) => handleNavigation(e, '/services/360-Virtualtour')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">360 Virtual Tour</Link>
+              <Link href="/services/animation-3d" onClick={(e) => handleNavigation(e, '/services/animation-3d')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">3D Animation</Link>
             </div>
           </div>
           <Link href="/portfolio" onClick={(e) => handleNavigation(e, '/portfolio')} className="hover:text-[var(--color-aexus-orange)] transition-colors duration-200 cursor-pointer">Portfolio</Link>
