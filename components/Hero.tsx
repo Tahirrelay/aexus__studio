@@ -104,7 +104,7 @@ export default function Hero() {
 
       {/* Indicator positioned inside the bottom space on mobile */}
       <div 
-        className="absolute bottom-3 left-6 md:left-12 md:top-1/2 md:-translate-y-[40%] md:bottom-auto z-25 flex md:flex-col items-center gap-3 md:gap-4 cursor-pointer"
+        className="absolute bottom-3 left-6 z-20 md:left-12 md:top-1/2 md:-translate-y-[40%] md:bottom-auto md:z-25 flex md:flex-col items-center gap-3 md:gap-4 cursor-pointer"
       >
         <span className="text-xs md:text-sm font-bold tracking-widest text-[#ff8800]">
           {slide.id}
@@ -121,7 +121,7 @@ export default function Hero() {
       </div>
 
       {/* NEW: Get a Quote Button (Clicking goes directly to contact section) */}
-      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-30">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 md:bottom-10 md:z-30">
         <a
           href="#contact"
           onClick={(e) => e.stopPropagation()} // Prevents slide change on button click

@@ -1,10 +1,18 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpDown, BedDouble, Building2, Cpu, DoorOpen, Dumbbell, Gauge, MoveRight, Navigation, Ruler, Sofa, Sun, Trees, UsersRound } from 'lucide-react';
 
-const loopingYouTubeUrl = (videoId: string) =>
-  `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&playsinline=1`;
+const LazyYoutubeEmbed = dynamic(() => import('@/components/LazyYoutubeEmbed'), {
+  ssr: false,
+  loading: () => (
+    <div className="relative aspect-video min-w-0 w-full overflow-hidden rounded-[2rem] border border-white/15 bg-black shadow-2xl">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,135,70,0.18),_rgba(0,0,0,0.9)_55%)]" />
+    </div>
+  ),
+});
 
 const customQuoteButtonClass = 'inline-flex min-h-11 w-full items-center justify-center rounded-full bg-orange-500 px-5 py-3 text-center text-[10px] font-black uppercase tracking-widest text-black transition-colors duration-200 hover:bg-orange-400 hover:shadow-lg hover:shadow-orange-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#05080e] sm:w-auto';
 
@@ -13,10 +21,13 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-[#04060b] text-white font-sans selection:bg-orange-500 selection:text-black">
       <section className="relative flex min-h-0 flex-col items-stretch justify-start overflow-hidden pb-8 sm:min-h-[90vh] sm:flex-row sm:items-center sm:justify-end sm:pb-16 sm:pt-32">
         <div className="relative aspect-video w-full shrink-0 sm:absolute sm:inset-0 sm:aspect-auto sm:h-auto sm:w-auto">
-          <img
-            src="/services/hero2.jpg" 
-            alt="Aexus Studios Architectural Realtime Render" 
-            className="h-full w-full object-contain object-center sm:object-cover"
+          <Image
+            src="/services/hero2.jpeg"
+            alt="Aexus Studios Architectural Realtime Render"
+            fill
+            priority
+            sizes="(max-width: 640px) 100vw, 100vw"
+            className="object-contain object-center sm:object-cover"
           />
           <div className="absolute inset-0 bg-transparent sm:bg-gradient-to-l sm:from-[#04060b]/80 sm:via-[#04060b]/30 sm:to-transparent"></div>
         </div>
@@ -51,16 +62,11 @@ export default function ServicesPage() {
           <div className="grid min-w-0 lg:grid-cols-[1.6fr_1fr] gap-12 items-center">
             
             {/* Larger & Wider Video Container */}
-            <div id="exterior-demo" className="relative aspect-video min-w-0 w-full overflow-hidden rounded-[2rem] border border-white/15 bg-black shadow-2xl">
-              <iframe
-                className="absolute inset-0 h-full w-full"
-                src={loopingYouTubeUrl('1VRbjcazI3A')}
-                title="Experience the Real-Time Architectural Exterior Walkthrough by Aexus Studios."
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
+            <LazyYoutubeEmbed
+              videoId="1VRbjcazI3A"
+              title="Experience the Real-Time Architectural Exterior Walkthrough by Aexus Studios."
+              className="relative aspect-video min-w-0 w-full overflow-hidden rounded-[2rem] border border-white/15 bg-black shadow-2xl"
+            />
 
             {/* Text Aligned to Left */}
             <div className="text-left">
@@ -148,16 +154,11 @@ export default function ServicesPage() {
             </div>
 
             {/* Larger Video Container */}
-            <div className="relative aspect-video min-w-0 w-full overflow-hidden rounded-[2rem] border border-white/15 bg-black shadow-2xl">
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src={loopingYouTubeUrl('LMYVZ8cEnBQ')}
-                title="Luxury Entrance Lobby & Reception 3D Walkthrough | Request a Walkthrough Demo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
+            <LazyYoutubeEmbed
+              videoId="LMYVZ8cEnBQ"
+              title="Luxury Entrance Lobby & Reception 3D Walkthrough | Request a Walkthrough Demo"
+              className="relative aspect-video min-w-0 w-full overflow-hidden rounded-[2rem] border border-white/15 bg-black shadow-2xl"
+            />
 
           </div>
         </div>
@@ -186,16 +187,12 @@ export default function ServicesPage() {
               { type: 'Type-XL', layout: '3B/DL', area: '1808.00 SFT', videoAspectRatio: '16 / 9', videoId: 'Z0AyFwGh2_U', videoTitle: 'Modern Master Apartment Interior Walkthrough | Request a Free Proposal', features: ['Premium Finishes', 'Large Balcony', 'Extra Space'] }
             ].map((apt, idx) => (
               <div key={idx} className="rounded-[2rem] overflow-hidden bg-[#0e141f] border border-white/15 group shadow-2xl">
-                <div className="relative w-full bg-black" style={{ aspectRatio: '8 / 5' }}>
-                  <iframe
-                    className="absolute inset-0 w-full h-full"
-                    src={loopingYouTubeUrl(apt.videoId)}
-                    title={apt.videoTitle}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
+                <LazyYoutubeEmbed
+                  videoId={apt.videoId}
+                  title={apt.videoTitle}
+                  className="relative w-full overflow-hidden bg-black"
+                  style={{ aspectRatio: '8 / 5' }}
+                />
                 <div className="p-8">
                   <h3 className="flex items-center gap-2 text-xl font-black uppercase tracking-tight">
                     <BedDouble className="h-5 w-5 shrink-0 text-orange-400" aria-hidden="true" />
@@ -224,16 +221,11 @@ export default function ServicesPage() {
       <section className="py-16 sm:py-20 border-t border-white/10 bg-[#05080e]">
         <div className="w-full px-6 lg:px-12 mx-auto">
           <div className="grid items-center gap-10 lg:grid-cols-[1.6fr_1fr] lg:gap-12">
-            <div className="relative w-full overflow-hidden rounded-[2rem] border border-white/15 bg-black shadow-2xl aspect-video">
-              <iframe
-                className="absolute inset-0 h-full w-full"
-                src={loopingYouTubeUrl('BA7KoO6gR-w')}
-                title="Modern Rooftop Lounge & Amenities 3D Tour | Request a Free Quote"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
+            <LazyYoutubeEmbed
+              videoId="BA7KoO6gR-w"
+              title="Modern Rooftop Lounge & Amenities 3D Tour | Request a Free Quote"
+              className="relative aspect-video w-full overflow-hidden rounded-[2rem] border border-white/15 bg-black shadow-2xl"
+            />
 
             <div className="text-left">
               <span className="text-xs font-black uppercase tracking-[0.3em] text-orange-400">04 / 07</span>
@@ -278,19 +270,14 @@ export default function ServicesPage() {
             The Complete Journey. <br />In One Walkthrough.
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-sm text-white/70 leading-relaxed">
-            This full walkthrough brings everything together from the exterior to rooftop amenities. Give your clients an immersive experience that helps them understand the entire project before it's built.
+            This full walkthrough brings everything together from the exterior to rooftop amenities. Give your clients an immersive experience that helps them understand the entire project before it&apos;s built.
           </p>
 
-          <div className="mt-10 relative rounded-[2rem] overflow-hidden border border-white/15 shadow-2xl bg-black aspect-video max-w-5xl mx-auto w-full">
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src={loopingYouTubeUrl('kb7NjYL70h4')}
-              title="Luxury Interior Design"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-          </div>
+          <LazyYoutubeEmbed
+            videoId="kb7NjYL70h4"
+            title="Luxury Interior Design"
+            className="relative mt-10 aspect-video max-w-5xl overflow-hidden rounded-[2rem] border border-white/15 bg-black shadow-2xl mx-auto w-full"
+          />
 
           <div className="mt-8 flex flex-wrap justify-center gap-8 text-xs font-extrabold uppercase tracking-widest text-white/60">
             <span>• Exterior</span>
