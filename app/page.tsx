@@ -14,7 +14,7 @@ import ContactUs from '@/components/ContactUs';
 
 export const metadata: Metadata = {
   title: 'Aexus Studios | Digital Experience & 3D Studio',
-  description: 'Aexus Studios creates 3D visualizations, product configurators, and digital experiences for ambitious brands.',
+  description: 'Aexus Studios creates photorealistic 3D visualizations, interactive product configurators, and immersive digital experiences that help brands engage customers.',
   alternates: {
     canonical: '/',
   },

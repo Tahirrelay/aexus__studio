@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://aexusstudios.com"),
   title: "Aexus Studios | Digital Experience & 3D Studio",
-  description: "We transform concepts into captivating digital experiences, specializing in Web Product Configurators and 3D Visualizations.",
+  description: "Aexus Studios creates photorealistic 3D visualizations, interactive product configurators, and immersive digital experiences that help brands engage customers.",
   verification: {
     google: "aMGpYJ-0fNIIDEKIzR0oyACaUjhkCx59yFoFXn1Ce60",
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Aexus Studios | Digital Experience & 3D Studio",
-    description: "We transform concepts into captivating digital experiences, specializing in Web Product Configurators and 3D Visualizations.",
+    description: "Aexus Studios creates photorealistic 3D visualizations, interactive product configurators, and immersive digital experiences that help brands engage customers.",
     url: "https://aexusstudios.com",
     siteName: "Aexus Studios",
     images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Aexus Studios | Digital Experience & 3D Studio",
-    description: "We transform concepts into captivating digital experiences, specializing in Web Product Configurators and 3D Visualizations.",
+    description: "Aexus Studios creates photorealistic 3D visualizations, interactive product configurators, and immersive digital experiences that help brands engage customers.",
     images: ["https://aexusstudios.com/Interior_01.jpg"],
   },
 };

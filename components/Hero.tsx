@@ -82,7 +82,7 @@ export default function Hero() {
           >
             <Image
               src={s.image}
-              alt=""
+              alt={s.alt}
               fill
               sizes="100vw"
               aria-hidden="true"
