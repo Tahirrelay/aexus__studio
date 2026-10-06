@@ -65,8 +65,8 @@ export type SolutionsSectionProps = {
 };
 
 const defaultStories: Story[] = [
-  { id: '01', label: 'Plot size / site survey', title: 'The land before the lines', description: 'A technical site survey showing the villa plot, dimensions, north direction and the landscape around it.', image: '/Hero/phase1.png', link: '#', alt: 'Technical plot size site survey plan' },
-  { id: '02', label: 'Plot plane / floor plan', title: 'A plan for living', description: 'A detailed ground-floor plan mapping the entrance, living spaces, bedrooms, kitchen and the flow between them.', image: '/Hero/FLOOR.png', link: '#', alt: 'Villa ground floor architectural plan' },
+  { id: '01', label: 'Plot size / site survey', title: 'The land before the lines', description: 'A technical site survey showing the villa plot, dimensions, north direction and the landscape around it.', image: '/Hero/phase1.jpg', link: '#', alt: 'Technical plot size site survey plan' },
+  { id: '02', label: 'Plot plane / floor plan', title: 'A plan for living', description: 'A detailed ground-floor plan mapping the entrance, living spaces, bedrooms, kitchen and the flow between them.', image: '/Hero/FLOOR.jpg', link: '#', alt: 'Villa ground floor architectural plan' },
   { id: '03', label: 'Plot exterior', title: 'Architecture in daylight', description: 'Dark cladding, white render, clean lines, landscaping, pool and patio brought together in one exterior view.', image: '/Hero/Exterior_Rendering.jpg', link: '#', alt: 'Luxury villa exterior with pool and patio' },
   { id: '04', label: 'Plot interior', title: 'Light finds its way in', description: 'An open-plan living area with modern furniture, natural light and floor-to-ceiling windows.', image: '/Hero/interior_Rendering.jpg', link: '#', alt: 'Modern luxury villa interior' },
   { id: '05', label: 'Plot 3D / axonometric', title: 'The whole story, at once', description: 'A dollhouse-like 3D view revealing the ground-floor layout, furniture, bedrooms and pool deck.', image: '/architecture/arc-9.jpg', link: '#', alt: 'Axonometric villa visualization' },

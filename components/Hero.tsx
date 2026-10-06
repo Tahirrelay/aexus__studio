@@ -7,7 +7,7 @@ const slides = [
     id: '01',
     title: 'EXTERIOR_RENDERING',
     alt: '3D Exterior Architectural Rendering and Visualization Services',
-    image: "/Hero/Exterior_Rendering.webp"
+    image: "/Hero/Exterior_Rendering1.webp"
   },
   {
     id: '02',
@@ -19,7 +19,7 @@ const slides = [
     id: '03',
     title: 'FLOORPLAN_RENDERING',
     alt: 'Interactive 3D Floorplan Rendering Solutions',
-    image: "/Hero/FLOOR.webp"
+    image: "/Hero/FLOOR1.webp"
   }
 ];
 
