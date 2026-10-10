@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
-import NavbarOverlay from '@/components/NavbarOverlay';
 import Hero from '@/components/Hero';
 import ClientSlider from '@/components/ClientSlider';
 import PortfolioSection from '@/components/PortfolioSection';
@@ -60,7 +59,6 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NavbarOverlay />
       <div id="home"><Hero /></div>
       <div id="clients"><ClientSlider /></div>
       <div id="portfolio"><PortfolioSection /></div>

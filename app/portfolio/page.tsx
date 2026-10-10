@@ -14,7 +14,7 @@ export default function PortfolioPage() {
     <div className="w-full">
       {/* 1. Latest Work Grid Section */}
       <Suspense fallback={<div className="w-full h-96 flex items-center justify-center text-white/50">Loading portfolio...</div>}>
-        <LatestWorkGrid />
+        <LatestWorkGrid prioritizeFirstImage />
       </Suspense>
 
       {/* 2. Contact Us Section (Footer se theek pehle) */}

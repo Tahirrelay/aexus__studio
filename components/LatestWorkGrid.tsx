@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
@@ -14,6 +14,22 @@ const categories = [
   { name: 'Product Visualization', slug: 'product-visualization' },
   { name: 'Logo & Business Card', slug: 'logo-business-card' }
 ];
+
+type PortfolioCategory = (typeof categories)[number];
+
+function SearchParamCategorySync({
+  onCategoryChange,
+}: {
+  onCategoryChange: (category: PortfolioCategory) => void;
+}) {
+  const categoryParam = useSearchParams().get('category');
+
+  useEffect(() => {
+    onCategoryChange(categories.find((category) => category.slug === categoryParam) || categories[0]);
+  }, [categoryParam, onCategoryChange]);
+
+  return null;
+}
 
 const archSubCategories = [
   'Exterior Rendering',
@@ -182,31 +198,25 @@ const allProjects: Record<string, Array<{ id: string; title: string; category: s
   ],
 };
 
-export default function LatestWorkGrid() {
+export default function LatestWorkGrid({ prioritizeFirstImage = false }: { prioritizeFirstImage?: boolean }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const categoryParam = searchParams.get('category');
 
-  const initialCategory = categories.find((c) => c.slug === categoryParam) || categories[0];
-
-  const [activeCategory, setActiveCategory] = useState(initialCategory);
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
   const [activeSubCategory, setActiveSubCategory] = useState(archSubCategories[0]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [showAllMobile, setShowAllMobile] = useState(false);
 
-  useEffect(() => {
-    if (categoryParam) {
-      const found = categories.find((c) => c.slug === categoryParam);
-      if (found) {
-        setActiveCategory(found);
-      }
+  const syncCategoryFromUrl = useCallback((category: PortfolioCategory) => {
+    setActiveCategory(category);
+    if (category.name === 'Architecture Visualization') {
+      setActiveSubCategory(archSubCategories[0]);
     }
-  }, [categoryParam]);
+    setShowAllMobile(false);
+  }, []);
 
   const handleCategoryChange = (cat: typeof categories[0]) => {
-    setActiveCategory(cat);
     setShowAllMobile(false);
     if (cat.name === 'Architecture Visualization') {
       setActiveSubCategory(archSubCategories[0]);
@@ -250,6 +260,9 @@ export default function LatestWorkGrid() {
 
   return (
     <section className="w-full bg-[#000000] py-16 md:py-20 relative overflow-hidden select-none px-4 md:px-12 lg:px-16" aria-labelledby="portfolio-heading">
+      <Suspense fallback={null}>
+        <SearchParamCategorySync onCategoryChange={syncCategoryFromUrl} />
+      </Suspense>
       <div className="absolute top-1/4 left-[-5%] w-[600px] h-[600px] bg-[var(--color-aexus-orange)]/10 rounded-full blur-[160px] pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-10 right-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" aria-hidden="true" />
 
@@ -363,7 +376,9 @@ export default function LatestWorkGrid() {
                         alt={project.title} 
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        loading="lazy"
+                        preload={prioritizeFirstImage && index === 0}
+                        fetchPriority={prioritizeFirstImage && index === 0 ? 'high' : 'auto'}
+                        loading={prioritizeFirstImage && index === 0 ? undefined : 'lazy'}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-85 group-hover:opacity-95"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent transition-all duration-480 pointer-events-none" />

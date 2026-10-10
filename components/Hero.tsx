@@ -95,6 +95,7 @@ export default function Hero() {
               fill
               sizes="100vw"
               preload={index === 0}
+              fetchPriority={index === 0 ? 'high' : 'auto'}
               loading={index === 0 ? undefined : 'lazy'}
               className="w-full h-full object-contain object-center bg-transparent md:object-cover md:bg-[#000000]"
             />

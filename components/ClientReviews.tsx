@@ -51,13 +51,16 @@ export default function ClientReviews() {
     const container = scrollRef.current;
     if (!container) return;
 
-    let animationFrameId: number;
-    const speed = 1; // Auto-slide speed
+    let animationFrameId: number | null = null;
+    let isVisible = false;
+    const speed = 1;
 
     const step = () => {
+      animationFrameId = null;
+      if (!isVisible || document.hidden) return;
+
       if (!isDraggingRef.current) {
         container.scrollLeft += speed;
-        // Seamless infinite loop reset
         if (container.scrollLeft >= container.scrollWidth / 2) {
           container.scrollLeft = 0;
         }
@@ -65,8 +68,44 @@ export default function ClientReviews() {
       animationFrameId = requestAnimationFrame(step);
     };
 
-    animationFrameId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationFrameId);
+    const startAnimation = () => {
+      if (isVisible && !document.hidden && animationFrameId === null) {
+        animationFrameId = requestAnimationFrame(step);
+      }
+    };
+
+    const stopAnimation = () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) {
+        startAnimation();
+      } else {
+        stopAnimation();
+      }
+    });
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopAnimation();
+      } else {
+        startAnimation();
+      }
+    };
+
+    observer.observe(container);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      stopAnimation();
+    };
   }, []);
 
   // Mouse Drag Handlers

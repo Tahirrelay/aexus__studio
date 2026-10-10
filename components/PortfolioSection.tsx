@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 const projects = [
@@ -33,13 +33,6 @@ const panelColors = ['#d4d4d8', '#ca8a04', '#ea580c'];
 
 export default function PortfolioSection() {
   const [activeIndex, setActiveIndex] = useState(1);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return <div className="min-h-screen bg-[#000000]" />;
 
   return (
     <StyledWrapper>
@@ -72,12 +65,14 @@ export default function PortfolioSection() {
 
                 <div className="expanded-content">
                   <div className="video-wrapper">
-                    <video 
-                      src={project.mediaUrl}
-                      title={project.alt}
-                      aria-describedby={`portfolio-video-description-${project.id}`}
-                      autoPlay loop muted playsInline
-                    />
+                    {isActive && (
+                      <video
+                        src={project.mediaUrl}
+                        title={project.alt}
+                        aria-describedby={`portfolio-video-description-${project.id}`}
+                        autoPlay loop muted playsInline
+                      />
+                    )}
                     <p id={`portfolio-video-description-${project.id}`} className="sr-only">
                       Muted product demo: {project.title.toLowerCase()}.
                     </p>
